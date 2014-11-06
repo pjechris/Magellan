@@ -7,17 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49E5EA871A0BC3A400169136 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E5EA861A0BC3A400169136 /* Route.swift */; };
+		49E5EA8F1A0BC81600169136 /* NavigationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E5EA8E1A0BC81600169136 /* NavigationStrategy.swift */; };
 		49FAA6801A0941DE00AF3D5C /* Nabigeta.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FAA67F1A0941DE00AF3D5C /* Nabigeta.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49FAA68A1A0941DE00AF3D5C /* NabigetaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FAA6891A0941DE00AF3D5C /* NabigetaTests.swift */; };
+		49FAA6961A09479600AF3D5C /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FAA6951A09479600AF3D5C /* Navigator.swift */; };
+		49FAA6981A0947E400AF3D5C /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FAA6971A0947E400AF3D5C /* RouteManager.swift */; };
+		49FAA69A1A094C8000AF3D5C /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FAA6991A094C8000AF3D5C /* Routable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		49E5EA861A0BC3A400169136 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		49E5EA8E1A0BC81600169136 /* NavigationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationStrategy.swift; sourceTree = "<group>"; };
 		49FAA67A1A0941DE00AF3D5C /* Nabigeta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nabigeta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FAA67E1A0941DE00AF3D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49FAA67F1A0941DE00AF3D5C /* Nabigeta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Nabigeta.h; sourceTree = "<group>"; };
 		49FAA6851A0941DE00AF3D5C /* NabigetaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NabigetaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FAA6881A0941DE00AF3D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49FAA6891A0941DE00AF3D5C /* NabigetaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NabigetaTests.swift; sourceTree = "<group>"; };
+		49FAA6951A09479600AF3D5C /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		49FAA6971A0947E400AF3D5C /* RouteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
+		49FAA6991A094C8000AF3D5C /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +48,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49E5EA841A0BC38400169136 /* Route */ = {
+			isa = PBXGroup;
+			children = (
+				49E5EA861A0BC3A400169136 /* Route.swift */,
+			);
+			path = Route;
+			sourceTree = "<group>";
+		};
+		49E5EA8C1A0BC7F900169136 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				49E5EA8E1A0BC81600169136 /* NavigationStrategy.swift */,
+				49E5EA8D1A0BC7F900169136 /* Strategy */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		49E5EA8D1A0BC7F900169136 /* Strategy */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Strategy;
+			sourceTree = "<group>";
+		};
 		49FAA6701A0941DE00AF3D5C = {
 			isa = PBXGroup;
 			children = (
@@ -59,7 +93,12 @@
 		49FAA67C1A0941DE00AF3D5C /* Nabigeta */ = {
 			isa = PBXGroup;
 			children = (
+				49E5EA8C1A0BC7F900169136 /* Navigation */,
+				49E5EA841A0BC38400169136 /* Route */,
 				49FAA67F1A0941DE00AF3D5C /* Nabigeta.h */,
+				49FAA6991A094C8000AF3D5C /* Routable.swift */,
+				49FAA6971A0947E400AF3D5C /* RouteManager.swift */,
+				49FAA6951A09479600AF3D5C /* Navigator.swift */,
 				49FAA67D1A0941DE00AF3D5C /* Supporting Files */,
 			);
 			path = Nabigeta;
@@ -196,6 +235,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49FAA6981A0947E400AF3D5C /* RouteManager.swift in Sources */,
+				49E5EA871A0BC3A400169136 /* Route.swift in Sources */,
+				49FAA6961A09479600AF3D5C /* Navigator.swift in Sources */,
+				49E5EA8F1A0BC81600169136 /* NavigationStrategy.swift in Sources */,
+				49FAA69A1A094C8000AF3D5C /* Routable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,27 +342,32 @@
 		49FAA68E1A0941DE00AF3D5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Nabigeta/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		49FAA68F1A0941DE00AF3D5C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Nabigeta/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -374,6 +423,7 @@
 				49FAA68F1A0941DE00AF3D5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		49FAA6901A0941DE00AF3D5C /* Build configuration list for PBXNativeTarget "NabigetaTests" */ = {
 			isa = XCConfigurationList;
@@ -382,6 +432,7 @@
 				49FAA6921A0941DE00AF3D5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
