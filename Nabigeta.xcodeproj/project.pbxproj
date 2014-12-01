@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4968A5981A0BCB3D00D478F8 /* Strategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968A5971A0BCB3D00D478F8 /* Strategy.swift */; };
+		4974622F1A2CBB2300792570 /* SegueRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974622E1A2CBB2300792570 /* SegueRoute.swift */; };
+		499383D31A0BEB6E0036AB98 /* SegueStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499383D21A0BEB6E0036AB98 /* SegueStrategy.swift */; };
 		49E5EA871A0BC3A400169136 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E5EA861A0BC3A400169136 /* Route.swift */; };
 		49E5EA8F1A0BC81600169136 /* NavigationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E5EA8E1A0BC81600169136 /* NavigationStrategy.swift */; };
 		49FAA6801A0941DE00AF3D5C /* Nabigeta.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FAA67F1A0941DE00AF3D5C /* Nabigeta.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4968A5971A0BCB3D00D478F8 /* Strategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strategy.swift; sourceTree = "<group>"; };
+		4974622E1A2CBB2300792570 /* SegueRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueRoute.swift; sourceTree = "<group>"; };
+		499383D21A0BEB6E0036AB98 /* SegueStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueStrategy.swift; sourceTree = "<group>"; };
 		49E5EA861A0BC3A400169136 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		49E5EA8E1A0BC81600169136 /* NavigationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationStrategy.swift; sourceTree = "<group>"; };
 		49FAA67A1A0941DE00AF3D5C /* Nabigeta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nabigeta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				49E5EA861A0BC3A400169136 /* Route.swift */,
+				4974622E1A2CBB2300792570 /* SegueRoute.swift */,
 			);
 			path = Route;
 			sourceTree = "<group>";
@@ -68,6 +75,8 @@
 		49E5EA8D1A0BC7F900169136 /* Strategy */ = {
 			isa = PBXGroup;
 			children = (
+				4968A5971A0BCB3D00D478F8 /* Strategy.swift */,
+				499383D21A0BEB6E0036AB98 /* SegueStrategy.swift */,
 			);
 			path = Strategy;
 			sourceTree = "<group>";
@@ -235,8 +244,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				499383D31A0BEB6E0036AB98 /* SegueStrategy.swift in Sources */,
 				49FAA6981A0947E400AF3D5C /* RouteManager.swift in Sources */,
 				49E5EA871A0BC3A400169136 /* Route.swift in Sources */,
+				4974622F1A2CBB2300792570 /* SegueRoute.swift in Sources */,
+				4968A5981A0BCB3D00D478F8 /* Strategy.swift in Sources */,
 				49FAA6961A09479600AF3D5C /* Navigator.swift in Sources */,
 				49E5EA8F1A0BC81600169136 /* NavigationStrategy.swift in Sources */,
 				49FAA69A1A094C8000AF3D5C /* Routable.swift in Sources */,
