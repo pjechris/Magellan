@@ -19,7 +19,7 @@ public class Navigator {
             return
         }
 
-        route!.navigationStrategy.navigate(route!, senderViewController: sender)
+        route!.navigationStrategy.navigate(sender)
     }
 
     public func redirect() {

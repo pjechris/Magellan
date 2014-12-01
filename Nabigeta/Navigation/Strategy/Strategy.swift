@@ -10,14 +10,20 @@ import Foundation
 import UIKit
 
 public class Strategy : NavigationStrategy {
-    public func navigate(route: Routable, senderViewController: UIViewController) {
+    private let route: Route
+
+    public init(route: Route) {
+        self.route = route
+    }
+
+    public func navigate(sender: UIViewController) {
         var destinationViewController: UIViewController = route.destination()
-        var navigationController = senderViewController.navigationController
+        var navigationController = sender.navigationController
 
         navigationController?.pushViewController(destinationViewController, animated: true)
     }
 
-    public func navigateBack() {
+    public func navigateBack(sender: UIViewController) {
 
     }
 }

@@ -9,11 +9,16 @@
 import Foundation
 
 public class SegueStrategy: NavigationStrategy {
-    public func navigate(route: Routable, senderViewController: UIViewController) {
-        var identifier:String? = nil
-        senderViewController.performSegueWithIdentifier(identifier, sender: senderViewController)
+    private let route: SegueRoute
+
+    public init(route: SegueRoute) {
+        self.route = route
     }
 
-    public func navigateBack() {
+    public func navigate(sender: UIViewController) {
+        sender.performSegueWithIdentifier(self.route.segueIdentifier, sender: sender)
+    }
+
+    public func navigateBack(sender: UIViewController) {
     }
 }

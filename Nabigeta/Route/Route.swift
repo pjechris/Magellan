@@ -16,12 +16,11 @@ public class Route : Routable {
     public var presentationStyle: UIModalPresentationStyle!
 //    public var navigationContext
 
-    public private(set) var navigationStrategy: NavigationStrategy
+    lazy public var navigationStrategy: NavigationStrategy = Strategy(route: self)
 
     public init(context: String, destination: UIViewController.Type) {
         self.context = context
         self.destination = destination
-        self.navigationStrategy = Strategy()
     }
 
     public func match(context: String) -> Bool {
