@@ -7,18 +7,19 @@
 //
 
 import Foundation
+import UIKit
 
 public class Navigator {
     let routeManager = RouteManager()
 
-    public func navigate(context: String) {
-        let route: Routable! = self.routeManager.route(context)
+    public func navigate(context: String, sender: UIViewController) {
+        let route: Routable! = self.routeManager.match(context)
 
         if (route == nil) {
             return
         }
 
-        route.navigationStrategy.execute(route)
+        route!.navigationStrategy.navigate(route!, senderViewController: sender)
     }
 
     public func redirect() {

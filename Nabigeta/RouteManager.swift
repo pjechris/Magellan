@@ -12,11 +12,11 @@ public class RouteManager {
     var routes: Array<Routable> = []
 
     public func add(route: Route) {
-
+        self.routes.append(route)
     }
 
-    public func route(context: String) -> Routable? {
-        for route in routes {
+    public func match(context: String) -> Routable? {
+        for route in self.routes {
             if (route.match(context)) {
                 return route
             }
