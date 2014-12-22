@@ -20,16 +20,16 @@ public class RouteCollection : NSObject {
         return self.routes[name]
     }
 
-    public func route(name: String, context: AnyClass, destination: UIViewController.Type) {
-        self.add(Route(name: name, context: context, destination: destination))
+    public func route(name: String, destination: UIViewController.Type) {
+        self.add(Route(name: name, destination: destination))
     }
 
-    public func route(name: String, context: AnyClass, destination: UIViewController.Type, stackType: UINavigationController?) {
-        self.add(Route(name: name, context: context, destination: destination, stack: .Custom(stackType)))
+    public func route(name: String, destination: UIViewController.Type, stackType: UINavigationController?) {
+        self.add(Route(name: name, destination: destination, stack: .Custom(stackType)))
     }
 
-    public func route(name: String, context: AnyClass, segue: NSString) {
-        self.add(SegueRoute(name: name, context: context, segueIdentifier: segue))
+    public func route(name: String, segue: NSString) {
+        self.add(SegueRoute(name: name, segueIdentifier: segue))
     }
 
     public func match(name: String) -> Routable? {
