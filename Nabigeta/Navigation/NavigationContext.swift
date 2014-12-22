@@ -19,27 +19,45 @@ import UIKit
  */
 public class NavigationContext : NSObject {
     /// the view controller requiring navigation
-    public let sourceViewController: UIViewController
+    unowned public let sourceViewController: UIViewController
     /// the destination controller. This value is unknown until updateContext is called
-    public private(set) var destinationViewController: UIViewController?
-    /// The navigation controller used to stack the destination controller
-    /// This value might change when updateContext has been called
-    public private(set) var stackViewController: UINavigationController?
+    weak public private(set) var destinationViewController: UIViewController?
 
-    public var onUpdate: ((UIViewController) -> ())?
+    private var isUpdated: Bool
 
-    public init(source: UIViewController, defaultStack: UINavigationController) {
+    public var willSupplyStack: (() -> (UINavigationController))?
+    public var didUpdateContext: ((UIViewController) -> ())?
+
+    public init(source: UIViewController) {
         self.sourceViewController = source
-        self.stackViewController = defaultStack;
+        self.isUpdated = false
     }
 
     /**
+     * Provide a new stack (UINavigationController)
+     *
+     * @return the new navigation controller stack
+     */
+    public func supplyStack() -> UINavigationController? {
+        if (self.isUpdated) {
+            return nil
+        }
+
+        return self.willSupplyStack?() ?? UINavigationController()
+    }
+
+    /**
+    * Define the destination controller on the same navigation stack
+    *
     * @param destination the destination view controller
-    * @param stack the navigation controller on which destination has been stacked
     */
-    public func updateContext(destination: UIViewController, stack: UINavigationController?) {
+    public func updateContext(destination: UIViewController) {
+        if (self.isUpdated) {
+            return
+        }
+
         self.destinationViewController = destination
-        self.stackViewController = stack
-        self.onUpdate?(destination)
+        self.isUpdated = true
+        self.didUpdateContext?(destination)
     }
 }
