@@ -11,6 +11,7 @@
 		490C38391A48219E00EC432E /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38381A48219E00EC432E /* NavigationContext.swift */; };
 		490C383D1A4827DA00EC432E /* SegueNavigationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C383C1A4827DA00EC432E /* SegueNavigationHandler.swift */; };
 		490C383F1A4827ED00EC432E /* UIViewController+SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C383E1A4827ED00EC432E /* UIViewController+SegueHandler.swift */; };
+		490C38411A4832FE00EC432E /* PresentStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38401A4832FE00EC432E /* PresentStrategy.swift */; };
 		4968A5981A0BCB3D00D478F8 /* Strategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968A5971A0BCB3D00D478F8 /* Strategy.swift */; };
 		4974622F1A2CBB2300792570 /* SegueRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974622E1A2CBB2300792570 /* SegueRoute.swift */; };
 		499383D31A0BEB6E0036AB98 /* SegueStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499383D21A0BEB6E0036AB98 /* SegueStrategy.swift */; };
@@ -28,6 +29,7 @@
 		490C38381A48219E00EC432E /* NavigationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
 		490C383C1A4827DA00EC432E /* SegueNavigationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueNavigationHandler.swift; sourceTree = "<group>"; };
 		490C383E1A4827ED00EC432E /* UIViewController+SegueHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+SegueHandler.swift"; sourceTree = "<group>"; };
+		490C38401A4832FE00EC432E /* PresentStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentStrategy.swift; sourceTree = "<group>"; };
 		4968A5971A0BCB3D00D478F8 /* Strategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strategy.swift; sourceTree = "<group>"; };
 		4974622E1A2CBB2300792570 /* SegueRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueRoute.swift; sourceTree = "<group>"; };
 		499383D21A0BEB6E0036AB98 /* SegueStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueStrategy.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				4968A5971A0BCB3D00D478F8 /* Strategy.swift */,
 				499383D21A0BEB6E0036AB98 /* SegueStrategy.swift */,
+				490C38401A4832FE00EC432E /* PresentStrategy.swift */,
 			);
 			path = Strategy;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				49E5EA8F1A0BC81600169136 /* NavigationStrategy.swift in Sources */,
 				490C383F1A4827ED00EC432E /* UIViewController+SegueHandler.swift in Sources */,
 				490C38371A481FFE00EC432E /* NavigationStack.swift in Sources */,
+				490C38411A4832FE00EC432E /* PresentStrategy.swift in Sources */,
 				49FAA69A1A094C8000AF3D5C /* Routable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

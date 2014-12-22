@@ -12,11 +12,17 @@ import UIKit
 public class Route : Routable {
     public let context: String
     public let destination: UIViewController.Type
+    public let stack: NavigationStack
 
-    lazy public var navigationStrategy: NavigationStrategy = Strategy(route: self)
+    lazy public var navigationStrategy: NavigationStrategy = (self.stack.isNewStack()) ? PresentStrategy(route: self) : PushStrategy(route: self)
 
-    public init(context: String, destination: UIViewController.Type) {
+    public init(context: String, destination: UIViewController.Type, stack: NavigationStack) {
         self.context = context
         self.destination = destination
+        self.stack = stack
+    }
+
+    public convenience init(context: String, destination: UIViewController.Type) {
+        self.init(context: context, destination: destination, stack: .Current)
     }
 }
