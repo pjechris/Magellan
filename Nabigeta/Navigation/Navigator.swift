@@ -27,9 +27,9 @@ public class Navigator : NSObject {
         self.routesCollection.append(routeCollection);
     }
 
-    public func navigate(context: String, sender: UIViewController) {
+    public func navigate(name: String, context: AnyClass, sender: UIViewController) {
         for routes in self.routesCollection {
-            let route: Routable! = routes.match(context)
+            let route: Routable! = routes.match(name)
 
             if (route != nil) {
                 let navContext = NavigationContext(source: sender)

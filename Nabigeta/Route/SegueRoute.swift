@@ -9,13 +9,15 @@
 import Foundation
 
 public class SegueRoute : NSObject, Routable {
-    public let context: String
+    public let name: String
+    public let contextType: AnyClass
     public let segueIdentifier: String
 
     lazy public var navigationStrategy: NavigationStrategy = SegueStrategy(route: self)
 
-    public init(context: String, segueIdentifier: String) {
-        self.context = context
+    public init(name: String, context: AnyClass, segueIdentifier: String) {
+        self.name = name
+        self.contextType = context
         self.segueIdentifier = segueIdentifier
     }
 }

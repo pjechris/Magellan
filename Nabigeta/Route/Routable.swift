@@ -9,6 +9,7 @@
 import Foundation
 
 public protocol Routable {
-    var context: String { get }
+    var name: String { get }
+    var contextType: AnyClass { get }
     var navigationStrategy: NavigationStrategy { get }
 }

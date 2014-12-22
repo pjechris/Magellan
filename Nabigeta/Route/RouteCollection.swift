@@ -10,27 +10,31 @@ import Foundation
 import UIKit
 
 public class RouteCollection : NSObject {
-    var routes: Array<Routable> = []
+    var routes: Dictionary<String, Routable> = [:]
 
     public func add(route: Routable) {
-        self.routes.append(route)
+        self.routes[route.name] = route
     }
 
-    public func route(context: String, destination: UIViewController.Type) {
-        self.add(Route(context: context, destination: destination))
+    public func routeByName(name: String) -> Routable? {
+        return self.routes[name]
     }
 
-    public func route(context: String, destination: UIViewController.Type, stackType: UINavigationController?) {
-        self.add(Route(context: context, destination: destination, stack: .Custom(stackType)))
+    public func route(name: String, context: AnyClass, destination: UIViewController.Type) {
+        self.add(Route(name: name, context: context, destination: destination))
     }
 
-    public func route(context: String, segue: NSString) {
-        self.add(SegueRoute(context: context, segueIdentifier: segue))
+    public func route(name: String, context: AnyClass, destination: UIViewController.Type, stackType: UINavigationController?) {
+        self.add(Route(name: name, context: context, destination: destination, stack: .Custom(stackType)))
     }
 
-    public func match(context: String) -> Routable? {
-        for route in self.routes {
-            if (route.context == context) {
+    public func route(name: String, context: AnyClass, segue: NSString) {
+        self.add(SegueRoute(name: name, context: context, segueIdentifier: segue))
+    }
+
+    public func match(name: String) -> Routable? {
+        for (_, route) in self.routes {
+            if (route.name == name) {
                 return route
             }
         }
