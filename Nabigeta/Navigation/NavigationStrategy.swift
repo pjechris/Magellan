@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@objc
 public protocol NavigationStrategy {
     func navigate(navigationContext: NavigationContext)
 

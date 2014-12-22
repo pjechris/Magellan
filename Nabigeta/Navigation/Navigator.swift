@@ -9,12 +9,12 @@
 import Foundation
 import UIKit
 
-public class Navigator {
+public class Navigator : NSObject {
     public var before: ((UIViewController, AnyObject) -> Void)?
     public var stackSupplier: (() -> UINavigationController)?
     private var routesCollection: Array<RouteCollection>
 
-    public init() {
+    public override init() {
         self.routesCollection = []
     }
 

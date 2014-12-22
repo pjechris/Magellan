@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class SegueRoute : Routable {
+public class SegueRoute : NSObject, Routable {
     public let context: String
     public let segueIdentifier: String
 

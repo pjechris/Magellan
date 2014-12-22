@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class Route : Routable {
+public class Route : NSObject, Routable {
     public let context: String
     public let destination: UIViewController.Type
     public let stack: NavigationStack

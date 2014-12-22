@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class RouteCollection {
+public class RouteCollection : NSObject {
     var routes: Array<Routable> = []
 
     public func add(route: Routable) {
