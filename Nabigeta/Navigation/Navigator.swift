@@ -11,15 +11,30 @@ import UIKit
 
 public class Navigator {
     public var before: ((UIViewController, AnyObject) -> Void)?
+    public var stackSupplier: (() -> UINavigationController)?
+    private var routesCollection: Array<RouteCollection>
 
-    private let routeCollection = RouteCollection()
+    public init() {
+        self.routesCollection = []
+    }
+
+    public convenience init(routeCollection: RouteCollection) {
+        self.init()
+        self.importCollection(routeCollection)
+    }
+
+    public func importCollection(routeCollection: RouteCollection) {
+        self.routesCollection.append(routeCollection);
+    }
 
     public func navigate(context: String, sender: UIViewController) {
-            let route: Routable! = self.routeCollection.match(context)
+        for routes in self.routesCollection {
+            let route: Routable! = routes.match(context)
 
             if (route != nil) {
                 let navContext = NavigationContext(source: sender)
 
+                navContext.willSupplyStack = self.stackSupplier
                 navContext.didUpdateContext = { destination in
                     self.before?(destination, context)
                     return ()
@@ -28,6 +43,7 @@ public class Navigator {
                 route!.navigationStrategy.navigate(navContext)
 
                 return
+            }
         }
     }
 
