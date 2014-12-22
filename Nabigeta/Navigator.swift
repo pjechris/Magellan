@@ -10,16 +10,25 @@ import Foundation
 import UIKit
 
 public class Navigator {
-    let routeManager = RouteManager()
+    public var before: ((UIViewController, AnyObject) -> Void)?
+
+    private let routeManager = RouteManager()
 
     public func navigate(context: String, sender: UIViewController) {
-        let route: Routable! = self.routeManager.match(context)
+            let route: Routable! = self.routeManager.match(context)
 
-        if (route == nil) {
-            return
+            if (route != nil) {
+                let navContext = NavigationContext(source: sender)
+
+                navContext.didUpdateContext = { destination in
+                    self.before?(destination, context)
+                    return ()
+                }
+
+                route!.navigationStrategy.navigate(navContext)
+
+                return
         }
-
-        route!.navigationStrategy.navigate(sender)
     }
 
     public func redirect() {
