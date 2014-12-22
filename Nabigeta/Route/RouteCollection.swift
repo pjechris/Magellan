@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class RouteManager {
+public class RouteCollection {
     var routes: Array<Routable> = []
 
     public func add(route: Route) {

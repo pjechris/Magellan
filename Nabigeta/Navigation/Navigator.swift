@@ -1,5 +1,5 @@
 //
-//  RouteManager.swift
+//  RouteCollection.swift
 //  Nabigeta
 //
 //  Created by JC on 04/11/14.
@@ -12,10 +12,10 @@ import UIKit
 public class Navigator {
     public var before: ((UIViewController, AnyObject) -> Void)?
 
-    private let routeManager = RouteManager()
+    private let routeCollection = RouteCollection()
 
     public func navigate(context: String, sender: UIViewController) {
-            let route: Routable! = self.routeManager.match(context)
+            let route: Routable! = self.routeCollection.match(context)
 
             if (route != nil) {
                 let navContext = NavigationContext(source: sender)
