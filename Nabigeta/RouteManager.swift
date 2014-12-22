@@ -17,7 +17,7 @@ public class RouteManager {
 
     public func match(context: String) -> Routable? {
         for route in self.routes {
-            if (route.match(context)) {
+            if (route.context == context) {
                 return route
             }
         }

@@ -11,8 +11,4 @@ import Foundation
 public protocol Routable {
     var context: String { get }
     var navigationStrategy: NavigationStrategy { get }
-
-    func match(context: String) -> Bool;
-
-//    func strategy() -> RouteStrategy
 }

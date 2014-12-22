@@ -18,8 +18,4 @@ public class SegueRoute : Routable {
         self.context = context
         self.segueIdentifier = segueIdentifier
     }
-
-    public func match(context: String) -> Bool {
-        return context == context
-    }
 }
