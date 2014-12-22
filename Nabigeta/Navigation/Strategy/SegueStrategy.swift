@@ -15,8 +15,22 @@ public class SegueStrategy: NavigationStrategy {
         self.route = route
     }
 
-    public func navigate(sender: UIViewController) {
-        sender.performSegueWithIdentifier(self.route.segueIdentifier, sender: sender)
+    public func navigate(navigationContext: NavigationContext) {
+        let handler = SegueNavigationHandler()
+        let source = navigationContext.sourceViewController
+
+        handler.prepareSegueHandler = { segue in
+            var destination = segue.destinationViewController as UIViewController
+
+            if let navigationController = destination as? UINavigationController {
+                destination = navigationController.topViewController
+            }
+
+            navigationContext.updateContext(destination)
+        }
+
+        source.segueHandler = handler
+        source.performSegueWithIdentifier(self.route.segueIdentifier, sender: source)
     }
 
     public func navigateBack(sender: UIViewController) {

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public protocol NavigationStrategy {
-    func navigate(sender: UIViewController)
+    func navigate(navigationContext: NavigationContext)
 
     func navigateBack(sender: UIViewController)
 }

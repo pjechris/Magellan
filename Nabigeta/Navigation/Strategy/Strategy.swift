@@ -9,21 +9,22 @@
 import Foundation
 import UIKit
 
-public class Strategy : NavigationStrategy {
+public class PushStrategy : NavigationStrategy {
     private let route: Route
 
     public init(route: Route) {
         self.route = route
     }
 
-    public func navigate(sender: UIViewController) {
-        var destinationViewController: UIViewController = route.destination()
-        var navigationController = sender.navigationController
+    public func navigate(navigationContext: NavigationContext) {
+        var destinationViewController: UIViewController = self.route.destination()
+        var stackController = navigationContext.sourceViewController.navigationController!
 
-        navigationController?.pushViewController(destinationViewController, animated: true)
+        navigationContext.updateContext(destinationViewController)
+        stackController.pushViewController(destinationViewController, animated: true)
     }
 
     public func navigateBack(sender: UIViewController) {
-
+        sender.navigationController?.popToViewController(sender, animated: true)
     }
 }
