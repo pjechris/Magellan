@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490C38371A481FFE00EC432E /* NavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38361A481FFE00EC432E /* NavigationStack.swift */; };
 		4968A5981A0BCB3D00D478F8 /* Strategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968A5971A0BCB3D00D478F8 /* Strategy.swift */; };
 		4974622F1A2CBB2300792570 /* SegueRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974622E1A2CBB2300792570 /* SegueRoute.swift */; };
 		499383D31A0BEB6E0036AB98 /* SegueStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499383D21A0BEB6E0036AB98 /* SegueStrategy.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		490C38361A481FFE00EC432E /* NavigationStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationStack.swift; sourceTree = "<group>"; };
 		4968A5971A0BCB3D00D478F8 /* Strategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strategy.swift; sourceTree = "<group>"; };
 		4974622E1A2CBB2300792570 /* SegueRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueRoute.swift; sourceTree = "<group>"; };
 		499383D21A0BEB6E0036AB98 /* SegueStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueStrategy.swift; sourceTree = "<group>"; };
@@ -66,8 +68,9 @@
 		49E5EA8C1A0BC7F900169136 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				49E5EA8E1A0BC81600169136 /* NavigationStrategy.swift */,
 				49E5EA8D1A0BC7F900169136 /* Strategy */,
+				490C38361A481FFE00EC432E /* NavigationStack.swift */,
+				49E5EA8E1A0BC81600169136 /* NavigationStrategy.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				4968A5981A0BCB3D00D478F8 /* Strategy.swift in Sources */,
 				49FAA6961A09479600AF3D5C /* Navigator.swift in Sources */,
 				49E5EA8F1A0BC81600169136 /* NavigationStrategy.swift in Sources */,
+				490C38371A481FFE00EC432E /* NavigationStack.swift in Sources */,
 				49FAA69A1A094C8000AF3D5C /* Routable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
