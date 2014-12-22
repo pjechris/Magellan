@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		490C38371A481FFE00EC432E /* NavigationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38361A481FFE00EC432E /* NavigationStack.swift */; };
 		490C38391A48219E00EC432E /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38381A48219E00EC432E /* NavigationContext.swift */; };
+		490C383D1A4827DA00EC432E /* SegueNavigationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C383C1A4827DA00EC432E /* SegueNavigationHandler.swift */; };
+		490C383F1A4827ED00EC432E /* UIViewController+SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C383E1A4827ED00EC432E /* UIViewController+SegueHandler.swift */; };
 		4968A5981A0BCB3D00D478F8 /* Strategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4968A5971A0BCB3D00D478F8 /* Strategy.swift */; };
 		4974622F1A2CBB2300792570 /* SegueRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974622E1A2CBB2300792570 /* SegueRoute.swift */; };
 		499383D31A0BEB6E0036AB98 /* SegueStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499383D21A0BEB6E0036AB98 /* SegueStrategy.swift */; };
@@ -24,6 +26,8 @@
 /* Begin PBXFileReference section */
 		490C38361A481FFE00EC432E /* NavigationStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationStack.swift; sourceTree = "<group>"; };
 		490C38381A48219E00EC432E /* NavigationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
+		490C383C1A4827DA00EC432E /* SegueNavigationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueNavigationHandler.swift; sourceTree = "<group>"; };
+		490C383E1A4827ED00EC432E /* UIViewController+SegueHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+SegueHandler.swift"; sourceTree = "<group>"; };
 		4968A5971A0BCB3D00D478F8 /* Strategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strategy.swift; sourceTree = "<group>"; };
 		4974622E1A2CBB2300792570 /* SegueRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueRoute.swift; sourceTree = "<group>"; };
 		499383D21A0BEB6E0036AB98 /* SegueStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueStrategy.swift; sourceTree = "<group>"; };
@@ -58,6 +62,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		490C383A1A4827C900EC432E /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				490C383C1A4827DA00EC432E /* SegueNavigationHandler.swift */,
+				490C383E1A4827ED00EC432E /* UIViewController+SegueHandler.swift */,
+			);
+			name = UIKit;
+			path = Nabigeta/UIKit;
+			sourceTree = SOURCE_ROOT;
+		};
 		49E5EA841A0BC38400169136 /* Route */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +84,7 @@
 		49E5EA8C1A0BC7F900169136 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				490C383A1A4827C900EC432E /* UIKit */,
 				49E5EA8D1A0BC7F900169136 /* Strategy */,
 				490C38361A481FFE00EC432E /* NavigationStack.swift */,
 				49E5EA8E1A0BC81600169136 /* NavigationStrategy.swift */,
@@ -253,11 +268,13 @@
 				499383D31A0BEB6E0036AB98 /* SegueStrategy.swift in Sources */,
 				490C38391A48219E00EC432E /* NavigationContext.swift in Sources */,
 				49FAA6981A0947E400AF3D5C /* RouteManager.swift in Sources */,
+				490C383D1A4827DA00EC432E /* SegueNavigationHandler.swift in Sources */,
 				49E5EA871A0BC3A400169136 /* Route.swift in Sources */,
 				4974622F1A2CBB2300792570 /* SegueRoute.swift in Sources */,
 				4968A5981A0BCB3D00D478F8 /* Strategy.swift in Sources */,
 				49FAA6961A09479600AF3D5C /* Navigator.swift in Sources */,
 				49E5EA8F1A0BC81600169136 /* NavigationStrategy.swift in Sources */,
+				490C383F1A4827ED00EC432E /* UIViewController+SegueHandler.swift in Sources */,
 				490C38371A481FFE00EC432E /* NavigationStack.swift in Sources */,
 				49FAA69A1A094C8000AF3D5C /* Routable.swift in Sources */,
 			);
