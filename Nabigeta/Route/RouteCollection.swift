@@ -7,12 +7,25 @@
 //
 
 import Foundation
+import UIKit
 
 public class RouteCollection {
     var routes: Array<Routable> = []
 
-    public func add(route: Route) {
+    public func add(route: Routable) {
         self.routes.append(route)
+    }
+
+    public func route(context: String, destination: UIViewController.Type) {
+        self.add(Route(context: context, destination: destination))
+    }
+
+    public func route(context: String, destination: UIViewController.Type, stackType: UINavigationController?) {
+        self.add(Route(context: context, destination: destination, stack: .Custom(stackType)))
+    }
+
+    public func route(context: String, segue: NSString) {
+        self.add(SegueRoute(context: context, segueIdentifier: segue))
     }
 
     public func match(context: String) -> Routable? {
