@@ -20,6 +20,7 @@
 		499383D31A0BEB6E0036AB98 /* SegueStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499383D21A0BEB6E0036AB98 /* SegueStrategy.swift */; };
 		49E5EA871A0BC3A400169136 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E5EA861A0BC3A400169136 /* Route.swift */; };
 		49E5EA8F1A0BC81600169136 /* NavigationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E5EA8E1A0BC81600169136 /* NavigationStrategy.swift */; };
+		49F4C33D1A4C236900800FC9 /* RouteOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F4C33C1A4C236900800FC9 /* RouteOptions.swift */; };
 		49FAA6801A0941DE00AF3D5C /* Nabigeta.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FAA67F1A0941DE00AF3D5C /* Nabigeta.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49FAA68A1A0941DE00AF3D5C /* NabigetaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FAA6891A0941DE00AF3D5C /* NabigetaTests.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		499383D21A0BEB6E0036AB98 /* SegueStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueStrategy.swift; sourceTree = "<group>"; };
 		49E5EA861A0BC3A400169136 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		49E5EA8E1A0BC81600169136 /* NavigationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationStrategy.swift; sourceTree = "<group>"; };
+		49F4C33C1A4C236900800FC9 /* RouteOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteOptions.swift; sourceTree = "<group>"; };
 		49FAA67A1A0941DE00AF3D5C /* Nabigeta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nabigeta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FAA67E1A0941DE00AF3D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49FAA67F1A0941DE00AF3D5C /* Nabigeta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Nabigeta.h; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				49E5EA861A0BC3A400169136 /* Route.swift */,
 				490C38421A4855CC00EC432E /* RouteCollection.swift */,
 				4974622E1A2CBB2300792570 /* SegueRoute.swift */,
+				49F4C33C1A4C236900800FC9 /* RouteOptions.swift */,
 			);
 			path = Route;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				490C383D1A4827DA00EC432E /* SegueNavigationHandler.swift in Sources */,
 				49E5EA871A0BC3A400169136 /* Route.swift in Sources */,
 				4974622F1A2CBB2300792570 /* SegueRoute.swift in Sources */,
+				49F4C33D1A4C236900800FC9 /* RouteOptions.swift in Sources */,
 				49E5EA8F1A0BC81600169136 /* NavigationStrategy.swift in Sources */,
 				490C38471A48564900EC432E /* Routable.swift in Sources */,
 				490C383F1A4827ED00EC432E /* UIViewController+SegueHandler.swift in Sources */,
