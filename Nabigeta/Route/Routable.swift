@@ -8,7 +8,10 @@
 
 import Foundation
 
-public protocol Routable {
+public protocol Routable
+{
     var name: String { get }
     var navigationStrategy: NavigationStrategy { get }
+
+    var options: RouteOptions { get }
 }

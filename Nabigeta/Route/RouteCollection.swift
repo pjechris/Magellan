@@ -8,26 +8,32 @@
 
 import Foundation
 import UIKit
+import JLRoutes
 
 public class RouteCollection : NSObject {
-    var routes: Dictionary<String, Routable> = [:]
+    private var routes: Dictionary<String, Routable>
 
-    public func add(route: Routable) -> RouteOptions {
+    public override init() {
+        self.routes = [:]
+    }
+
+    public func add(route: Routable) {
         self.routes[route.name] = route
-
-        return route.options
     }
 
-    public func add(name: String, destination: UIViewController.Type) -> RouteOptions {
-        return self.add(Route(name: name, destination: destination))
+    public func add(name: String, destination: UIViewController.Type, configure: RouteOptions -> ()) {
+        return self.add(Route(name: name, destination: destination, configure: configure))
     }
 
-    public func add(name: String, destination: UIViewController.Type, stackType: UINavigationController?) -> RouteOptions {
-        return self.add(Route(name: name, destination: destination, stack: .Custom(stackType)))
+    public func add(name: String,
+             destination: UIViewController.Type,
+               stackType: UINavigationController?,
+               configure: RouteOptions -> ()) {
+            return self.add(Route(name: name, destination: destination, stack: .Custom(stackType), configure: configure))
     }
 
-    public func add(name: String, segue: NSString) -> RouteOptions {
-        return self.add(SegueRoute(name: name, segueIdentifier: segue))
+    public func add(name: String, segue: NSString, configure: RouteOptions -> ()) {
+        return self.add(SegueRoute(name: name, segueIdentifier: segue, configure: configure))
     }
 
     public func match(name: String) -> Routable? {
