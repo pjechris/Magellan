@@ -36,7 +36,13 @@ public class RouteCollection : NSObject {
         return self.add(SegueRoute(name: name, segueIdentifier: segue, configure: configure))
     }
 
-    public func match(name: String) -> Routable? {
-        return self.routes[name]
+    public func find(name: String) -> Routable? {
+        return self.match(name)?.route
+    }
+
+    public func match(name: String) -> MatcherResult? {
+        let route = self.routes[name]
+
+        return route != nil ? MatcherResult(route: route!, context: nil) : nil
     }
 }

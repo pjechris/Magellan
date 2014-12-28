@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public class Navigator : NSObject {
-    public var before: ((UIViewController, AnyObject) -> Void)?
+    public var before: ((UIViewController, Any) -> Void)?
     public var stackSupplier: (() -> UINavigationController)?
     private var routesCollection: Array<RouteCollection>
 
@@ -24,14 +24,14 @@ public class Navigator : NSObject {
     }
 
     public func importCollection(routeCollection: RouteCollection) {
-        self.routesCollection.append(routeCollection);
+        self.routesCollection.append(routeCollection)
     }
 
-    public func navigate(name: String, context: AnyClass, sender: UIViewController) {
+    public func navigate(name: String, context: Any, sender: UIViewController) {
         for routes in self.routesCollection {
-            let route: Routable! = routes.match(name)
+            let result = routes.match(name)
 
-            if (route != nil) {
+            if let match = result {
                 let navContext = NavigationContext(source: sender)
 
                 navContext.willSupplyStack = self.stackSupplier
@@ -40,7 +40,7 @@ public class Navigator : NSObject {
                     return ()
                 }
 
-                route!.navigationStrategy.navigate(navContext)
+                match.route.navigationStrategy.navigate(navContext)
 
                 return
             }
