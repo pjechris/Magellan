@@ -8,17 +8,19 @@
 
 import Foundation
 import UIKit
-import JLRoutes
 
 public class RouteCollection : NSObject {
-    private var routes: Dictionary<String, Routable>
+    private var nameMatcher: RouteNameMatcher
+    private var urlMatcher: RouteUrlMatcher
 
     public override init() {
-        self.routes = [:]
+        self.nameMatcher = RouteNameMatcher()
+        self.urlMatcher = RouteUrlMatcher()
     }
 
     public func add(route: Routable) {
-        self.routes[route.name] = route
+        self.nameMatcher.add(route)
+        self.urlMatcher.add(route)
     }
 
     public func add(name: String, destination: UIViewController.Type, configure: RouteOptions -> ()) {
@@ -41,8 +43,14 @@ public class RouteCollection : NSObject {
     }
 
     public func match(name: String) -> MatcherResult? {
-        let route = self.routes[name]
+        return self.nameMatcher.match(name)
+    }
 
-        return route != nil ? MatcherResult(route: route!, context: nil) : nil
+    public func reverse(result: MatcherResult) -> String? {
+        return self.nameMatcher.reverse(result)
+    }
+
+    public func reverse(result: MatcherResult) -> NSURL? {
+        return self.urlMatcher.reverse(result)
     }
 }
