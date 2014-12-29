@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class SegueStrategy: NavigationStrategy {
     private let route: SegueRoute

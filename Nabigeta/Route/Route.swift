@@ -19,16 +19,16 @@ public class Route : NSObject, Routable {
         ? PresentStrategy(route: self)
         : PushStrategy(route: self)
 
-    public init(name: String, destination: UIViewController.Type, stack: NavigationStack, configure: RouteOptions -> ()) {
+    public init(name: String, destination: UIViewController.Type, stack: NavigationStack, configure: (RouteOptions -> ())?) {
         self.name = name
         self.destination = destination
         self.stack = stack
         self.options = RouteOptions()
 
-        configure(self.options)
+        configure?(self.options)
     }
 
-    public convenience init(name: String, destination: UIViewController.Type, configure: RouteOptions -> ()) {
+    public convenience init(name: String, destination: UIViewController.Type, configure: (RouteOptions -> ())?) {
         self.init(name: name, destination: destination, stack: .Current, configure: configure)
     }
 }

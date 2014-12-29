@@ -15,11 +15,11 @@ public class SegueRoute : NSObject, Routable {
 
     lazy public private(set) var navigationStrategy: NavigationStrategy = SegueStrategy(route: self)
 
-    public init(name: String, segueIdentifier: String, configure: RouteOptions -> ()) {
+    public init(name: String, segueIdentifier: String, configure: (RouteOptions -> ())?) {
         self.name = name
         self.segueIdentifier = segueIdentifier
         self.options = RouteOptions()
 
-        configure(self.options)
+        configure?(self.options)
     }
 }

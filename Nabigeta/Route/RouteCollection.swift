@@ -23,18 +23,18 @@ public class RouteCollection : NSObject {
         self.urlMatcher.add(route)
     }
 
-    public func add(name: String, destination: UIViewController.Type, configure: RouteOptions -> ()) {
+    public func add(name: String, destination: UIViewController.Type, configure: (RouteOptions -> ())? = nil) {
         return self.add(Route(name: name, destination: destination, configure: configure))
     }
 
     public func add(name: String,
              destination: UIViewController.Type,
                stackType: UINavigationController?,
-               configure: RouteOptions -> ()) {
+               configure: (RouteOptions -> ())? = nil) {
             return self.add(Route(name: name, destination: destination, stack: .Custom(stackType), configure: configure))
     }
 
-    public func add(name: String, segue: NSString, configure: RouteOptions -> ()) {
+    public func add(name: String, segue: NSString, configure: (RouteOptions -> ())? = nil) {
         return self.add(SegueRoute(name: name, segueIdentifier: segue, configure: configure))
     }
 
