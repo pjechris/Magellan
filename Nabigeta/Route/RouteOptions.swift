@@ -12,15 +12,9 @@ import Foundation
  * Provide optional parameters for any route you define
 */
 public class RouteOptions {
-    public private(set) var uris = Array<String>()
+    public var routeURI: RouteURI?
 
-    public func routableBy(#uri: String) -> RouteOptions {
-        return self.routableBy(uris: [uri])
-    }
-
-    public func routableBy(#uris: Array<String>) -> RouteOptions {
-        self.uris = uris
-
-        return self
+    public init() {
+        
     }
 }
