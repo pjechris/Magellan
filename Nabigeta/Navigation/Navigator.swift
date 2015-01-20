@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public class Navigator : NSObject {
-    public var before: ((UIViewController, Any) -> Void)?
+    public var before: ((UIViewController, AnyObject) -> Void)?
     public var stackSupplier: (() -> UINavigationController)?
     private var routesCollection: Array<RouteCollection>
 
@@ -27,7 +27,8 @@ public class Navigator : NSObject {
         self.routesCollection.append(routeCollection)
     }
 
-    public func navigate(name: String, context: Any, sender: UIViewController) {
+    @objc(navigate:context:sender:)
+    public func navigate(name: String, context: AnyObject, sender: UIViewController) {
         for routes in self.routesCollection {
             let result = routes.match(name)
 
