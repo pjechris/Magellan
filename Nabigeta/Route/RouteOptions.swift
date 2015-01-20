@@ -11,10 +11,10 @@ import Foundation
 /**
  * Provide optional parameters for any route you define
 */
-public class RouteOptions {
+public class RouteOptions : NSObject {
     public var routeURI: RouteURI?
 
-    public init() {
+    public override init() {
         
     }
 }

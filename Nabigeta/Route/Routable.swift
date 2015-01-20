@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public protocol Routable
 {
     var name: String { get }
