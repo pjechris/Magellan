@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-var UIViewControllerRoute = "UIViewControllerRouteKey"
+var NabigetaViewControllerNavigationContext = "NabigetaViewControllerNavigationContext"
 
 extension UIViewController {
-    var route: Routable? {
-        get { return objc_getAssociatedObject(self, &UIViewControllerRoute) as? Routable }
-        set { objc_setAssociatedObject(self, &UIViewControllerRoute, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC)) }
+    var navigationContext: NavigationContext? {
+        get { return objc_getAssociatedObject(self, &NabigetaViewControllerNavigationContext) as? NavigationContext }
+        set { objc_setAssociatedObject(self, &NabigetaViewControllerNavigationContext, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC)) }
     }
 }

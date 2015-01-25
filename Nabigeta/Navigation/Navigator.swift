@@ -48,7 +48,7 @@ public class Navigator : NSObject {
     }
 
     public func navigateBack(sender: UIViewController) {
-        sender.route?.navigationStrategy.navigateBack(sender)
+        sender.navigationContext?.route.navigationStrategy.navigateBack(sender)
     }
 
     public func redirect() {
