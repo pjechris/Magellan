@@ -10,10 +10,9 @@ import Foundation
 
 public protocol RouteMatcher {
     typealias CriteriaType
+    typealias MatchResultType
 
     func add(route: Routable)
 
-    func match(criteria: CriteriaType) -> MatcherResult?
-
-    func reverse(result: MatcherResult) -> CriteriaType?
+    func match(criteria: CriteriaType, whenMatched:(MatchResultType) -> ())
 }

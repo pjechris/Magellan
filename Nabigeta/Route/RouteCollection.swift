@@ -38,19 +38,11 @@ public class RouteCollection : NSObject {
         return self.add(SegueRoute(name: name, segueIdentifier: segue, url: url))
     }
 
-    public func find(name: String) -> Routable? {
-        return self.match(name)?.route
+    public func match(name: String, whenMatched:(RouteNameMatcher.MatchResultType) -> ()) {
+        self.nameMatcher.match(name, whenMatched: whenMatched)
     }
 
-    public func match(name: String) -> MatcherResult? {
-        return self.nameMatcher.match(name)
-    }
-
-    public func reverse(result: MatcherResult) -> String? {
-        return self.nameMatcher.reverse(result)
-    }
-
-    public func reverse(result: MatcherResult) -> NSURL? {
-        return self.urlMatcher.reverse(result)
+    public func match(url: NSURL, whenMatched:(RouteUrlMatcher.MatchResultType) -> ()) {
+        self.urlMatcher.match(url, whenMatched: whenMatched)
     }
 }

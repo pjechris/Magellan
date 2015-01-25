@@ -12,9 +12,10 @@ import UIKit
 
 public class RouteUrlMatcher : RouteMatcher {
     public typealias CriteriaType = NSURL
+    public typealias MatchResultType = (route: Routable, context: AnyObject?)
 
     private let urlManager: JLRoutes
-    private var result: MatcherResult?
+    private var onMatch: ((MatchResultType) -> ())?
 
     public init() {
         self.urlManager = JLRoutes()
@@ -23,31 +24,16 @@ public class RouteUrlMatcher : RouteMatcher {
     public func add(route: Routable) {
         if let routeURI = route.url {
             self.urlManager.addRoute(routeURI) { [unowned self] params in
-                // use a method bc of a compilation error when trying to set self.result directly from the block
-                // => Swift bug?
-                self.setResult(route, context: nil)
+                self.onMatch!((route: route, context: nil))
 
                 return true
             }
         }
     }
 
-    public func setResult(route: Routable, context: AnyObject?) {
-        self.result = MatcherResult(route: route, context: context)
-    }
-
-    public func match(criteria: CriteriaType) -> MatcherResult? {
+    public func match(criteria: CriteriaType, whenMatched:(MatchResultType) -> ()) {
+        self.onMatch = whenMatched
         self.urlManager.routeURL(criteria)
-
-        if let result = self.result {
-            self.result = nil
-            return result
-        }
-
-        return nil
-    }
-
-    public func reverse(result: MatcherResult) -> CriteriaType? {
-        return nil
+        self.onMatch = nil
     }
 }

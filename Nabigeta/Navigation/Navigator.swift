@@ -30,21 +30,22 @@ public class Navigator : NSObject {
     @objc(navigate:context:sender:)
     public func navigate(name: String, context: AnyObject, sender: UIViewController) {
         for routes in self.routesCollection {
-            let result = routes.match(name)
-
-            if let match = result {
-                let navContext = NavigationContext(source: sender, route: match.route, context: context) { destination in
+            routes.match(name) { route in
+                let navContext = NavigationContext(source: sender, route: route, context: context) { destination in
                     self.before?(destination, context)
                     return ()
                 }
 
                 navContext.willSupplyStack = self.stackSupplier
 
-                match.route.navigationStrategy.navigate(navContext)
-
-                return
+                sender.navigationContext = navContext
+                route.navigationStrategy.navigate(navContext)
             }
         }
+    }
+
+    public func navigate(url: NSURL, sender: UIViewController) {
+
     }
 
     public func navigateBack(sender: UIViewController) {

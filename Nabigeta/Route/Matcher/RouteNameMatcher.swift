@@ -10,6 +10,7 @@ import Foundation
 
 public class RouteNameMatcher : RouteMatcher {
     public typealias CriteriaType = String
+    public typealias MatchResultType = Routable
 
     private var routes: Dictionary<String, Routable> = [:]
 
@@ -17,13 +18,11 @@ public class RouteNameMatcher : RouteMatcher {
         self.routes[route.name] = route
     }
 
-    public func match(name: CriteriaType) -> MatcherResult? {
+    public func match(name: CriteriaType, whenMatched:(MatchResultType) -> ()) {
         let route = self.routes[name]
 
-        return route != nil ? MatcherResult(route: route!, context: nil) : nil
-    }
-
-    public func reverse(result: MatcherResult) -> CriteriaType? {
-        return (self.routes[result.route.name] != nil) ? result.route.name : nil
+        if (route != nil) {
+            whenMatched(route!)
+        }
     }
 }
