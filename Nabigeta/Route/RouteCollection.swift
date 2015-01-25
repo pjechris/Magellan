@@ -23,19 +23,20 @@ public class RouteCollection : NSObject {
         self.urlMatcher.add(route)
     }
 
-    public func add(name: String, destination: UIViewController.Type, url: String?) {
-        return self.add(Route(name: name, destination: destination, url: url))
+    public func add(name: String, destination: UIViewController.Type, context: AnyObject.Type, url: String? = nil) {
+        return self.add(Route(name: name, destination: destination, context: context, url: url, stack: .Current))
     }
 
     public func add(name: String,
-             destination: UIViewController.Type,
-               stackType: UINavigationController?,
-               url: String?) {
-                return self.add(Route(name: name, destination: destination, url: url, stack: .Custom(stackType)))
+        url: String?,
+        destination: UIViewController.Type,
+        context: AnyObject.Type,
+        stackType: UINavigationController?) {
+            return self.add(Route(name: name,destination: destination, context: context, url: url, stack: .Custom(stackType)))
     }
 
-    public func add(name: String, segue: NSString, url: String?) {
-        return self.add(SegueRoute(name: name, segueIdentifier: segue, url: url))
+    public func add(name: String, segue: NSString, context: AnyObject.Type, url: String?) {
+        return self.add(SegueRoute(name: name, segueIdentifier: segue, context: context, url: url))
     }
 
     public func match(name: String, whenMatched:(RouteNameMatcher.MatchResultType) -> ()) {

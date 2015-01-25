@@ -15,4 +15,5 @@ public protocol Routable
     var navigationStrategy: NavigationStrategy { get }
 
     var url: String? { get }
+    var context: AnyObject.Type { get }
 }
