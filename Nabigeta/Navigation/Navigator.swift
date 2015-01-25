@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public class Navigator : NSObject {
-    public var before: ((UIViewController, AnyObject) -> Void)?
+    public var before: ((UIViewController, AnyObject?) -> Void)?
     public var stackSupplier: (() -> UINavigationController)?
     private var routesCollection: Array<RouteCollection>
 
@@ -31,21 +31,30 @@ public class Navigator : NSObject {
     public func navigate(name: String, context: AnyObject, sender: UIViewController) {
         for routes in self.routesCollection {
             routes.match(name) { route in
-                let navContext = NavigationContext(source: sender, route: route, context: context) { destination in
-                    self.before?(destination, context)
-                    return ()
-                }
-
-                navContext.willSupplyStack = self.stackSupplier
-
-                sender.navigationContext = navContext
-                route.navigationStrategy.navigate(navContext)
+                self.navigate(route, context: context, sender: sender)
             }
         }
     }
 
+    @objc(navigateURL:sender:)
     public func navigate(url: NSURL, sender: UIViewController) {
+        for routes in self.routesCollection {
+            routes.match(url) { route, context in
+                self.navigate(route, context: context, sender: sender)
+            }
+        }
+    }
 
+    private func navigate(route: Routable, context: AnyObject?, sender: UIViewController) {
+        let navContext = NavigationContext(source: sender, route: route, context: context) { destination in
+            self.before?(destination, context)
+            return ()
+        }
+
+        navContext.willSupplyStack = self.stackSupplier
+
+        sender.navigationContext = navContext
+        route.navigationStrategy.navigate(navContext)
     }
 
     public func navigateBack(sender: UIViewController) {
@@ -54,5 +63,11 @@ public class Navigator : NSObject {
 
     public func redirect() {
 
+    }
+
+    public func urlFor(name: String, context: AnyObject) -> String? {
+        // 1. retrieve route by name
+        // 2. generate url
+        return nil
     }
 }
