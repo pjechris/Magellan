@@ -27,12 +27,26 @@ public class PresentStrategy : NavigationStrategy {
             stackController = navigationContext.supplyStack()
         }
 
-        stackController.pushViewController(destinationController, animated: false)
         navigationContext.updateContext(destinationController)
+
+        stackController.pushViewController(destinationController, animated: false)
+        self.buildAndAddDismissButton(navigationContext)
         navigationContext.sourceViewController.presentViewController(stackController, animated: true, completion: nil)
     }
 
     public func navigateBack(sender: UIViewController) {
         sender.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    /// Build and add a dismiss/cancel button to the context destination controller if needed
+    /// It is added when:
+    /// - destination controller has no leftBarButtonItem setted on its navigationItem
+    private func buildAndAddDismissButton(context: NavigationContext) {
+        let controller = context.destinationViewController
+        let dismissBtn = UIBarButtonItem(barButtonSystemItem: .Cancel, target: context.sourceViewController, action: "dismissModalCallback")
+
+        if (controller.navigationItem.leftBarButtonItem == nil) {
+            controller.navigationItem.leftBarButtonItem = dismissBtn
+        }
     }
 }
