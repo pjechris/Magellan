@@ -13,22 +13,20 @@ public class Route : NSObject, Routable {
     public let name: String
     public let destination: UIViewController.Type
     public let stack: NavigationStack
-    public let options: RouteOptions
+    public let url: String?
 
     lazy public private(set) var navigationStrategy: NavigationStrategy = (self.stack.isNewStack())
         ? PresentStrategy(route: self)
         : PushStrategy(route: self)
 
-    public init(name: String, destination: UIViewController.Type, stack: NavigationStack, configure: (RouteOptions -> ())?) {
+    public init(name: String, destination: UIViewController.Type, url: String?, stack: NavigationStack) {
         self.name = name
         self.destination = destination
         self.stack = stack
-        self.options = RouteOptions()
-
-        configure?(self.options)
+        self.url = url
     }
 
-    public convenience init(name: String, destination: UIViewController.Type, configure: (RouteOptions -> ())?) {
-        self.init(name: name, destination: destination, stack: .Current, configure: configure)
+    public convenience init(name: String, destination: UIViewController.Type, url: String?) {
+        self.init(name: name, destination: destination, url: url, stack: .Current)
     }
 }

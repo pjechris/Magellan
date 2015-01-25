@@ -21,18 +21,18 @@ public class RouteUrlMatcher : RouteMatcher {
     }
 
     public func add(route: Routable) {
-        if let routeURI = route.options.routeURI {
-            self.urlManager.addRoute(routeURI.uri) { [unowned self] params in
+        if let routeURI = route.url {
+            self.urlManager.addRoute(routeURI) { [unowned self] params in
                 // use a method bc of a compilation error when trying to set self.result directly from the block
                 // => Swift bug?
-                self.setResult(route, context: routeURI.mapper.transformedValue(params))
+                self.setResult(route, context: nil)
 
                 return true
             }
         }
     }
 
-    public func setResult(route: Routable, context: Any) {
+    public func setResult(route: Routable, context: AnyObject?) {
         self.result = MatcherResult(route: route, context: context)
     }
 

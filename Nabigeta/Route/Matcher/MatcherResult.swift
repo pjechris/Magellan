@@ -10,5 +10,5 @@ import Foundation
 
 public struct MatcherResult {
     public let route: Routable
-    public let context: Any?
+    public let context: AnyObject?
 }

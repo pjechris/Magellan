@@ -14,5 +14,5 @@ public protocol Routable
     var name: String { get }
     var navigationStrategy: NavigationStrategy { get }
 
-    var options: RouteOptions { get }
+    var url: String? { get }
 }
