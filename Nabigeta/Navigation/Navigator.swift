@@ -33,13 +33,12 @@ public class Navigator : NSObject {
             let result = routes.match(name)
 
             if let match = result {
-                let navContext = NavigationContext(source: sender)
-
-                navContext.willSupplyStack = self.stackSupplier
-                navContext.didUpdateContext = { destination in
+                let navContext = NavigationContext(source: sender, route: match.route, context: context) { destination in
                     self.before?(destination, context)
                     return ()
                 }
+
+                navContext.willSupplyStack = self.stackSupplier
 
                 match.route.navigationStrategy.navigate(navContext)
 
