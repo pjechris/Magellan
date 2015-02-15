@@ -16,7 +16,7 @@ public class PushStrategy : NavigationStrategy {
         self.route = route
     }
 
-    public func navigate(navigationContext: NavigationContext) {
+    @objc public func navigate(navigationContext: NavigationContext) {
         var destinationViewController: UIViewController = self.route.destination()
         var stackController = navigationContext.sourceViewController.navigationController!
 
@@ -24,7 +24,7 @@ public class PushStrategy : NavigationStrategy {
         stackController.pushViewController(destinationViewController, animated: true)
     }
 
-    public func navigateBack(sender: UIViewController) {
+    @objc public func navigateBack(sender: UIViewController) {
         sender.navigationController?.popToViewController(sender, animated: true)
     }
 }

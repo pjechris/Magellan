@@ -1,5 +1,5 @@
 //
-//  RouteUrlMatcher.swift
+//  RouteURLMatcher.swift
 //  Nabigeta
 //
 //  Created by JC on 24/12/14.
@@ -10,20 +10,20 @@ import Foundation
 import JLRoutes
 import UIKit
 
-public class RouteUrlMatcher : RouteMatcher {
+public class RouteURLMatcher : RouteMatcher {
     public typealias CriteriaType = NSURL
     public typealias MatchResultType = (route: Routable, context: AnyObject?)
 
-    private let urlManager: JLRoutes
+    private let URLManager: JLRoutes
     private var onMatch: ((MatchResultType) -> ())?
 
     public init() {
-        self.urlManager = JLRoutes()
+        self.URLManager = JLRoutes()
     }
 
     public func add(route: Routable) {
-        if let routeURI = route.url {
-            self.urlManager.addRoute(routeURI) { [unowned self] params in
+        if let routeURI = route.URL {
+            self.URLManager.addRoute(routeURI) { [unowned self] params in
                 self.onMatch!((route: route, context: nil))
 
                 return true
@@ -33,7 +33,7 @@ public class RouteUrlMatcher : RouteMatcher {
 
     public func match(criteria: CriteriaType, whenMatched:(MatchResultType) -> ()) {
         self.onMatch = whenMatched
-        self.urlManager.routeURL(criteria)
+        self.URLManager.routeURL(criteria)
         self.onMatch = nil
     }
 }
