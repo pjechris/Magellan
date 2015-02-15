@@ -37,9 +37,9 @@ public class Navigator : NSObject {
     }
 
     @objc(navigateURL:sender:)
-    public func navigate(url: NSURL, sender: UIViewController) {
+    public func navigate(URL: NSURL, sender: UIViewController) {
         for routes in self.routesCollection {
-            routes.matchURL(url) { route, context in
+            routes.matchURL(URL) { route, context in
                 self.navigate(route, context: context, sender: sender)
             }
         }
@@ -65,9 +65,9 @@ public class Navigator : NSObject {
 
     }
 
-    public func urlFor(name: String, context: AnyObject) -> String? {
+    public func URLFor(name: String, context: AnyObject) -> String? {
         // 1. retrieve route by name
-        // 2. generate url
+        // 2. generate URL
         return nil
     }
 }

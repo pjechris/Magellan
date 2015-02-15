@@ -11,38 +11,38 @@ import UIKit
 
 public class RouteCollection : NSObject {
     private var nameMatcher: RouteNameMatcher
-    private var urlMatcher: RouteUrlMatcher
+    private var URLMatcher: RouteURLMatcher
 
     public override init() {
         self.nameMatcher = RouteNameMatcher()
-        self.urlMatcher = RouteUrlMatcher()
+        self.URLMatcher = RouteURLMatcher()
     }
 
     public func add(route: Routable) {
         self.nameMatcher.add(route)
-        self.urlMatcher.add(route)
+        self.URLMatcher.add(route)
     }
 
-    public func add(name: String, destination: UIViewController.Type, url: String?) {
-        return self.add(Route(name: name, destination: destination, url: url))
+    public func add(name: String, destination: UIViewController.Type, URL: String?) {
+        return self.add(Route(name: name, destination: destination, URL: URL))
     }
 
     public func add(name: String,
              destination: UIViewController.Type,
                stackType: UINavigationController?,
-               url: String?) {
-                return self.add(Route(name: name, destination: destination, url: url, stack: .Custom(stackType)))
+               URL: String?) {
+                return self.add(Route(name: name, destination: destination, URL: URL, stack: .Custom(stackType)))
     }
 
-    public func add(name: String, segue: NSString, url: String?) {
-        return self.add(SegueRoute(name: name, segueIdentifier: segue as String, url: url))
+    public func add(name: String, segue: NSString, URL: String?) {
+        return self.add(SegueRoute(name: name, segueIdentifier: segue as String, URL: URL))
     }
 
     public func matchName(name: String, whenMatched:(RouteNameMatcher.MatchResultType) -> ()) {
         self.nameMatcher.match(name, whenMatched: whenMatched)
     }
 
-    public func matchURL(url: NSURL, whenMatched:(RouteUrlMatcher.MatchResultType) -> ()) {
-        self.urlMatcher.match(url, whenMatched: whenMatched)
+    public func matchURL(URL: NSURL, whenMatched:(RouteURLMatcher.MatchResultType) -> ()) {
+        self.URLMatcher.match(URL, whenMatched: whenMatched)
     }
 }
