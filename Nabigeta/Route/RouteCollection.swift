@@ -35,14 +35,14 @@ public class RouteCollection : NSObject {
     }
 
     public func add(name: String, segue: NSString, url: String?) {
-        return self.add(SegueRoute(name: name, segueIdentifier: segue, url: url))
+        return self.add(SegueRoute(name: name, segueIdentifier: segue as String, url: url))
     }
 
-    public func match(name: String, whenMatched:(RouteNameMatcher.MatchResultType) -> ()) {
+    public func matchName(name: String, whenMatched:(RouteNameMatcher.MatchResultType) -> ()) {
         self.nameMatcher.match(name, whenMatched: whenMatched)
     }
 
-    public func match(url: NSURL, whenMatched:(RouteUrlMatcher.MatchResultType) -> ()) {
+    public func matchURL(url: NSURL, whenMatched:(RouteUrlMatcher.MatchResultType) -> ()) {
         self.urlMatcher.match(url, whenMatched: whenMatched)
     }
 }

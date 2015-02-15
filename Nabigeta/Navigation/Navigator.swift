@@ -30,7 +30,7 @@ public class Navigator : NSObject {
     @objc(navigate:context:sender:)
     public func navigate(name: String, context: AnyObject, sender: UIViewController) {
         for routes in self.routesCollection {
-            routes.match(name) { route in
+            routes.matchName(name) { route in
                 self.navigate(route, context: context, sender: sender)
             }
         }
@@ -39,7 +39,7 @@ public class Navigator : NSObject {
     @objc(navigateURL:sender:)
     public func navigate(url: NSURL, sender: UIViewController) {
         for routes in self.routesCollection {
-            routes.match(url) { route, context in
+            routes.matchURL(url) { route, context in
                 self.navigate(route, context: context, sender: sender)
             }
         }

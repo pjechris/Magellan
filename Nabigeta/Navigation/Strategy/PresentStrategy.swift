@@ -16,7 +16,7 @@ public class PresentStrategy : NavigationStrategy {
         self.route = route
     }
 
-    public func navigate(navigationContext: NavigationContext) {
+    @objc public func navigate(navigationContext: NavigationContext) {
         var destinationController = self.route.destination()
         var stackController: UINavigationController!
 
@@ -34,7 +34,7 @@ public class PresentStrategy : NavigationStrategy {
         navigationContext.sourceViewController.presentViewController(stackController, animated: true, completion: nil)
     }
 
-    public func navigateBack(sender: UIViewController) {
+    @objc public func navigateBack(sender: UIViewController) {
         sender.dismissViewControllerAnimated(true, completion: nil)
     }
 
