@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-public class RouteCollection : NSObject {
+public class RouteCollection {
     private var nameMatcher: RouteNameMatcher
     private var urlMatcher: RouteUrlMatcher
 
-    public override init() {
+    public init() {
         self.nameMatcher = RouteNameMatcher()
         self.urlMatcher = RouteUrlMatcher()
     }
