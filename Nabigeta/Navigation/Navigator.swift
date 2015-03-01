@@ -13,9 +13,11 @@ public class Navigator : NSObject {
     public var before: ((UIViewController, AnyObject?) -> Void)?
     public var stackSupplier: (() -> UINavigationController)?
     private var routesCollection: Array<RouteCollection>
+    private var urlMatcher: RouteUrlMatcher
 
     public override init() {
         self.routesCollection = []
+        self.urlMatcher = RouteUrlMatcher()
     }
 
     public convenience init(routeCollection: RouteCollection) {
@@ -25,12 +27,16 @@ public class Navigator : NSObject {
 
     public func importCollection(routeCollection: RouteCollection) {
         self.routesCollection.append(routeCollection)
+
+        for (name, route) in routeCollection {
+            self.urlMatcher.add(route)
+        }
     }
 
     @objc(navigate:context:sender:)
     public func navigate(name: String, context: AnyObject, sender: UIViewController) {
         for routes in self.routesCollection {
-            routes.match(name) { route in
+            routes[name].map { route in
                 self.navigate(route, context: context, sender: sender)
             }
         }
@@ -38,10 +44,8 @@ public class Navigator : NSObject {
 
     @objc(navigateURL:sender:)
     public func navigate(url: NSURL, sender: UIViewController) {
-        for routes in self.routesCollection {
-            routes.match(url) { route, context in
-                self.navigate(route, context: context, sender: sender)
-            }
+        self.urlMatcher.match(url) { route, context in
+            self.navigate(route, context: context, sender: sender)
         }
     }
 

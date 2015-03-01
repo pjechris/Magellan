@@ -9,18 +9,15 @@
 import Foundation
 import UIKit
 
-public class RouteCollection {
-    private var nameMatcher: RouteNameMatcher
-    private var urlMatcher: RouteUrlMatcher
+public class RouteCollection : SequenceType {
+    private var routes : Dictionary<String, Routable>
 
     public init() {
-        self.nameMatcher = RouteNameMatcher()
-        self.urlMatcher = RouteUrlMatcher()
+        self.routes = [:]
     }
 
     public func add(route: Routable) {
-        self.nameMatcher.add(route)
-        self.urlMatcher.add(route)
+        self.routes[route.name] = route
     }
 
     public func add(name: String, destination: UIViewController.Type, context: AnyObject.Type, url: String? = nil) {
@@ -39,11 +36,11 @@ public class RouteCollection {
         return self.add(SegueRoute(name: name, segueIdentifier: segue, context: context, url: url))
     }
 
-    public func match(name: String, whenMatched:(RouteNameMatcher.MatchResultType) -> ()) {
-        self.nameMatcher.match(name, whenMatched: whenMatched)
+    public subscript(name: String) -> Routable? {
+        get { return self.routes[name] }
     }
 
-    public func match(url: NSURL, whenMatched:(RouteUrlMatcher.MatchResultType) -> ()) {
-        self.urlMatcher.match(url, whenMatched: whenMatched)
+    public func generate() -> DictionaryGenerator<String, Routable> {
+        return self.routes.generate()
     }
 }
