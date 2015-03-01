@@ -1,16 +1,16 @@
 //
-//  RouteUrlMatcher.swift
-//  Nabigeta
+// This file is part of Nabigeta
 //
-//  Created by JC on 24/12/14.
-//  Copyright (c) 2014 fr.milkshake. All rights reserved.
+// Created by JC on 24/12/14.
+// For the full copyright and license information, please view the LICENSE
+// file that was distributed with this source code
 //
 
 import Foundation
 import JLRoutes
 import UIKit
 
-public class RouteUrlMatcher : RouteMatcher {
+public class RouteUrlMatcher {
     public typealias CriteriaType = NSURL
     public typealias MatchResultType = (route: Routable, context: AnyObject?)
 
