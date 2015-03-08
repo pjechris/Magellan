@@ -14,6 +14,5 @@ public protocol Routable
     var url: String? { get }
     var presentation: PresentationStyle { get }
 
-    var context: AnyObject.Type { get }
     var destination: UIViewController.Type { get }
 }

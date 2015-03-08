@@ -13,14 +13,20 @@ public class Route : NSObject, Routable {
     public let name: String
     public let destination: UIViewController.Type
     public let url: String?
-    public let context: AnyObject.Type
     public let presentation: PresentationStyle
 
-    public init(name: String, destination: UIViewController.Type, context: AnyObject.Type, url: String?, presentation: PresentationStyle) {
+    public init(name: String, destination: UIViewController.Type, url: String?, presentation: PresentationStyle) {
         self.name = name
         self.destination = destination
         self.url = url
-        self.context = context
         self.presentation = presentation
+    }
+
+    public convenience init(name: String, destination: UIViewController.Type, presentation: PresentationStyle) {
+        self.init(name: name, destination: destination, url: nil, presentation: presentation)
+    }
+
+    public convenience init(name: String, destination: UIViewController.Type) {
+        self.init(name: name, destination: destination, presentation: .Push)
     }
 }
