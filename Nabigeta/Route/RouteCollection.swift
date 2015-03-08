@@ -20,22 +20,6 @@ public class RouteCollection : SequenceType {
         self.routes[route.name] = route
     }
 
-    public func add(name: String, destination: UIViewController.Type, context: AnyObject.Type, url: String? = nil) {
-        return self.add(Route(name: name, destination: destination, context: context, url: url, stack: .Current))
-    }
-
-    public func add(name: String,
-        url: String?,
-        destination: UIViewController.Type,
-        context: AnyObject.Type,
-        stackType: UINavigationController?) {
-            return self.add(Route(name: name,destination: destination, context: context, url: url, stack: .Custom(stackType)))
-    }
-
-    public func add(name: String, segue: NSString, context: AnyObject.Type, url: String?) {
-        return self.add(SegueRoute(name: name, segueIdentifier: segue, context: context, url: url))
-    }
-
     public subscript(name: String) -> Routable? {
         get { return self.routes[name] }
     }
