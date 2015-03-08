@@ -10,14 +10,19 @@ import Foundation
 import UIKit
 
 public class Navigator : NSObject {
-    public var before: ((UIViewController, AnyObject?) -> Void)?
-    public var stackSupplier: (() -> UINavigationController)?
+    public var willNavigate: ((UIViewController, AnyObject?) -> Void)? {
+        get { return self.navigationDelegate.willNavigate }
+        set { self.navigationDelegate.willNavigate = newValue }
+    }
+
     private var routesCollection: Array<RouteCollection>
     private var urlMatcher: RouteUrlMatcher
+    private let navigationDelegate: NavigationDelegate
 
     public override init() {
         self.routesCollection = []
         self.urlMatcher = RouteUrlMatcher()
+        self.navigationDelegate = NavigationDelegate()
     }
 
     public convenience init(routeCollection: RouteCollection) {
@@ -50,10 +55,11 @@ public class Navigator : NSObject {
     }
 
     private func navigate(route: Routable, context: AnyObject?, sender: UIViewController) {
-        let navContext = NavigationContext(source: sender, route: route, context: context) { destination in
-            self.before?(destination, context)
-            return ()
-        }
+        let navigationController = sender.navigationController
+        let navContext = NavigationContext(source: sender, route: route, context: context)
+
+        self.navigationDelegate.navigationControllerDelegate = navigationController?.delegate
+        navigationController?.delegate = self.navigationDelegate
 
         sender.navigationContext = navContext
         route.presentation.strategy().show(navContext)

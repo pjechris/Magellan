@@ -31,11 +31,10 @@ public class NavigationContext : NSObject {
 
     private var destinationCallback: ClosureDestinationAvailable?
 
-    public init(source: UIViewController, route: Routable, context: AnyObject?, whenDestination: ClosureDestinationAvailable?) {
+    public init(source: UIViewController, route: Routable, context: AnyObject?) {
         self.sourceViewController = source
         self.route = route
         self.context = context
-        self.destinationCallback = whenDestination
     }
 
     /**
