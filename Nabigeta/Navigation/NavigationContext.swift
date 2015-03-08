@@ -25,7 +25,7 @@ public class NavigationContext : NSObject {
     /// the destination controller. This value is unknown until updateContext is called
     weak public private(set) var destinationViewController: UIViewController!
 
-    unowned public let route: Routable
+    public let route: Routable
 
     weak public private(set) var context: AnyObject?
 

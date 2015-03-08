@@ -16,7 +16,7 @@ public class Route : NSObject, Routable {
     public let url: String?
     public let context: AnyObject.Type
 
-    lazy public private(set) var navigationStrategy: NavigationStrategy = (self.stack.isNewStack())
+    lazy public private(set) var navigationStrategy: PresentationStrategy = (self.stack.isNewStack())
         ? PresentStrategy(route: self)
         : PushStrategy(route: self)
 

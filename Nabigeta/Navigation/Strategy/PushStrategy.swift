@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-public class PushStrategy : NavigationStrategy {
+public class PushStrategy : PresentationStrategy {
     private let route: Route
 
     public init(route: Route) {
         self.route = route
     }
 
-    public func navigate(navigationContext: NavigationContext) {
+    public func show(navigationContext: NavigationContext) {
         var destinationViewController: UIViewController = self.route.destination()
         var stackController = navigationContext.sourceViewController.navigationController!
 
@@ -24,7 +24,7 @@ public class PushStrategy : NavigationStrategy {
         stackController.pushViewController(destinationViewController, animated: true)
     }
 
-    public func navigateBack(sender: UIViewController) {
+    public func dismiss(sender: UIViewController) {
         sender.navigationController?.popToViewController(sender, animated: true)
     }
 }

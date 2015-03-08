@@ -17,11 +17,12 @@
 		495A8A5A1A5069B200509C1B /* RouteUrlMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A8A581A5069B200509C1B /* RouteUrlMatcher.swift */; };
 		4974622F1A2CBB2300792570 /* SegueRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4974622E1A2CBB2300792570 /* SegueRoute.swift */; };
 		499383D31A0BEB6E0036AB98 /* SegueStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499383D21A0BEB6E0036AB98 /* SegueStrategy.swift */; };
+		49B035F61AACFDC500CB95DD /* PresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B035F51AACFDC500CB95DD /* PresentationStyle.swift */; };
+		49B035FA1AACFE9900CB95DD /* PresentationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */; };
 		49DE53761A6EBDB6005A67AE /* SegueNavigationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE53741A6EBDB6005A67AE /* SegueNavigationHandler.swift */; };
 		49DE53771A6EBDB6005A67AE /* UIViewController+SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE53751A6EBDB6005A67AE /* UIViewController+SegueHandler.swift */; };
 		49DE53791A6EBDCF005A67AE /* UIViewController+Nabigeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE53781A6EBDCF005A67AE /* UIViewController+Nabigeta.swift */; };
 		49E5EA871A0BC3A400169136 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E5EA861A0BC3A400169136 /* Route.swift */; };
-		49E5EA8F1A0BC81600169136 /* NavigationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E5EA8E1A0BC81600169136 /* NavigationStrategy.swift */; };
 		49FAA6801A0941DE00AF3D5C /* Nabigeta.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FAA67F1A0941DE00AF3D5C /* Nabigeta.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49FAA68A1A0941DE00AF3D5C /* NabigetaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FAA6891A0941DE00AF3D5C /* NabigetaTests.swift */; };
 		5FD70990BC9FFCA4FC483D6B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C61568D1F5A3F8D65E5340EF /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -39,11 +40,12 @@
 		495A8A581A5069B200509C1B /* RouteUrlMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteUrlMatcher.swift; sourceTree = "<group>"; };
 		4974622E1A2CBB2300792570 /* SegueRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueRoute.swift; sourceTree = "<group>"; };
 		499383D21A0BEB6E0036AB98 /* SegueStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueStrategy.swift; sourceTree = "<group>"; };
+		49B035F51AACFDC500CB95DD /* PresentationStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationStyle.swift; sourceTree = "<group>"; };
+		49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationStrategy.swift; sourceTree = "<group>"; };
 		49DE53741A6EBDB6005A67AE /* SegueNavigationHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueNavigationHandler.swift; sourceTree = "<group>"; };
 		49DE53751A6EBDB6005A67AE /* UIViewController+SegueHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+SegueHandler.swift"; sourceTree = "<group>"; };
 		49DE53781A6EBDCF005A67AE /* UIViewController+Nabigeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Nabigeta.swift"; sourceTree = "<group>"; };
 		49E5EA861A0BC3A400169136 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
-		49E5EA8E1A0BC81600169136 /* NavigationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationStrategy.swift; sourceTree = "<group>"; };
 		49FAA67A1A0941DE00AF3D5C /* Nabigeta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nabigeta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FAA67E1A0941DE00AF3D5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49FAA67F1A0941DE00AF3D5C /* Nabigeta.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Nabigeta.h; sourceTree = "<group>"; };
@@ -81,6 +83,15 @@
 			path = Matcher;
 			sourceTree = "<group>";
 		};
+		49B035F41AACFDA300CB95DD /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */,
+				49B035F51AACFDC500CB95DD /* PresentationStyle.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		49DE53721A6EBDB6005A67AE /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,7 +119,6 @@
 			children = (
 				490C38381A48219E00EC432E /* NavigationContext.swift */,
 				490C38361A481FFE00EC432E /* NavigationStack.swift */,
-				49E5EA8E1A0BC81600169136 /* NavigationStrategy.swift */,
 				490C38481A48565000EC432E /* Navigator.swift */,
 				49E5EA8D1A0BC7F900169136 /* Strategy */,
 			);
@@ -148,6 +158,7 @@
 		49FAA67C1A0941DE00AF3D5C /* Nabigeta */ = {
 			isa = PBXGroup;
 			children = (
+				49B035F41AACFDA300CB95DD /* Presentation */,
 				49DE53721A6EBDB6005A67AE /* UIKit */,
 				49E5EA8C1A0BC7F900169136 /* Navigation */,
 				49E5EA841A0BC38400169136 /* Route */,
@@ -364,13 +375,14 @@
 				495A8A5A1A5069B200509C1B /* RouteUrlMatcher.swift in Sources */,
 				49E5EA871A0BC3A400169136 /* Route.swift in Sources */,
 				4974622F1A2CBB2300792570 /* SegueRoute.swift in Sources */,
-				49E5EA8F1A0BC81600169136 /* NavigationStrategy.swift in Sources */,
 				490C38471A48564900EC432E /* Routable.swift in Sources */,
 				49DE53771A6EBDB6005A67AE /* UIViewController+SegueHandler.swift in Sources */,
 				490C38371A481FFE00EC432E /* NavigationStack.swift in Sources */,
 				49DE53791A6EBDCF005A67AE /* UIViewController+Nabigeta.swift in Sources */,
 				490C38411A4832FE00EC432E /* PresentStrategy.swift in Sources */,
+				49B035FA1AACFE9900CB95DD /* PresentationStrategy.swift in Sources */,
 				490C38451A4855FD00EC432E /* PushStrategy.swift in Sources */,
+				49B035F61AACFDC500CB95DD /* PresentationStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

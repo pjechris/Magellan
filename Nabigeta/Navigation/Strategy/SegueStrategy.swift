@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-public class SegueStrategy: NavigationStrategy {
+public class SegueStrategy: PresentationStrategy {
     private let route: SegueRoute
 
     public init(route: SegueRoute) {
         self.route = route
     }
 
-    public func navigate(navigationContext: NavigationContext) {
+    public func show(navigationContext: NavigationContext) {
         let handler = SegueNavigationHandler()
         let source = navigationContext.sourceViewController
 
@@ -34,6 +34,6 @@ public class SegueStrategy: NavigationStrategy {
         source.performSegueWithIdentifier(self.route.segueIdentifier, sender: source)
     }
 
-    public func navigateBack(sender: UIViewController) {
+    public func dismiss(sender: UIViewController) {
     }
 }

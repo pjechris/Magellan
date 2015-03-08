@@ -14,7 +14,7 @@ public class SegueRoute : NSObject, Routable {
     public let url: String?
     public let context: AnyObject.Type
 
-    lazy public private(set) var navigationStrategy: NavigationStrategy = SegueStrategy(route: self)
+    lazy public private(set) var navigationStrategy: PresentationStrategy = SegueStrategy(route: self)
 
     public init(name: String, segueIdentifier: String, context: AnyObject.Type, url: String?) {
         self.name = name

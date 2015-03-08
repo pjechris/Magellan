@@ -8,11 +8,10 @@
 
 import Foundation
 
-@objc
 public protocol Routable
 {
     var name: String { get }
-    var navigationStrategy: NavigationStrategy { get }
+    var navigationStrategy: PresentationStrategy { get }
 
     var url: String? { get }
     var context: AnyObject.Type { get }

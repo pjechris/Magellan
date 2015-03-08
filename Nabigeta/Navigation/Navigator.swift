@@ -58,11 +58,11 @@ public class Navigator : NSObject {
         navContext.willSupplyStack = self.stackSupplier
 
         sender.navigationContext = navContext
-        route.navigationStrategy.navigate(navContext)
+        route.navigationStrategy.show(navContext)
     }
 
     public func navigateBack(sender: UIViewController) {
-        sender.navigationContext?.route.navigationStrategy.navigateBack(sender)
+        sender.navigationContext?.route.navigationStrategy.dismiss(sender)
     }
 
     public func redirect() {

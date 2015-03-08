@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-public class PresentStrategy : NavigationStrategy {
+public class PresentStrategy : PresentationStrategy {
     private let route: Route
 
     public init(route: Route) {
         self.route = route
     }
 
-    public func navigate(navigationContext: NavigationContext) {
+    public func show(navigationContext: NavigationContext) {
         var destinationController = self.route.destination()
         var stackController: UINavigationController!
 
@@ -34,7 +34,7 @@ public class PresentStrategy : NavigationStrategy {
         navigationContext.sourceViewController.presentViewController(stackController, animated: true, completion: nil)
     }
 
-    public func navigateBack(sender: UIViewController) {
+    public func dismiss(sender: UIViewController) {
         sender.dismissViewControllerAnimated(true, completion: nil)
     }
 

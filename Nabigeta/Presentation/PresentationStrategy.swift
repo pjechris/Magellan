@@ -9,9 +9,8 @@
 import Foundation
 import UIKit
 
-@objc
-public protocol NavigationStrategy {
-    func navigate(navigationContext: NavigationContext)
+public protocol PresentationStrategy {
+    func show(navigationContext: NavigationContext)
 
-    func navigateBack(sender: UIViewController)
+    func dismiss(sender: UIViewController)
 }
