@@ -12,15 +12,13 @@ import UIKit
 public class Route : NSObject, Routable {
     public let name: String
     public let destination: UIViewController.Type
-    public let stack: NavigationStack
     public let url: String?
     public let context: AnyObject.Type
     public let presentation: PresentationStyle
 
-    public init(name: String, destination: UIViewController.Type, context: AnyObject.Type, url: String?, stack: NavigationStack, presentation: PresentationStyle) {
+    public init(name: String, destination: UIViewController.Type, context: AnyObject.Type, url: String?, presentation: PresentationStyle) {
         self.name = name
         self.destination = destination
-        self.stack = stack
         self.url = url
         self.context = context
         self.presentation = presentation

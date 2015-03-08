@@ -55,8 +55,6 @@ public class Navigator : NSObject {
             return ()
         }
 
-        navContext.willSupplyStack = self.stackSupplier
-
         sender.navigationContext = navContext
         route.presentation.strategy().show(navContext)
     }

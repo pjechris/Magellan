@@ -29,8 +29,6 @@ public class NavigationContext : NSObject {
 
     weak public private(set) var context: AnyObject?
 
-    public var willSupplyStack: (() -> (UINavigationController))?
-
     private var destinationCallback: ClosureDestinationAvailable?
 
     public init(source: UIViewController, route: Routable, context: AnyObject?, whenDestination: ClosureDestinationAvailable?) {
@@ -38,19 +36,6 @@ public class NavigationContext : NSObject {
         self.route = route
         self.context = context
         self.destinationCallback = whenDestination
-    }
-
-    /**
-    * Provide a new stack (UINavigationController)
-    *
-    * @return the new navigation controller stack
-    */
-    public func supplyStack() -> UINavigationController? {
-        if (self.destinationViewController != nil) {
-            return nil
-        }
-
-        return self.willSupplyStack?() ?? UINavigationController()
     }
 
     /**
