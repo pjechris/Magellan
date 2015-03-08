@@ -16,11 +16,11 @@ public enum PresentationStyle {
     public func strategy() -> PresentationStrategy {
         switch (self) {
         case .Push:
-            return PushStrategy()
+            return PresentationPush()
         case .Modal:
-            return PresentStrategy()
+            return PresentationModal()
         case .Segue(let segueIdentifier):
-            return SegueStrategy(segueIdentifier)
+            return PresentationSegue(segueIdentifier)
         }
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class PresentStrategy : PresentationStrategy {
+public class PresentationModal : PresentationStrategy {
 
     public func show(navigationContext: NavigationContext) {
         var destinationController = navigationContext.route.destination()

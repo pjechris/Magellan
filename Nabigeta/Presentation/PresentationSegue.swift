@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class SegueStrategy: PresentationStrategy {
+public class PresentationSegue: PresentationStrategy {
     let segueIdentifier: String
 
     public init(_ segueIdentifier: String) {
