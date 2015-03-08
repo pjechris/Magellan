@@ -17,15 +17,8 @@ public class PresentStrategy : PresentationStrategy {
     }
 
     public func show(navigationContext: NavigationContext) {
-        var destinationController = self.route.destination()
-        var stackController: UINavigationController!
-
-        switch(self.route.stack) {
-        case .Custom(let customStackViewController) where (customStackViewController != nil):
-            stackController = customStackViewController
-        default:
-            stackController = navigationContext.supplyStack()
-        }
+        var destinationController = navigationContext.route.destination()
+        let stackController: UINavigationController = UINavigationController()
 
         navigationContext.updateContext(destinationController)
 

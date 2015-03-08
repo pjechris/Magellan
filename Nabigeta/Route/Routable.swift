@@ -11,8 +11,9 @@ import Foundation
 public protocol Routable
 {
     var name: String { get }
-    var navigationStrategy: PresentationStrategy { get }
-
     var url: String? { get }
+    var presentation: PresentationStyle { get }
+
     var context: AnyObject.Type { get }
+    var destination: UIViewController.Type { get }
 }

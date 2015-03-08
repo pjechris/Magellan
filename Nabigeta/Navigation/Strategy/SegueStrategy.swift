@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 public class SegueStrategy: PresentationStrategy {
-    private let route: SegueRoute
+    let segueIdentifier: String
 
-    public init(route: SegueRoute) {
-        self.route = route
+    public init(_ segueIdentifier: String) {
+        self.segueIdentifier = segueIdentifier
     }
 
     public func show(navigationContext: NavigationContext) {
@@ -31,7 +31,7 @@ public class SegueStrategy: PresentationStrategy {
         }
 
         source.segueHandler = handler
-        source.performSegueWithIdentifier(self.route.segueIdentifier, sender: source)
+        source.performSegueWithIdentifier(self.segueIdentifier, sender: source)
     }
 
     public func dismiss(sender: UIViewController) {
