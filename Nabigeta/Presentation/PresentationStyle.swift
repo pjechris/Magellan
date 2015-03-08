@@ -18,7 +18,7 @@ public enum PresentationStyle {
         case .Push:
             return PushStrategy()
         case .Modal:
-            return PresentationStrategy()
+            return PresentStrategy()
         case .Segue(let segueIdentifier):
             return SegueStrategy(segueIdentifier)
         }

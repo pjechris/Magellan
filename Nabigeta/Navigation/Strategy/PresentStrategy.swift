@@ -10,15 +10,10 @@ import Foundation
 import UIKit
 
 public class PresentStrategy : PresentationStrategy {
-    private let route: Route
-
-    public init(route: Route) {
-        self.route = route
-    }
 
     public func show(navigationContext: NavigationContext) {
         var destinationController = navigationContext.route.destination()
-        let stackController: UINavigationController = UINavigationController()
+        var stackController: UINavigationController! = UINavigationController()
 
         navigationContext.updateContext(destinationController)
 

@@ -10,14 +10,9 @@ import Foundation
 import UIKit
 
 public class PushStrategy : PresentationStrategy {
-    private let route: Route
-
-    public init(route: Route) {
-        self.route = route
-    }
 
     public func show(navigationContext: NavigationContext) {
-        var destinationViewController: UIViewController = self.route.destination()
+        var destinationViewController: UIViewController = navigationContext.route.destination()
         var stackController = navigationContext.sourceViewController.navigationController!
 
         navigationContext.updateContext(destinationViewController)

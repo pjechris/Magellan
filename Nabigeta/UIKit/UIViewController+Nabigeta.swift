@@ -20,6 +20,6 @@ extension UIViewController {
     /// For internal use only
     /// Used by a modal UIBarButtonItem to inform presentingViewController to close its modal 
     func dismissModalCallback() {
-        self.navigationContext?.route.navigationStrategy.dismiss(self)
+        self.navigationContext?.route.presentation.strategy().dismiss(self)
     }
 }
