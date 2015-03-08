@@ -11,7 +11,7 @@ import Foundation
 public enum PresentationStyle {
     case Push
     case Modal
-    case Segue(segueIdentifier: String)
+    case Segue(String)
 
     public func strategy() -> PresentationStrategy {
         switch (self) {
