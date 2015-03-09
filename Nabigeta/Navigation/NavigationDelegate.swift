@@ -15,10 +15,23 @@ public class NavigationDelegate : NSObject, UINavigationControllerDelegate {
     public var willNavigate: ((UIViewController, AnyObject?) -> Void)?
     public var didNavigate: ((UIViewController, AnyObject?) -> Void)?
 
+    private func findContext(navigationController: UINavigationController) -> NavigationContext? {
+        var context: NavigationContext?
+        let controllers = navigationController.viewControllers.reverse() as Array<UIViewController>
+
+        for controller in controllers {
+            if let context = controller.navigationContext {
+                return context
+            }
+        }
+
+        return context
+    }
+
     public func navigationController(navigationController: UINavigationController,
         willShowViewController viewController: UIViewController,
         animated: Bool) {
-            let navContext = navigationController.topViewController.navigationContext
+            let navContext = self.findContext(navigationController)
 
             self.willNavigate?(viewController, navContext?.context)
             self.navigationControllerDelegate?.navigationController?(navigationController, willShowViewController: viewController, animated: animated)
@@ -27,7 +40,7 @@ public class NavigationDelegate : NSObject, UINavigationControllerDelegate {
     public func navigationController(navigationController: UINavigationController,
         didShowViewController viewController: UIViewController,
         animated: Bool) {
-            let navContext = navigationController.topViewController.navigationContext
+            let navContext = self.findContext(navigationController)
 
             // restore delegate
             navigationController.delegate = self.navigationControllerDelegate

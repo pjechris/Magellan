@@ -27,7 +27,7 @@ public class NavigationContext : NSObject {
 
     public let route: Routable
 
-    weak public private(set) var context: AnyObject?
+    public private(set) var context: AnyObject?
 
     private var destinationCallback: ClosureDestinationAvailable?
 
