@@ -17,20 +17,8 @@ public class PresentationSegue: PresentationStrategy {
     }
 
     public func show(navigationContext: NavigationContext) {
-        let handler = SegueNavigationHandler()
         let source = navigationContext.sourceViewController
 
-        handler.prepareSegueHandler = { segue in
-            var destination = segue.destinationViewController as UIViewController
-
-            if let navigationController = destination as? UINavigationController {
-                destination = navigationController.topViewController
-            }
-
-            navigationContext.updateContext(destination)
-        }
-
-        source.segueHandler = handler
         source.performSegueWithIdentifier(self.segueIdentifier, sender: source)
     }
 
