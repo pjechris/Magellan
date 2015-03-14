@@ -62,11 +62,11 @@ public class Navigator : NSObject {
         navigationController?.delegate = self.navigationDelegate
 
         sender.navigationContext = navContext
-        route.presentation.strategy().show(navContext)
+        navContext.presenter.show(navContext)
     }
 
     public func navigateBack(sender: UIViewController) {
-        sender.navigationContext?.route.presentation.strategy().dismiss(sender)
+        sender.navigationContext?.presenter.dismiss(sender)
     }
 
     public func redirect() {

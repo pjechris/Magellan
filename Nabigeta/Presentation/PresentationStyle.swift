@@ -13,7 +13,7 @@ public enum PresentationStyle {
     case Modal
     case Segue(String)
 
-    public func strategy() -> PresentationStrategy {
+    public func presenter() -> PresentationStrategy {
         switch (self) {
         case .Push:
             return PresentationPush()

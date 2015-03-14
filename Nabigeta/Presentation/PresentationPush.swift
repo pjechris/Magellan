@@ -15,7 +15,6 @@ public class PresentationPush : PresentationStrategy {
         var destinationViewController: UIViewController = navigationContext.route.destination()
         var stackController = navigationContext.sourceViewController.navigationController!
 
-        navigationContext.updateContext(destinationViewController)
         stackController.pushViewController(destinationViewController, animated: true)
     }
 

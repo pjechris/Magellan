@@ -15,10 +15,8 @@ public class PresentationModal : PresentationStrategy {
         var destinationController = navigationContext.route.destination()
         var stackController: UINavigationController! = UINavigationController()
 
-        navigationContext.updateContext(destinationController)
-
         stackController.pushViewController(destinationController, animated: false)
-        self.buildAndAddDismissButton(navigationContext)
+        self.buildAndAddDismissButton(navigationContext.sourceViewController, destinationController)
         navigationContext.sourceViewController.presentViewController(stackController, animated: true, completion: nil)
     }
 
@@ -29,12 +27,11 @@ public class PresentationModal : PresentationStrategy {
     /// Build and add a dismiss/cancel button to the context destination controller if needed
     /// It is added when:
     /// - destination controller has no leftBarButtonItem setted on its navigationItem
-    private func buildAndAddDismissButton(context: NavigationContext) {
-        let controller = context.destinationViewController
-        let dismissBtn = UIBarButtonItem(barButtonSystemItem: .Cancel, target: context.sourceViewController, action: "dismissModalCallback")
+    private func buildAndAddDismissButton(source: UIViewController, _ destination: UIViewController) {
+        let dismissBtn = UIBarButtonItem(barButtonSystemItem: .Cancel, target: source, action: "dismissModalCallback")
 
-        if (controller.navigationItem.leftBarButtonItem == nil) {
-            controller.navigationItem.leftBarButtonItem = dismissBtn
+        if (destination.navigationItem.leftBarButtonItem == nil) {
+            destination.navigationItem.leftBarButtonItem = dismissBtn
         }
     }
 }
