@@ -15,18 +15,18 @@ public class Route : NSObject, Routable {
     public let url: String?
     public let presentation: PresentationStyle
 
-    public init(name: String, destination: UIViewController.Type, url: String?, presentation: PresentationStyle) {
+    public init(_ name: String, _ destination: UIViewController.Type, url: String?, presentation: PresentationStyle) {
         self.name = name
         self.destination = destination
         self.url = url
         self.presentation = presentation
     }
 
-    public convenience init(name: String, destination: UIViewController.Type, presentation: PresentationStyle) {
-        self.init(name: name, destination: destination, url: nil, presentation: presentation)
+    public convenience init(_ name: String, _ destination: UIViewController.Type, presentation: PresentationStyle) {
+        self.init(name, destination, url: nil, presentation: presentation)
     }
 
-    public convenience init(name: String, destination: UIViewController.Type) {
-        self.init(name: name, destination: destination, presentation: .Push)
+    public convenience init(_ name: String, _ destination: UIViewController.Type) {
+        self.init(name, destination, presentation: .Push)
     }
 }
