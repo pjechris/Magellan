@@ -14,12 +14,10 @@ public class Navigator : NSObject {
 
     private var routesCollection: Array<RouteCollection>
     private var urlMatcher: RouteUrlMatcher
-    private let navigationDelegate: NavigationDelegate
 
     public override init() {
         self.routesCollection = []
         self.urlMatcher = RouteUrlMatcher()
-        self.navigationDelegate = NavigationDelegate()
     }
 
     public convenience init(routeCollection: RouteCollection) {
