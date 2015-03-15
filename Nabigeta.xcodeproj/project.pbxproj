@@ -16,6 +16,7 @@
 		49422FF81AAD05CC002EDF82 /* PresentationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49422FF51AAD05CC002EDF82 /* PresentationSegue.swift */; };
 		49422FFA1AAD082E002EDF82 /* NavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49422FF91AAD082E002EDF82 /* NavigationDelegate.swift */; };
 		495A8A5A1A5069B200509C1B /* RouteUrlMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A8A581A5069B200509C1B /* RouteUrlMatcher.swift */; };
+		4992F6231AB6154E00E53BE5 /* UIViewController+Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992F6221AB6154E00E53BE5 /* UIViewController+Segue.swift */; };
 		49B035F61AACFDC500CB95DD /* PresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B035F51AACFDC500CB95DD /* PresentationStyle.swift */; };
 		49B035FA1AACFE9900CB95DD /* PresentationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */; };
 		49DE53791A6EBDCF005A67AE /* UIViewController+Nabigeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE53781A6EBDCF005A67AE /* UIViewController+Nabigeta.swift */; };
@@ -36,6 +37,7 @@
 		49422FF51AAD05CC002EDF82 /* PresentationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationSegue.swift; sourceTree = "<group>"; };
 		49422FF91AAD082E002EDF82 /* NavigationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationDelegate.swift; sourceTree = "<group>"; };
 		495A8A581A5069B200509C1B /* RouteUrlMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteUrlMatcher.swift; sourceTree = "<group>"; };
+		4992F6221AB6154E00E53BE5 /* UIViewController+Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Segue.swift"; sourceTree = "<group>"; };
 		49B035F51AACFDC500CB95DD /* PresentationStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationStyle.swift; sourceTree = "<group>"; };
 		49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationStrategy.swift; sourceTree = "<group>"; };
 		49DE53781A6EBDCF005A67AE /* UIViewController+Nabigeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Nabigeta.swift"; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				49DE53781A6EBDCF005A67AE /* UIViewController+Nabigeta.swift */,
+				4992F6221AB6154E00E53BE5 /* UIViewController+Segue.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				49422FF61AAD05CC002EDF82 /* PresentationModal.swift in Sources */,
 				49E5EA871A0BC3A400169136 /* Route.swift in Sources */,
 				490C38471A48564900EC432E /* Routable.swift in Sources */,
+				4992F6231AB6154E00E53BE5 /* UIViewController+Segue.swift in Sources */,
 				49DE53791A6EBDCF005A67AE /* UIViewController+Nabigeta.swift in Sources */,
 				49B035FA1AACFE9900CB95DD /* PresentationStrategy.swift in Sources */,
 				49B035F61AACFDC500CB95DD /* PresentationStyle.swift in Sources */,

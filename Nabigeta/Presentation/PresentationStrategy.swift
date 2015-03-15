@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 
+public typealias PresentationWillShowHandler = (UIViewController, AnyObject?) -> Void
+
 public protocol PresentationStrategy {
-    func show(navigationContext: NavigationContext)
+    func show(navigationContext: NavigationContext, willShow: PresentationWillShowHandler?)
 
     func dismiss(sender: UIViewController)
 }

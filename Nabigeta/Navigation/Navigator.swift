@@ -10,10 +10,7 @@ import Foundation
 import UIKit
 
 public class Navigator : NSObject {
-    public var willNavigate: ((UIViewController, AnyObject?) -> Void)? {
-        get { return self.navigationDelegate.willNavigate }
-        set { self.navigationDelegate.willNavigate = newValue }
-    }
+    public var willNavigate: PresentationWillShowHandler?
 
     private var routesCollection: Array<RouteCollection>
     private var urlMatcher: RouteUrlMatcher
@@ -58,11 +55,8 @@ public class Navigator : NSObject {
         let navigationController = sender.navigationController
         let navContext = NavigationContext(source: sender, route: route, context: context)
 
-        self.navigationDelegate.navigationControllerDelegate = navigationController?.delegate
-        navigationController?.delegate = self.navigationDelegate
-
         sender.navigationContext = navContext
-        navContext.presenter.show(navContext)
+        navContext.presenter.show(navContext, willShow: self.willNavigate)
     }
 
     public func navigateBack(sender: UIViewController) {

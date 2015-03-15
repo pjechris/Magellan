@@ -11,12 +11,14 @@ import UIKit
 
 public class PresentationModal : PresentationStrategy {
 
-    public func show(navigationContext: NavigationContext) {
-        var destinationController = navigationContext.route.destination()
-        var stackController: UINavigationController! = UINavigationController()
+    public func show(navigationContext: NavigationContext, willShow: PresentationWillShowHandler?) {
+        let destinationController = navigationContext.route.destination()
+        let stackController: UINavigationController = UINavigationController()
 
         stackController.pushViewController(destinationController, animated: false)
         self.buildAndAddDismissButton(navigationContext.sourceViewController, destinationController)
+
+        willShow?(destinationController, navigationContext.context)
         navigationContext.sourceViewController.presentViewController(stackController, animated: true, completion: nil)
     }
 
