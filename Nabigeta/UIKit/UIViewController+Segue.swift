@@ -39,9 +39,11 @@ extension UIViewController {
     }
 
     public func nabigeta_prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
+        // FIXME use as! once we unsupport Swift 1.1
+        let destination = segue.destinationViewController as? UIViewController
         let navContext = self.navigationContext
 
         self.nabigeta_prepareForSegue(segue, sender: sender)
-        self.presentationHandler?.willShow?(segue.destinationViewController as UIViewController, navContext?.context)
+        self.presentationHandler?.willShow?(destination!, navContext?.context)
     }
 }
