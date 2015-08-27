@@ -14,7 +14,7 @@ var NabigetaViewControllerNavigationContext = "NabigetaViewControllerNavigationC
 extension UIViewController {
     var navigationContext: NavigationContext? {
         get { return objc_getAssociatedObject(self, &NabigetaViewControllerNavigationContext) as? NavigationContext }
-        set { objc_setAssociatedObject(self, &NabigetaViewControllerNavigationContext, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC)) }
+        set { objc_setAssociatedObject(self, &NabigetaViewControllerNavigationContext, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
 
     /// For internal use only

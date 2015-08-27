@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-@objc
 public class RouteCollection : SequenceType {
     private var routes : Dictionary<String, Routable>
 

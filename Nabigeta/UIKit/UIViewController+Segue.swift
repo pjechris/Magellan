@@ -22,7 +22,7 @@ class PresentationHandler {
 extension UIViewController {
     var presentationHandler: PresentationHandler? {
         get { return objc_getAssociatedObject(self, &ViewControllerPresentationHandler) as? PresentationHandler }
-        set { objc_setAssociatedObject(self, &ViewControllerPresentationHandler, newValue, UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC)) }
+        set { objc_setAssociatedObject(self, &ViewControllerPresentationHandler, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
 
     public override class func initialize() {

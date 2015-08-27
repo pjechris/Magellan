@@ -12,7 +12,7 @@ import UIKit
 public class PresentationPush : PresentationStrategy {
 
     public func show(navigationContext: NavigationContext, willShow: PresentationWillShowHandler?) {
-        var destinationViewController: UIViewController = navigationContext.route.destination()
+        var destinationViewController: UIViewController = navigationContext.route.destination.init()
         var stackController = navigationContext.sourceViewController.navigationController!
 
         willShow?(destinationViewController, navigationContext.context)

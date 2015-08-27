@@ -12,7 +12,7 @@ import UIKit
 public class PresentationModal : PresentationStrategy {
 
     public func show(navigationContext: NavigationContext, willShow: PresentationWillShowHandler?) {
-        let destinationController = navigationContext.route.destination()
+        let destinationController = navigationContext.route.destination.init()
         let stackController: UINavigationController = UINavigationController()
 
         stackController.pushViewController(destinationController, animated: false)
