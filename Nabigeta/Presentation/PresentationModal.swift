@@ -10,10 +10,25 @@ import Foundation
 import UIKit
 
 public class PresentationModal : PresentationStrategy {
+    private let presentation: UIModalPresentationStyle?
+    private let transition: UIModalTransitionStyle?
+
+    init(presentation: UIModalPresentationStyle? = nil, transition: UIModalTransitionStyle? = nil) {
+        self.presentation = presentation
+        self.transition = transition
+    }
 
     public func show(navigationContext: NavigationContext, willShow: PresentationWillShowHandler?) {
         let destinationController = navigationContext.route.destination.init()
         let stackController: UINavigationController = UINavigationController()
+
+        if (self.presentation != nil) {
+            stackController.modalPresentationStyle = self.presentation!
+        }
+
+        if (self.transition != nil) {
+            stackController.modalTransitionStyle = self.transition!
+        }
 
         stackController.pushViewController(destinationController, animated: false)
         self.buildAndAddDismissButton(navigationContext.sourceViewController, destinationController)

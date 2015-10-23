@@ -9,14 +9,31 @@
 import Foundation
 import UIKit
 
+public enum PresentationPushMode {
+    case Master
+    case Detail
+}
+
 public class PresentationPush : PresentationStrategy {
+    let pushMode: PresentationPushMode
+
+    init(pushMode: PresentationPushMode? = nil) {
+        self.pushMode = pushMode ?? .Master
+    }
 
     public func show(navigationContext: NavigationContext, willShow: PresentationWillShowHandler?) {
-        var destinationViewController: UIViewController = navigationContext.route.destination.init()
-        var stackController = navigationContext.sourceViewController.navigationController!
+        let destinationViewController: UIViewController = navigationContext.route.destination.init()
+        let stackController = navigationContext.sourceViewController.navigationController!
 
         willShow?(destinationViewController, navigationContext.context)
-        stackController.pushViewController(destinationViewController, animated: true)
+
+        switch self.pushMode {
+        case .Master:
+            stackController.showViewController(destinationViewController, sender: navigationContext.sourceViewController)
+        case .Detail:
+            stackController.showDetailViewController(destinationViewController, sender: navigationContext.sourceViewController)
+        }
+
     }
 
     public func dismiss(sender: UIViewController) {
