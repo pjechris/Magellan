@@ -15,5 +15,5 @@ Pod::Spec.new do |s|
   s.prefix_header_file    = "#{s.name}/#{s.name}.h"
   s.requires_arc 	  = true
 
-  s.dependency		  "JLRoutes", "~> 1.x" 
+  s.dependency 'Router'
 end

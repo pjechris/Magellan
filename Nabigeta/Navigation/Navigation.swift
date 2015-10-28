@@ -13,11 +13,9 @@ public class Navigation : NSObject {
     public var willNavigate: PresentationWillShowHandler?
 
     private var routesCollection: Array<RouteCollection>
-    private var urlMatcher: RouteUrlMatcher
 
     public override init() {
         self.routesCollection = []
-        self.urlMatcher = RouteUrlMatcher()
     }
 
     public convenience init(routeCollection: RouteCollection) {
@@ -27,10 +25,6 @@ public class Navigation : NSObject {
 
     public func importCollection(routeCollection: RouteCollection) {
         self.routesCollection.append(routeCollection)
-
-        for (name, route) in routeCollection {
-            self.urlMatcher.add(route)
-        }
     }
 
     @objc(navigate:context:sender:)
@@ -42,12 +36,10 @@ public class Navigation : NSObject {
         }
     }
 
-    @objc(navigateURL:sender:)
-    public func navigate(url: NSURL, sender: UIViewController) {
-        self.urlMatcher.match(url) { route, context in
-            self.navigate(route, context: context, sender: sender)
-        }
-    }
+    // URL routing is not available yet
+//    @objc(navigateURL:sender:)
+//    public func navigate(url: NSURL, sender: UIViewController) {
+//    }
 
     private func navigate(route: Routable, context: AnyObject?, sender: UIViewController) {
         let navigationController = sender.navigationController

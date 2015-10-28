@@ -1,10 +1,20 @@
 PODS:
-  - JLRoutes (1.5.1)
+  - Router (0.0.1)
 
 DEPENDENCIES:
-  - JLRoutes
+  - Router (from `https://github.com/ViacomInc/Router`, branch `swift-2.0`)
+
+EXTERNAL SOURCES:
+  Router:
+    :branch: swift-2.0
+    :git: https://github.com/ViacomInc/Router
+
+CHECKOUT OPTIONS:
+  Router:
+    :commit: ad70ab9f20cee01bd4e9563966bc7ac24d7b2e84
+    :git: https://github.com/ViacomInc/Router
 
 SPEC CHECKSUMS:
-  JLRoutes: 3400fe314fc01c861a14ff7e183d209b0cd302ae
+  Router: 0ce3e008f03bb73aaf1c5c419947905bc6bd36e8
 
-COCOAPODS: 0.36.0.beta.1
+COCOAPODS: 0.38.2
