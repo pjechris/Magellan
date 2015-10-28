@@ -10,7 +10,6 @@
 		490C38391A48219E00EC432E /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38381A48219E00EC432E /* NavigationContext.swift */; };
 		490C38431A4855CC00EC432E /* RouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38421A4855CC00EC432E /* RouteCollection.swift */; };
 		490C38471A48564900EC432E /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38461A48564900EC432E /* Routable.swift */; };
-		490C38491A48565000EC432E /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38481A48565000EC432E /* Navigator.swift */; };
 		49422FF61AAD05CC002EDF82 /* PresentationModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49422FF31AAD05CC002EDF82 /* PresentationModal.swift */; };
 		49422FF71AAD05CC002EDF82 /* PresentationPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49422FF41AAD05CC002EDF82 /* PresentationPush.swift */; };
 		49422FF81AAD05CC002EDF82 /* PresentationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49422FF51AAD05CC002EDF82 /* PresentationSegue.swift */; };
@@ -18,6 +17,7 @@
 		4992F6231AB6154E00E53BE5 /* UIViewController+Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992F6221AB6154E00E53BE5 /* UIViewController+Segue.swift */; };
 		49B035F61AACFDC500CB95DD /* PresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B035F51AACFDC500CB95DD /* PresentationStyle.swift */; };
 		49B035FA1AACFE9900CB95DD /* PresentationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */; };
+		49C05ABB1BE0DCB10054337C /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C05ABA1BE0DCB10054337C /* Navigation.swift */; };
 		49DE53791A6EBDCF005A67AE /* UIViewController+Nabigeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE53781A6EBDCF005A67AE /* UIViewController+Nabigeta.swift */; };
 		49E5EA871A0BC3A400169136 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E5EA861A0BC3A400169136 /* Route.swift */; };
 		49FAA6801A0941DE00AF3D5C /* Nabigeta.h in Headers */ = {isa = PBXBuildFile; fileRef = 49FAA67F1A0941DE00AF3D5C /* Nabigeta.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -30,7 +30,6 @@
 		490C38381A48219E00EC432E /* NavigationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
 		490C38421A4855CC00EC432E /* RouteCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCollection.swift; sourceTree = "<group>"; };
 		490C38461A48564900EC432E /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
-		490C38481A48565000EC432E /* Navigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		49422FF31AAD05CC002EDF82 /* PresentationModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationModal.swift; sourceTree = "<group>"; };
 		49422FF41AAD05CC002EDF82 /* PresentationPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationPush.swift; sourceTree = "<group>"; };
 		49422FF51AAD05CC002EDF82 /* PresentationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationSegue.swift; sourceTree = "<group>"; };
@@ -38,6 +37,7 @@
 		4992F6221AB6154E00E53BE5 /* UIViewController+Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Segue.swift"; sourceTree = "<group>"; };
 		49B035F51AACFDC500CB95DD /* PresentationStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationStyle.swift; sourceTree = "<group>"; };
 		49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationStrategy.swift; sourceTree = "<group>"; };
+		49C05ABA1BE0DCB10054337C /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		49DE53781A6EBDCF005A67AE /* UIViewController+Nabigeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Nabigeta.swift"; sourceTree = "<group>"; };
 		49E5EA861A0BC3A400169136 /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		49FAA67A1A0941DE00AF3D5C /* Nabigeta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Nabigeta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,8 +112,8 @@
 		49E5EA8C1A0BC7F900169136 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				49C05ABA1BE0DCB10054337C /* Navigation.swift */,
 				490C38381A48219E00EC432E /* NavigationContext.swift */,
-				490C38481A48565000EC432E /* Navigator.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -251,6 +251,7 @@
 		49FAA6711A0941DE00AF3D5C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = fr.milkshake;
 				TargetAttributes = {
@@ -352,7 +353,6 @@
 			files = (
 				490C38431A4855CC00EC432E /* RouteCollection.swift in Sources */,
 				490C38391A48219E00EC432E /* NavigationContext.swift in Sources */,
-				490C38491A48565000EC432E /* Navigator.swift in Sources */,
 				495A8A5A1A5069B200509C1B /* RouteUrlMatcher.swift in Sources */,
 				49422FF81AAD05CC002EDF82 /* PresentationSegue.swift in Sources */,
 				49422FF71AAD05CC002EDF82 /* PresentationPush.swift in Sources */,
@@ -360,6 +360,7 @@
 				49E5EA871A0BC3A400169136 /* Route.swift in Sources */,
 				490C38471A48564900EC432E /* Routable.swift in Sources */,
 				4992F6231AB6154E00E53BE5 /* UIViewController+Segue.swift in Sources */,
+				49C05ABB1BE0DCB10054337C /* Navigation.swift in Sources */,
 				49DE53791A6EBDCF005A67AE /* UIViewController+Nabigeta.swift in Sources */,
 				49B035FA1AACFE9900CB95DD /* PresentationStrategy.swift in Sources */,
 				49B035F61AACFDC500CB95DD /* PresentationStyle.swift in Sources */,
