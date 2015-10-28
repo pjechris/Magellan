@@ -13,7 +13,6 @@
 		49422FF61AAD05CC002EDF82 /* PresentationModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49422FF31AAD05CC002EDF82 /* PresentationModal.swift */; };
 		49422FF71AAD05CC002EDF82 /* PresentationPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49422FF41AAD05CC002EDF82 /* PresentationPush.swift */; };
 		49422FF81AAD05CC002EDF82 /* PresentationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49422FF51AAD05CC002EDF82 /* PresentationSegue.swift */; };
-		495A8A5A1A5069B200509C1B /* RouteUrlMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A8A581A5069B200509C1B /* RouteUrlMatcher.swift */; };
 		4992F6231AB6154E00E53BE5 /* UIViewController+Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992F6221AB6154E00E53BE5 /* UIViewController+Segue.swift */; };
 		49B035F61AACFDC500CB95DD /* PresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B035F51AACFDC500CB95DD /* PresentationStyle.swift */; };
 		49B035FA1AACFE9900CB95DD /* PresentationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */; };
@@ -33,7 +32,6 @@
 		49422FF31AAD05CC002EDF82 /* PresentationModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationModal.swift; sourceTree = "<group>"; };
 		49422FF41AAD05CC002EDF82 /* PresentationPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationPush.swift; sourceTree = "<group>"; };
 		49422FF51AAD05CC002EDF82 /* PresentationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationSegue.swift; sourceTree = "<group>"; };
-		495A8A581A5069B200509C1B /* RouteUrlMatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteUrlMatcher.swift; sourceTree = "<group>"; };
 		4992F6221AB6154E00E53BE5 /* UIViewController+Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Segue.swift"; sourceTree = "<group>"; };
 		49B035F51AACFDC500CB95DD /* PresentationStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationStyle.swift; sourceTree = "<group>"; };
 		49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationStrategy.swift; sourceTree = "<group>"; };
@@ -69,14 +67,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		495A8A561A5069B200509C1B /* Matcher */ = {
-			isa = PBXGroup;
-			children = (
-				495A8A581A5069B200509C1B /* RouteUrlMatcher.swift */,
-			);
-			path = Matcher;
-			sourceTree = "<group>";
-		};
 		49B035F41AACFDA300CB95DD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +91,6 @@
 		49E5EA841A0BC38400169136 /* Route */ = {
 			isa = PBXGroup;
 			children = (
-				495A8A561A5069B200509C1B /* Matcher */,
 				490C38461A48564900EC432E /* Routable.swift */,
 				49E5EA861A0BC3A400169136 /* Route.swift */,
 				490C38421A4855CC00EC432E /* RouteCollection.swift */,
@@ -252,7 +241,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = fr.milkshake;
 				TargetAttributes = {
 					49FAA6791A0941DE00AF3D5C = {
@@ -353,7 +342,6 @@
 			files = (
 				490C38431A4855CC00EC432E /* RouteCollection.swift in Sources */,
 				490C38391A48219E00EC432E /* NavigationContext.swift in Sources */,
-				495A8A5A1A5069B200509C1B /* RouteUrlMatcher.swift in Sources */,
 				49422FF81AAD05CC002EDF82 /* PresentationSegue.swift in Sources */,
 				49422FF71AAD05CC002EDF82 /* PresentationPush.swift in Sources */,
 				49422FF61AAD05CC002EDF82 /* PresentationModal.swift in Sources */,
@@ -399,6 +387,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -476,6 +465,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.akane.Nabigeta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -495,6 +485,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fr.akane.Nabigeta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -513,6 +504,7 @@
 				);
 				INFOPLIST_FILE = NabigetaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "milkshake.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -526,6 +518,7 @@
 				);
 				INFOPLIST_FILE = NabigetaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "milkshake.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

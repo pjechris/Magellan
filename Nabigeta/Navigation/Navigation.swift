@@ -30,8 +30,10 @@ public class Navigation : NSObject {
     @objc(navigate:context:sender:)
     public func navigate(name: String, context: AnyObject, sender: UIViewController) {
         for routes in self.routesCollection {
-            routes[name].map { route in
+            if let route = routes[name] {
                 self.navigate(route, context: context, sender: sender)
+
+                break
             }
         }
     }
@@ -42,7 +44,6 @@ public class Navigation : NSObject {
 //    }
 
     private func navigate(route: Routable, context: AnyObject?, sender: UIViewController) {
-        let navigationController = sender.navigationController
         let navContext = NavigationContext(source: sender, route: route, context: context)
 
         sender.navigationContext = navContext
