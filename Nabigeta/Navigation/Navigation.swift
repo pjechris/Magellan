@@ -12,28 +12,28 @@ import UIKit
 public class Navigation : NSObject {
     public var willNavigate: PresentationWillShowHandler?
 
-    private var routesCollection: Array<RouteCollection>
+    private var collection: [NavigationCollection]
 
     public override init() {
-        self.routesCollection = []
+        self.collection = []
     }
 
-    public convenience init(routeCollection: RouteCollection) {
+    public convenience init(collection: NavigationCollection) {
         self.init()
-        self.importCollection(routeCollection)
+        self.importCollection(collection)
     }
 
-    public func importCollection(routeCollection: RouteCollection) {
-        self.routesCollection.append(routeCollection)
+    public func importCollection(collection: NavigationCollection) {
+        self.collection.append(collection)
     }
 
     @objc(navigate:context:sender:)
     public func navigate(name: String, context: AnyObject, sender: UIViewController) {
-        for routes in self.routesCollection {
-            if let route = routes[name] {
+        for collection in self.collection {
+            if let route = collection.routes[name] {
                 self.navigate(route, context: context, sender: sender)
 
-                break
+                return
             }
         }
     }
