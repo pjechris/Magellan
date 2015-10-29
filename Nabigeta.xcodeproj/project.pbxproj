@@ -10,6 +10,11 @@
 		490C38391A48219E00EC432E /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38381A48219E00EC432E /* NavigationContext.swift */; };
 		490C38431A4855CC00EC432E /* RouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38421A4855CC00EC432E /* RouteCollection.swift */; };
 		490C38471A48564900EC432E /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38461A48564900EC432E /* Routable.swift */; };
+		493F34891BE257B100C52E3F /* TransitionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F34881BE257B100C52E3F /* TransitionContext.swift */; settings = {ASSET_TAGS = (); }; };
+		493F348D1BE25C3E00C52E3F /* TransitionCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F348C1BE25C3E00C52E3F /* TransitionCollection.swift */; settings = {ASSET_TAGS = (); }; };
+		493F348F1BE2665D00C52E3F /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F348E1BE2665D00C52E3F /* Transition.swift */; settings = {ASSET_TAGS = (); }; };
+		493F34911BE26C1500C52E3F /* TransitionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F34901BE26C1500C52E3F /* TransitionBuilder.swift */; settings = {ASSET_TAGS = (); }; };
+		493F34931BE27CDA00C52E3F /* NavigationCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F34921BE27CDA00C52E3F /* NavigationCollection.swift */; settings = {ASSET_TAGS = (); }; };
 		49422FF61AAD05CC002EDF82 /* PresentationModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49422FF31AAD05CC002EDF82 /* PresentationModal.swift */; };
 		49422FF71AAD05CC002EDF82 /* PresentationPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49422FF41AAD05CC002EDF82 /* PresentationPush.swift */; };
 		49422FF81AAD05CC002EDF82 /* PresentationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49422FF51AAD05CC002EDF82 /* PresentationSegue.swift */; };
@@ -29,6 +34,11 @@
 		490C38381A48219E00EC432E /* NavigationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
 		490C38421A4855CC00EC432E /* RouteCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCollection.swift; sourceTree = "<group>"; };
 		490C38461A48564900EC432E /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
+		493F34881BE257B100C52E3F /* TransitionContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionContext.swift; sourceTree = "<group>"; };
+		493F348C1BE25C3E00C52E3F /* TransitionCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionCollection.swift; sourceTree = "<group>"; };
+		493F348E1BE2665D00C52E3F /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
+		493F34901BE26C1500C52E3F /* TransitionBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionBuilder.swift; sourceTree = "<group>"; };
+		493F34921BE27CDA00C52E3F /* NavigationCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationCollection.swift; sourceTree = "<group>"; };
 		49422FF31AAD05CC002EDF82 /* PresentationModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationModal.swift; sourceTree = "<group>"; };
 		49422FF41AAD05CC002EDF82 /* PresentationPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationPush.swift; sourceTree = "<group>"; };
 		49422FF51AAD05CC002EDF82 /* PresentationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationSegue.swift; sourceTree = "<group>"; };
@@ -67,6 +77,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		493F34871BE257A400C52E3F /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				493F34881BE257B100C52E3F /* TransitionContext.swift */,
+				493F348C1BE25C3E00C52E3F /* TransitionCollection.swift */,
+				493F348E1BE2665D00C52E3F /* Transition.swift */,
+				493F34901BE26C1500C52E3F /* TransitionBuilder.swift */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
 		49B035F41AACFDA300CB95DD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +124,7 @@
 			children = (
 				49C05ABA1BE0DCB10054337C /* Navigation.swift */,
 				490C38381A48219E00EC432E /* NavigationContext.swift */,
+				493F34921BE27CDA00C52E3F /* NavigationCollection.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -130,12 +152,13 @@
 		49FAA67C1A0941DE00AF3D5C /* Nabigeta */ = {
 			isa = PBXGroup;
 			children = (
-				49B035F41AACFDA300CB95DD /* Presentation */,
-				49DE53721A6EBDB6005A67AE /* UIKit */,
-				49E5EA8C1A0BC7F900169136 /* Navigation */,
-				49E5EA841A0BC38400169136 /* Route */,
 				49FAA67F1A0941DE00AF3D5C /* Nabigeta.h */,
+				49E5EA8C1A0BC7F900169136 /* Navigation */,
+				49B035F41AACFDA300CB95DD /* Presentation */,
+				49E5EA841A0BC38400169136 /* Route */,
 				49FAA67D1A0941DE00AF3D5C /* Supporting Files */,
+				493F34871BE257A400C52E3F /* Transition */,
+				49DE53721A6EBDB6005A67AE /* UIKit */,
 			);
 			path = Nabigeta;
 			sourceTree = "<group>";
@@ -344,8 +367,13 @@
 				490C38391A48219E00EC432E /* NavigationContext.swift in Sources */,
 				49422FF81AAD05CC002EDF82 /* PresentationSegue.swift in Sources */,
 				49422FF71AAD05CC002EDF82 /* PresentationPush.swift in Sources */,
+				493F34911BE26C1500C52E3F /* TransitionBuilder.swift in Sources */,
+				493F34931BE27CDA00C52E3F /* NavigationCollection.swift in Sources */,
+				493F348D1BE25C3E00C52E3F /* TransitionCollection.swift in Sources */,
+				493F348F1BE2665D00C52E3F /* Transition.swift in Sources */,
 				49422FF61AAD05CC002EDF82 /* PresentationModal.swift in Sources */,
 				49E5EA871A0BC3A400169136 /* Route.swift in Sources */,
+				493F34891BE257B100C52E3F /* TransitionContext.swift in Sources */,
 				490C38471A48564900EC432E /* Routable.swift in Sources */,
 				4992F6231AB6154E00E53BE5 /* UIViewController+Segue.swift in Sources */,
 				49C05ABB1BE0DCB10054337C /* Navigation.swift in Sources */,
