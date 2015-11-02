@@ -27,10 +27,13 @@ public class NavigationContext: NSObject {
 
     public let presenter: PresentationStrategy
 
-    public init(source: UIViewController, route: Routable, context: AnyObject?) {
+    internal let transition: Transition
+
+    public init(source: UIViewController, route: Routable, context: AnyObject?, transition: Transition?) {
         self.sourceViewController = source
         self.route = route
         self.context = context
-        self.presenter = route.presentation.presenter()
+        self.transition = transition ?? Transition(presentation: route.presentation, trait: nil)
+        self.presenter = self.transition.presentation.presenter()
     }
 }

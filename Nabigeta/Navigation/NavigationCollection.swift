@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct NavigationCollection {
+public class NavigationCollection : NSObject {
     public var routes: RouteCollection = RouteCollection()
     public var transitions: TransitionCollection = TransitionCollection()
 }

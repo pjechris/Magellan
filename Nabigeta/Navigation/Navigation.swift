@@ -31,7 +31,7 @@ public class Navigation : NSObject {
     public func navigate(name: String, context: AnyObject, sender: UIViewController) {
         for collection in self.collection {
             if let route = collection.routes[name] {
-                self.navigate(route, context: context, sender: sender)
+                self.navigate(route, collection: collection, context: context, sender: sender)
 
                 return
             }
@@ -43,10 +43,12 @@ public class Navigation : NSObject {
 //    public func navigate(url: NSURL, sender: UIViewController) {
 //    }
 
-    private func navigate(route: Routable, context: AnyObject?, sender: UIViewController) {
-        let navContext = NavigationContext(source: sender, route: route, context: context)
+    private func navigate(route: Routable, collection: NavigationCollection, context: AnyObject?, sender: UIViewController) {
+        let currentTrait = UIApplication.sharedApplication().keyWindow!.traitCollection
+        let transition = collection.transitions.transitionFor(sender.dynamicType, to: route.destination, trait: currentTrait)
+        let navContext = NavigationContext(source: sender, route: route, context: context, transition: transition)
 
-        sender.navigationContext = navContext
+        navContext.sourceViewController.navigationContext = navContext
         navContext.presenter.show(navContext, willShow: self.willNavigate)
     }
 
