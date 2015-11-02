@@ -33,7 +33,7 @@ public class NavigationContext: NSObject {
         self.sourceViewController = source
         self.route = route
         self.context = context
-        self.transition = transition ?? Transition(presentation: route.presentation, trait: nil)
+        self.transition = transition ?? Transition(presentation: route.defaultPresentation, trait: nil)
         self.presenter = self.transition.presentation.presenter()
     }
 }
