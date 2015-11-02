@@ -20,6 +20,10 @@ internal struct TransitionContext : Hashable {
         self.fromViewController = from
         self.toViewController = to
     }
+
+    init(to: UIViewController.Type) {
+        self.init(from: nil, to: to)
+    }
 }
 
 func ==(lhs: TransitionContext, rhs: TransitionContext) -> Bool {

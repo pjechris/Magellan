@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal struct Transition {
+public struct Transition {
     let presentation: PresentationStyle
     let trait: UITraitCollection?
 }

@@ -11,7 +11,15 @@ import Foundation
 public struct TransitionCollection {
     var transitions:[TransitionContext:[Transition]] = [:]
 
-    public mutating func add(from: UIViewController.Type, to: UIViewController.Type, @noescape definition: (TransitionBuilder) -> Void) {
+    public mutating func add(from from: UIViewController.Type, to: UIViewController.Type, @noescape definition: (TransitionBuilder) -> Void) {
+        self.add(from, to: to, definition: definition)
+    }
+
+    public mutating func add(to to: UIViewController.Type, @noescape definition: (TransitionBuilder) -> Void) {
+        self.add(nil, to: to, definition: definition)
+    }
+
+    private mutating func add(from: UIViewController.Type?, to: UIViewController.Type, @noescape definition: (TransitionBuilder) -> Void) {
         let builder = TransitionBuilder()
 
         definition(builder)
@@ -21,11 +29,14 @@ public struct TransitionCollection {
 
     internal func transitionFor(from: UIViewController.Type, to: UIViewController.Type, trait: UITraitCollection) -> Transition? {
         var defaultTransition: Transition? = nil
+        let transitionsFromTo = TransitionContext(from: from, to: to)
+        let transitionsTo = TransitionContext(to: to)
+        let transitions = self.transitions[transitionsFromTo] ?? self.transitions[transitionsTo]
 
-        if let transitions = self.transitions[TransitionContext(from: from, to: to)] {
-            for transition in transitions {
+        if transitions != nil {
+            for transition in transitions! {
                 if transition.trait != nil {
-                    if (transition.trait!.containsTraitsInCollection(trait)) {
+                    if (trait.containsTraitsInCollection(transition.trait!)) {
                         return transition
                     }
                 }
