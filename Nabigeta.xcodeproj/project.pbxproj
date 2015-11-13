@@ -20,7 +20,6 @@
 		490C38471A48564900EC432E /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38461A48564900EC432E /* Routable.swift */; };
 		493F34931BE27CDA00C52E3F /* NavigationCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F34921BE27CDA00C52E3F /* NavigationCollection.swift */; };
 		4992F6231AB6154E00E53BE5 /* UIViewController+Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992F6221AB6154E00E53BE5 /* UIViewController+Segue.swift */; };
-		49B035F61AACFDC500CB95DD /* PresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B035F51AACFDC500CB95DD /* PresentationStyle.swift */; };
 		49B035FA1AACFE9900CB95DD /* PresentationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */; };
 		49C05ABB1BE0DCB10054337C /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C05ABA1BE0DCB10054337C /* Navigation.swift */; };
 		49DE53791A6EBDCF005A67AE /* UIViewController+Nabigeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE53781A6EBDCF005A67AE /* UIViewController+Nabigeta.swift */; };
@@ -45,7 +44,6 @@
 		490C38461A48564900EC432E /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
 		493F34921BE27CDA00C52E3F /* NavigationCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationCollection.swift; sourceTree = "<group>"; };
 		4992F6221AB6154E00E53BE5 /* UIViewController+Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Segue.swift"; sourceTree = "<group>"; };
-		49B035F51AACFDC500CB95DD /* PresentationStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationStyle.swift; sourceTree = "<group>"; };
 		49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationStrategy.swift; sourceTree = "<group>"; };
 		49C05ABA1BE0DCB10054337C /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		49DE53781A6EBDCF005A67AE /* UIViewController+Nabigeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Nabigeta.swift"; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 			children = (
 				4902AAF51BF62A78003D6435 /* Adaptive */,
 				49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */,
-				49B035F51AACFDC500CB95DD /* PresentationStyle.swift */,
 				4902AAFE1BF62AF7003D6435 /* Strategy */,
 			);
 			path = Presentation;
@@ -389,7 +386,6 @@
 				4902AB051BF62AF8003D6435 /* PresentationPush.swift in Sources */,
 				4902AAFC1BF62A78003D6435 /* PresentationAdaptiveCollection.swift in Sources */,
 				49B035FA1AACFE9900CB95DD /* PresentationStrategy.swift in Sources */,
-				49B035F61AACFDC500CB95DD /* PresentationStyle.swift in Sources */,
 				4902AAFD1BF62A78003D6435 /* PresentationAdaptiveContext.swift in Sources */,
 				4902AB061BF62AF8003D6435 /* PresentationSegue.swift in Sources */,
 			);
