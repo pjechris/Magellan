@@ -8,7 +8,15 @@
 
 import Foundation
 
-public struct PresentationAdaptive {
+public struct PresentationAdaptive : PresentationStrategy {
     let presentation: PresentationStrategy
     let trait: UITraitCollection
+
+    public func show(navigationContext: NavigationContext, willShow: PresentationWillShowHandler?) {
+        self.presentation.show(navigationContext, willShow: willShow)
+    }
+
+    public func dismiss(sender: UIViewController) {
+        self.presentation.dismiss(sender)
+    }
 }
