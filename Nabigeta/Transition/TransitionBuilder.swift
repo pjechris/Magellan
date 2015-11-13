@@ -9,24 +9,24 @@
 import Foundation
 
 public class TransitionBuilder {
-    internal var transitions:[Transition] = []
+    internal var transitions:[PresentationAdaptive] = []
 
-    public func setPresentation(presentation: PresentationStrategy, _ trait: UITraitCollection? = nil) {
-        self.transitions.append(Transition(presentation: presentation, trait: trait))
+    public func addAdaptivePresentation(presentation: PresentationStrategy, _ trait: UITraitCollection) {
+        self.transitions.append(PresentationAdaptive(presentation: presentation, trait: trait))
     }
 
-    public func setPresentation(presentation: PresentationStrategy, _ horizontalSizeClass: UIUserInterfaceSizeClass) {
+    public func addAdaptivePresentation(presentation: PresentationStrategy, _ horizontalSizeClass: UIUserInterfaceSizeClass) {
         let trait = UITraitCollection(horizontalSizeClass: horizontalSizeClass)
 
-        self.setPresentation(presentation, trait)
+        self.addAdaptivePresentation(presentation, trait)
     }
 
-    public func setPresentation(presentation: PresentationStrategy, _ horizontalSizeClass: UIUserInterfaceSizeClass, _ verticalSizeClass: UIUserInterfaceSizeClass) {
+    public func addAdaptivePresentation(presentation: PresentationStrategy, _ horizontalSizeClass: UIUserInterfaceSizeClass, _ verticalSizeClass: UIUserInterfaceSizeClass) {
         let trait = UITraitCollection(traitsFromCollections: [
             UITraitCollection(horizontalSizeClass: horizontalSizeClass),
             UITraitCollection(verticalSizeClass: verticalSizeClass)
             ])
 
-        self.setPresentation(presentation, trait)
+        self.addAdaptivePresentation(presentation, trait)
     }
 }

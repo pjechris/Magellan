@@ -9,17 +9,17 @@
 import Foundation
 
 public struct TransitionCollection {
-    var transitions:[TransitionContext:[Transition]] = [:]
+    var transitions:[TransitionContext:[PresentationAdaptive]] = [:]
 
-    public mutating func add(from from: UIViewController.Type, to: UIViewController.Type, @noescape definition: (TransitionBuilder) -> Void) {
-        self.add(from, to: to, definition: definition)
+    public mutating func when(from from: UIViewController.Type, to: UIViewController.Type, @noescape definition: (TransitionBuilder) -> Void) {
+        self.when(from, to: to, definition: definition)
     }
 
-    public mutating func add(to to: UIViewController.Type, @noescape definition: (TransitionBuilder) -> Void) {
-        self.add(nil, to: to, definition: definition)
+    public mutating func when(to to: UIViewController.Type, @noescape definition: (TransitionBuilder) -> Void) {
+        self.when(nil, to: to, definition: definition)
     }
 
-    private mutating func add(from: UIViewController.Type?, to: UIViewController.Type, @noescape definition: (TransitionBuilder) -> Void) {
+    private mutating func when(from: UIViewController.Type?, to: UIViewController.Type, @noescape definition: (TransitionBuilder) -> Void) {
         let builder = TransitionBuilder()
 
         definition(builder)
@@ -27,25 +27,19 @@ public struct TransitionCollection {
         self.transitions[TransitionContext(from: from, to: to)] = builder.transitions
     }
 
-    internal func transitionFor(from: UIViewController.Type, to: UIViewController.Type, trait: UITraitCollection) -> Transition? {
-        var defaultTransition: Transition? = nil
+    internal func transitionFor(from: UIViewController.Type, to: UIViewController.Type, trait: UITraitCollection) -> PresentationAdaptive? {
         let transitionsFromTo = TransitionContext(from: from, to: to)
         let transitionsTo = TransitionContext(to: to)
         let transitions = self.transitions[transitionsFromTo] ?? self.transitions[transitionsTo]
 
         if transitions != nil {
             for transition in transitions! {
-                if transition.trait != nil {
-                    if (trait.containsTraitsInCollection(transition.trait!)) {
-                        return transition
-                    }
-                }
-                else {
-                    defaultTransition = transition
+                if (trait.containsTraitsInCollection(transition.trait)) {
+                    return transition
                 }
             }
         }
 
-        return defaultTransition
+        return nil
     }
 }
