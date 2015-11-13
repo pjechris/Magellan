@@ -17,7 +17,7 @@ import UIKit
 *
 * Think about this object as a equivalent to UIViewControllerContextTransitioning but for navigation
 */
-public class NavigationContext: NSObject {
+public class NavigationContext {
     /// the view controller requiring navigation
     unowned public let sourceViewController: UIViewController
 
@@ -25,15 +25,38 @@ public class NavigationContext: NSObject {
 
     public let context: AnyObject?
 
-    public let presenter: PresentationStrategy
+    public let touchedControl: UIControl?
 
-    internal let transition: Transition
+    public internal(set) var traitCollection: UITraitCollection!
 
-    public init(source: UIViewController, route: Routable, context: AnyObject?, transition: Transition?) {
+    public convenience init(context: AnyObject?, route: Routable, source: UIControl) {
+        var controller: UIViewController! = nil
+        var responder: UIResponder? = source.nextResponder()
+
+        while responder != nil {
+            if ((responder as? UIViewController) != nil) {
+                controller = responder as! UIViewController
+            }
+
+            responder = responder?.nextResponder()
+        }
+
+        self.init(context: context, route: route, source: controller, control: source)
+    }
+
+    public convenience init(context: AnyObject?, route: Routable, source: UIViewController) {
+        self.init(context: context, route: route, source: source, control: nil)
+    }
+
+    public init(context: AnyObject?, route: Routable, source: UIViewController, control: UIControl?) {
         self.sourceViewController = source
         self.route = route
         self.context = context
-        self.transition = transition ?? Transition(presentation: route.defaultPresentation, trait: nil)
-        self.presenter = self.transition.presentation.presenter()
+        self.touchedControl = control
+    }
+
+    internal func presenter(transitions: TransitionCollection) -> PresentationStrategy {
+        return transitions.transitionFor(self.sourceViewController.dynamicType, to: self.route.destination, trait: self.traitCollection)?.presentation
+            ?? self.route.defaultPresentation
     }
 }

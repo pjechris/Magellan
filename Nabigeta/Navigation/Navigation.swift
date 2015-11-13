@@ -12,29 +12,27 @@ import UIKit
 public class Navigation : NSObject {
     public var willNavigate: PresentationWillShowHandler?
 
-    private var collection: [NavigationCollection]
+    private var collection: NavigationCollection
 
-    public override init() {
-        self.collection = []
-    }
-
-    public convenience init(collection: NavigationCollection) {
-        self.init()
-        self.importCollection(collection)
-    }
-
-    public func importCollection(collection: NavigationCollection) {
-        self.collection.append(collection)
+    public init(collection: NavigationCollection) {
+        self.collection = collection
     }
 
     @objc(navigate:context:sender:)
     public func navigate(name: String, context: AnyObject, sender: UIViewController) {
-        for collection in self.collection {
-            if let route = collection.routes[name] {
-                self.navigate(route, collection: collection, context: context, sender: sender)
+        if let route = self.collection.routes[name] {
+            self.navigate(NavigationContext.init(context: context, route: route, source: sender))
 
-                return
-            }
+            return
+        }
+    }
+
+    @objc(navigate:context:fromControl:)
+    public func navigate(name: String, context: AnyObject, sender: UIControl) {
+        if let route = self.collection.routes[name] {
+            self.navigate(NavigationContext.init(context: context, route: route, source: sender))
+
+            return
         }
     }
 
@@ -43,26 +41,13 @@ public class Navigation : NSObject {
 //    public func navigate(url: NSURL, sender: UIViewController) {
 //    }
 
-    private func navigate(route: Routable, collection: NavigationCollection, context: AnyObject?, sender: UIViewController) {
-        let currentTrait = UIApplication.sharedApplication().keyWindow!.traitCollection
-        let transition = collection.transitions.transitionFor(sender.dynamicType, to: route.destination, trait: currentTrait)
-        let navContext = NavigationContext(source: sender, route: route, context: context, transition: transition)
-
-        navContext.sourceViewController.navigationContext = navContext
-        navContext.presenter.show(navContext, willShow: self.willNavigate)
+    private func navigate(context: NavigationContext) {
+        context.traitCollection = UIApplication.sharedApplication().keyWindow!.traitCollection
+        context.sourceViewController.navigationContext = context
+        context.presenter(self.collection.transitions).show(context, willShow: self.willNavigate)
     }
 
     public func navigateBack(sender: UIViewController) {
-        sender.navigationContext?.presenter.dismiss(sender)
-    }
-
-    public func redirect() {
-
-    }
-
-    public func urlFor(name: String, context: AnyObject) -> String? {
-        // 1. retrieve route by name
-        // 2. generate url
-        return nil
+        sender.navigationContext?.presenter(self.collection.transitions).dismiss(sender)
     }
 }
