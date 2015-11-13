@@ -16,10 +16,4 @@ extension UIViewController {
         get { return objc_getAssociatedObject(self, &NabigetaViewControllerNavigationContext) as? NavigationContext }
         set { objc_setAssociatedObject(self, &NabigetaViewControllerNavigationContext, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
-
-    /// For internal use only
-    /// Used by a modal UIBarButtonItem to inform presentingViewController to close its modal 
-    func dismissModalCallback() {
-        self.navigationContext?.presenter.dismiss(self)
-    }
 }
