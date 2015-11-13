@@ -9,6 +9,6 @@
 import Foundation
 
 public struct Transition {
-    let presentation: PresentationStyle
+    let presentation: PresentationStrategy
     let trait: UITraitCollection?
 }

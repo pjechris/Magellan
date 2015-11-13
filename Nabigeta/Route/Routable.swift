@@ -12,7 +12,7 @@ public protocol Routable
 {
     var name: String { get }
     var url: String? { get }
-    var defaultPresentation: PresentationStyle { get }
+    var defaultPresentation: PresentationStrategy { get }
 
     var destination: UIViewController.Type { get }
 }

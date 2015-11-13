@@ -11,17 +11,17 @@ import Foundation
 public class TransitionBuilder {
     internal var transitions:[Transition] = []
 
-    public func setPresentation(presentation: PresentationStyle, _ trait: UITraitCollection? = nil) {
+    public func setPresentation(presentation: PresentationStrategy, _ trait: UITraitCollection? = nil) {
         self.transitions.append(Transition(presentation: presentation, trait: trait))
     }
 
-    public func setPresentation(presentation: PresentationStyle, _ horizontalSizeClass: UIUserInterfaceSizeClass) {
+    public func setPresentation(presentation: PresentationStrategy, _ horizontalSizeClass: UIUserInterfaceSizeClass) {
         let trait = UITraitCollection(horizontalSizeClass: horizontalSizeClass)
 
         self.setPresentation(presentation, trait)
     }
 
-    public func setPresentation(presentation: PresentationStyle, _ horizontalSizeClass: UIUserInterfaceSizeClass, _ verticalSizeClass: UIUserInterfaceSizeClass) {
+    public func setPresentation(presentation: PresentationStrategy, _ horizontalSizeClass: UIUserInterfaceSizeClass, _ verticalSizeClass: UIUserInterfaceSizeClass) {
         let trait = UITraitCollection(traitsFromCollections: [
             UITraitCollection(horizontalSizeClass: horizontalSizeClass),
             UITraitCollection(verticalSizeClass: verticalSizeClass)
