@@ -8,28 +8,28 @@
 
 import Foundation
 
-public struct TransitionCollection {
-    var transitions:[TransitionContext:[PresentationAdaptive]] = [:]
+public struct PresentationAdaptiveCollection {
+    var transitions:[PresentationAdaptiveContext:[PresentationAdaptive]] = [:]
 
-    public mutating func when(from from: UIViewController.Type, to: UIViewController.Type, @noescape definition: (TransitionBuilder) -> Void) {
+    public mutating func when(from from: UIViewController.Type, to: UIViewController.Type, @noescape definition: (PresentationAdaptiveBuilder) -> Void) {
         self.when(from, to: to, definition: definition)
     }
 
-    public mutating func when(to to: UIViewController.Type, @noescape definition: (TransitionBuilder) -> Void) {
+    public mutating func when(to to: UIViewController.Type, @noescape definition: (PresentationAdaptiveBuilder) -> Void) {
         self.when(nil, to: to, definition: definition)
     }
 
-    private mutating func when(from: UIViewController.Type?, to: UIViewController.Type, @noescape definition: (TransitionBuilder) -> Void) {
-        let builder = TransitionBuilder()
+    private mutating func when(from: UIViewController.Type?, to: UIViewController.Type, @noescape definition: (PresentationAdaptiveBuilder) -> Void) {
+        let builder = PresentationAdaptiveBuilder()
 
         definition(builder)
 
-        self.transitions[TransitionContext(from: from, to: to)] = builder.transitions
+        self.transitions[PresentationAdaptiveContext(from: from, to: to)] = builder.transitions
     }
 
     internal func transitionFor(from: UIViewController.Type, to: UIViewController.Type, trait: UITraitCollection) -> PresentationAdaptive? {
-        let transitionsFromTo = TransitionContext(from: from, to: to)
-        let transitionsTo = TransitionContext(to: to)
+        let transitionsFromTo = PresentationAdaptiveContext(from: from, to: to)
+        let transitionsTo = PresentationAdaptiveContext(to: to)
         let transitions = self.transitions[transitionsFromTo] ?? self.transitions[transitionsTo]
 
         if transitions != nil {

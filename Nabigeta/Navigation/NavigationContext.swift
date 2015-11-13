@@ -55,7 +55,7 @@ public class NavigationContext {
         self.touchedControl = control
     }
 
-    internal func presenter(transitions: TransitionCollection) -> PresentationStrategy {
+    internal func presenter(transitions: PresentationAdaptiveCollection) -> PresentationStrategy {
         return transitions.transitionFor(self.sourceViewController.dynamicType, to: self.route.destination, trait: self.traitCollection)?.presentation
             ?? self.route.defaultPresentation
     }

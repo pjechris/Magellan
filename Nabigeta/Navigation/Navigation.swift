@@ -44,10 +44,10 @@ public class Navigation : NSObject {
     private func navigate(context: NavigationContext) {
         context.traitCollection = UIApplication.sharedApplication().keyWindow!.traitCollection
         context.sourceViewController.navigationContext = context
-        context.presenter(self.collection.transitions).show(context, willShow: self.willNavigate)
+        context.presenter(self.collection.presentations).show(context, willShow: self.willNavigate)
     }
 
     public func navigateBack(sender: UIViewController) {
-        sender.navigationContext?.presenter(self.collection.transitions).dismiss(sender)
+        sender.navigationContext?.presenter(self.collection.presentations).dismiss(sender)
     }
 }

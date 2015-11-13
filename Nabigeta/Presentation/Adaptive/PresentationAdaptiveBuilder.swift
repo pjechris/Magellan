@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class TransitionBuilder {
+public class PresentationAdaptiveBuilder {
     internal var transitions:[PresentationAdaptive] = []
 
     public func addAdaptivePresentation(presentation: PresentationStrategy, _ trait: UITraitCollection) {

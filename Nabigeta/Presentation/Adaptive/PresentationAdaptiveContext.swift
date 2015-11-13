@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal struct TransitionContext : Hashable {
+internal struct PresentationAdaptiveContext : Hashable {
     let fromViewController: UIViewController.Type?
     let toViewController: UIViewController.Type
 
@@ -26,7 +26,7 @@ internal struct TransitionContext : Hashable {
     }
 }
 
-func ==(lhs: TransitionContext, rhs: TransitionContext) -> Bool {
+func ==(lhs: PresentationAdaptiveContext, rhs: PresentationAdaptiveContext) -> Bool {
     return lhs.toViewController == rhs.toViewController && lhs.fromViewController == rhs.fromViewController
 }
 

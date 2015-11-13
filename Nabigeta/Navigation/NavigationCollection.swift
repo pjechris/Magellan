@@ -10,5 +10,5 @@ import Foundation
 
 public class NavigationCollection : NSObject {
     public var routes: RouteCollection = RouteCollection()
-    public var transitions: TransitionCollection = TransitionCollection()
+    public var presentations: PresentationAdaptiveCollection = PresentationAdaptiveCollection()
 }

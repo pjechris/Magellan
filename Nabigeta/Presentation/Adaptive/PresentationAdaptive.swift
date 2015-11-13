@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Transition {
+public struct PresentationAdaptive {
     let presentation: PresentationStrategy
-    let trait: UITraitCollection?
+    let trait: UITraitCollection
 }
