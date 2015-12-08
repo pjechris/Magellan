@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "36E15A5F783B88494B966627BDDE9BEE0369D6E3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "816A235C362DEEF7921B8EB404DA61134874F345" : 0,
+    "36E15A5F783B88494B966627BDDE9BEE0369D6E3" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "56221DDD-8A00-46BC-B06A-26E58DA5C9C8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "816A235C362DEEF7921B8EB404DA61134874F345" : "Nabigeta\/Router\/",
+    "36E15A5F783B88494B966627BDDE9BEE0369D6E3" : "Nabigeta\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Nabigeta",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Nabigeta.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/akane\/Nabigeta.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "36E15A5F783B88494B966627BDDE9BEE0369D6E3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ViacomInc\/Router",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "816A235C362DEEF7921B8EB404DA61134874F345"
+    }
+  ]
+}
