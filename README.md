@@ -59,8 +59,8 @@ presentation using ```NavigationCollection```
 ```swift
 // presentations are defined against view controllers, and not routes
 collection.presentations.when(to: AuthorViewController.self) { pres in
-  pres.addAdaptivePresentation(PresenationPopover(), .Regular, .Regular) // iPad
-  pres.addAdptivePresentation(PresenationPopover(), .Regular, .Compact) // iPhone6+
+  pres.addAdaptivePresentation(PresentationPopover(), .Regular, .Regular) // iPad
+  pres.addAdptivePresentation(PresentationPopover(), .Regular, .Compact) // iPhone6+
 }
 ```
 
@@ -70,7 +70,7 @@ You can even define more complex adaptive presentations:
 
 // We define presentation when coming from specific view controller
 collection.presentations.when(from: LoginViewController, to: AuthorViewController.self) { pres in
-  pres.addAdaptivePresentation(PresenationModal(), .Regular, .Regular) // iPad
+  pres.addAdaptivePresentation(PresentationModal(), .Regular, .Regular) // iPad
 }
 
 ```
