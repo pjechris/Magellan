@@ -12,7 +12,12 @@ import UIKit
 public class Navigation {
     public var willNavigate: PresentationWillShowHandler?
 
+    private let traitProvider: UITraitEnvironment
     private var router: (Any -> Route)?
+
+    init(traitProvider: UITraitEnvironment) {
+        self.traitProvider = traitProvider
+    }
 
     public func navigate(name: String, context: Any, sender: UIViewController) {
         if let route = self.router?(context) {
@@ -31,12 +36,16 @@ public class Navigation {
     }
 
     private func navigate(context: NavigationContext) {
-        context.traitCollection = UIApplication.sharedApplication().keyWindow!.traitCollection
+        let presentation = context.route.presentation(forTrait: self.traitProvider.traitCollection)
+
         context.sourceViewController.navigationContext = context
-        context.presenter(self.collection.presentations).show(context, willShow: self.willNavigate)
+        presentation.show(context, willShow: self.willNavigate)
     }
 
     public func navigateBack(sender: UIViewController) {
-        sender.navigationContext?.presenter(self.collection.presentations).dismiss(sender)
+        let context = sender.navigationContext
+        let presentation = context?.route.presentation(forTrait: self.traitProvider.traitCollection)
+
+        presentation?.dismiss(sender)
     }
 }

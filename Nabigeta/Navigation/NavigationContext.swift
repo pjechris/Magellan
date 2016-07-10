@@ -21,15 +21,13 @@ public class NavigationContext {
     /// the view controller requiring navigation
     unowned public let sourceViewController: UIViewController
 
-    public let route: Routable
+    public let route: Route
 
     public let context: Any?
 
     public let touchedControl: UIControl?
 
-    public internal(set) var traitCollection: UITraitCollection!
-
-    public convenience init(context: AnyObject?, route: Routable, source: UIControl) {
+    public convenience init(context: Any?, route: Route, source: UIControl) {
         var controller: UIViewController! = nil
         var responder: UIResponder? = source.nextResponder()
 
@@ -44,19 +42,14 @@ public class NavigationContext {
         self.init(context: context, route: route, source: controller, control: source)
     }
 
-    public convenience init(context: Any?, route: Routable, source: UIViewController) {
+    public convenience init(context: Any?, route: Route, source: UIViewController) {
         self.init(context: context, route: route, source: source, control: nil)
     }
 
-    public init(context: Any?, route: Routable, source: UIViewController, control: UIControl?) {
+    public init(context: Any?, route: Route, source: UIViewController, control: UIControl?) {
         self.sourceViewController = source
         self.route = route
         self.context = context
         self.touchedControl = control
-    }
-
-    internal func presenter(transitions: PresentationAdaptiveCollection) -> PresentationStrategy {
-        return transitions.transitionFor(self.sourceViewController.dynamicType, to: self.route.destination, trait: self.traitCollection)?.presentation
-            ?? self.route.defaultPresentation
     }
 }
