@@ -9,24 +9,26 @@
 import Foundation
 import UIKit
 
-public class Route : NSObject, Routable {
-    public let name: String
+public struct Route {
     public let destination: UIViewController.Type
-    public let url: String?
-    public let defaultPresentation: PresentationStrategy
+    public private(set) var presentation: (forTrait: UITraitCollection) -> PresentationStrategy
 
-    public init(_ name: String, _ destination: UIViewController.Type, url: String?, presentation: PresentationStrategy) {
-        self.name = name
+    public init(_ destination: UIViewController.Type) {
         self.destination = destination
-        self.url = url
-        self.defaultPresentation = presentation
+        self.presentation = { _ in PresentationPush() }
     }
 
-    public convenience init(_ name: String, _ destination: UIViewController.Type, presentation: PresentationStrategy) {
-        self.init(name, destination, url: nil, presentation: presentation)
+    public func present(presentation: PresentationStrategy) -> Route {
+        return self.present { _ in
+            presentation
+        }
     }
 
-    public convenience init(_ name: String, _ destination: UIViewController.Type) {
-        self.init(name, destination, presentation: PresentationPush())
+    public func present(when presentation: (UITraitCollection) -> PresentationStrategy) -> Route {
+        var route = self
+
+        route.presentation = presentation
+
+        return route
     }
 }
