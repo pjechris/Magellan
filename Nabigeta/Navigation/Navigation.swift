@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class Navigation : NSObject {
+public class Navigation {
     public var willNavigate: PresentationWillShowHandler?
 
     private var collection: NavigationCollection
@@ -18,8 +18,15 @@ public class Navigation : NSObject {
         self.collection = collection
     }
 
-    @objc(navigate:context:sender:)
-    public func navigate(name: String, context: AnyObject, sender: UIViewController) {
+        if let route = self.collection.routes[name] {
+    public func navigate(_ name: String, context: Any, sender: UIViewController) {
+            self.navigate(NavigationContext.init(context: context, route: route, source: sender))
+
+            return
+        }
+    }
+
+    public func navigate(_ name: String, context: AnyObject, sender: UIControl) {
         if let route = self.collection.routes[name] {
             self.navigate(NavigationContext.init(context: context, route: route, source: sender))
 
@@ -27,19 +34,6 @@ public class Navigation : NSObject {
         }
     }
 
-    @objc(navigate:context:fromControl:)
-    public func navigate(name: String, context: AnyObject, sender: UIControl) {
-        if let route = self.collection.routes[name] {
-            self.navigate(NavigationContext.init(context: context, route: route, source: sender))
-
-            return
-        }
-    }
-
-    // URL routing is not available yet
-//    @objc(navigateURL:sender:)
-//    public func navigate(url: NSURL, sender: UIViewController) {
-//    }
 
     private func navigate(context: NavigationContext) {
         context.traitCollection = UIApplication.sharedApplication().keyWindow!.traitCollection
