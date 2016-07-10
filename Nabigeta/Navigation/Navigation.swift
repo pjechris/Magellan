@@ -14,7 +14,7 @@ public class Navigation {
 
     private var router: (Any -> Route)?
 
-    public func navigate(_ name: String, context: Any, sender: UIViewController) {
+    public func navigate(name: String, context: Any, sender: UIViewController) {
         if let route = self.router?(context) {
             self.navigate(NavigationContext.init(context: context, route: route, source: sender))
 
@@ -22,7 +22,7 @@ public class Navigation {
         }
     }
 
-    public func navigate(_ name: String, context: AnyObject, sender: UIControl) {
+    public func navigate(name: String, context: AnyObject, sender: UIControl) {
         if let route = self.router?(context) {
             self.navigate(NavigationContext.init(context: context, route: route, source: sender))
 
@@ -30,13 +30,13 @@ public class Navigation {
         }
     }
 
-    private func navigate(_ context: NavigationContext) {
-        context.traitCollection = UIApplication.shared().keyWindow!.traitCollection
+    private func navigate(context: NavigationContext) {
+        context.traitCollection = UIApplication.sharedApplication().keyWindow!.traitCollection
         context.sourceViewController.navigationContext = context
         context.presenter(self.collection.presentations).show(context, willShow: self.willNavigate)
     }
 
-    public func navigateBack(_ sender: UIViewController) {
+    public func navigateBack(sender: UIViewController) {
         sender.navigationContext?.presenter(self.collection.presentations).dismiss(sender)
     }
 }
