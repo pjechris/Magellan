@@ -16,9 +16,7 @@
 		4902AB051BF62AF8003D6435 /* PresentationPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902AB011BF62AF7003D6435 /* PresentationPush.swift */; };
 		4902AB061BF62AF8003D6435 /* PresentationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902AB021BF62AF7003D6435 /* PresentationSegue.swift */; };
 		490C38391A48219E00EC432E /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38381A48219E00EC432E /* NavigationContext.swift */; };
-		490C38431A4855CC00EC432E /* RouteCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38421A4855CC00EC432E /* RouteCollection.swift */; };
 		490C38471A48564900EC432E /* Routable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38461A48564900EC432E /* Routable.swift */; };
-		493F34931BE27CDA00C52E3F /* NavigationCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493F34921BE27CDA00C52E3F /* NavigationCollection.swift */; };
 		4992F6231AB6154E00E53BE5 /* UIViewController+Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992F6221AB6154E00E53BE5 /* UIViewController+Segue.swift */; };
 		49B035FA1AACFE9900CB95DD /* PresentationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */; };
 		49C05ABB1BE0DCB10054337C /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C05ABA1BE0DCB10054337C /* Navigation.swift */; };
@@ -40,9 +38,7 @@
 		4902AB011BF62AF7003D6435 /* PresentationPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationPush.swift; sourceTree = "<group>"; };
 		4902AB021BF62AF7003D6435 /* PresentationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationSegue.swift; sourceTree = "<group>"; };
 		490C38381A48219E00EC432E /* NavigationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
-		490C38421A4855CC00EC432E /* RouteCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteCollection.swift; sourceTree = "<group>"; };
 		490C38461A48564900EC432E /* Routable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routable.swift; sourceTree = "<group>"; };
-		493F34921BE27CDA00C52E3F /* NavigationCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationCollection.swift; sourceTree = "<group>"; };
 		4992F6221AB6154E00E53BE5 /* UIViewController+Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Segue.swift"; sourceTree = "<group>"; };
 		49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationStrategy.swift; sourceTree = "<group>"; };
 		49C05ABA1BE0DCB10054337C /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -123,7 +119,6 @@
 			children = (
 				490C38461A48564900EC432E /* Routable.swift */,
 				49E5EA861A0BC3A400169136 /* Route.swift */,
-				490C38421A4855CC00EC432E /* RouteCollection.swift */,
 			);
 			path = Route;
 			sourceTree = "<group>";
@@ -133,7 +128,6 @@
 			children = (
 				49C05ABA1BE0DCB10054337C /* Navigation.swift */,
 				490C38381A48219E00EC432E /* NavigationContext.swift */,
-				493F34921BE27CDA00C52E3F /* NavigationCollection.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -371,10 +365,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				490C38431A4855CC00EC432E /* RouteCollection.swift in Sources */,
 				4902AAFA1BF62A78003D6435 /* PresentationAdaptive.swift in Sources */,
 				490C38391A48219E00EC432E /* NavigationContext.swift in Sources */,
-				493F34931BE27CDA00C52E3F /* NavigationCollection.swift in Sources */,
 				4902AAFB1BF62A78003D6435 /* PresentationAdaptiveBuilder.swift in Sources */,
 				49E5EA871A0BC3A400169136 /* Route.swift in Sources */,
 				490C38471A48564900EC432E /* Routable.swift in Sources */,

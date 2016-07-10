@@ -12,14 +12,10 @@ import UIKit
 public class Navigation {
     public var willNavigate: PresentationWillShowHandler?
 
-    private var collection: NavigationCollection
+    private var router: (Any -> Route)?
 
-    public init(collection: NavigationCollection) {
-        self.collection = collection
-    }
-
-        if let route = self.collection.routes[name] {
     public func navigate(_ name: String, context: Any, sender: UIViewController) {
+        if let route = self.router?(context) {
             self.navigate(NavigationContext.init(context: context, route: route, source: sender))
 
             return
@@ -27,21 +23,20 @@ public class Navigation {
     }
 
     public func navigate(_ name: String, context: AnyObject, sender: UIControl) {
-        if let route = self.collection.routes[name] {
+        if let route = self.router?(context) {
             self.navigate(NavigationContext.init(context: context, route: route, source: sender))
 
             return
         }
     }
 
-
-    private func navigate(context: NavigationContext) {
-        context.traitCollection = UIApplication.sharedApplication().keyWindow!.traitCollection
+    private func navigate(_ context: NavigationContext) {
+        context.traitCollection = UIApplication.shared().keyWindow!.traitCollection
         context.sourceViewController.navigationContext = context
         context.presenter(self.collection.presentations).show(context, willShow: self.willNavigate)
     }
 
-    public func navigateBack(sender: UIViewController) {
+    public func navigateBack(_ sender: UIViewController) {
         sender.navigationContext?.presenter(self.collection.presentations).dismiss(sender)
     }
 }
