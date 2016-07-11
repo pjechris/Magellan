@@ -15,7 +15,7 @@ public class Navigation {
     private let traitProvider: UITraitEnvironment
     private var router: (Any -> Route)?
 
-    init(traitProvider: UITraitEnvironment) {
+    public init(traitProvider: UITraitEnvironment) {
         self.traitProvider = traitProvider
     }
 
