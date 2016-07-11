@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.name		  = "Nabigeta"
-  s.version		  = "0.6.0"
+  s.name		    = "Nabigeta"
+  s.version		  = "0.7.0"
   s.source		  = { :git => "https://github.com/akane/Nabigeta.git",
   		     	    :tag => s.version.to_s }
 
@@ -10,10 +10,8 @@ Pod::Spec.new do |s|
   s.license		  = { :type => "MIT", :file => "LICENSE" }
   s.author                = 'pjechris', 'akane'
 
-  s.ios.deployment_target = "7.0"
+  s.ios.deployment_target = "8.0"
   s.source_files    	  = "#{s.name}/**/*.swift"
   s.prefix_header_file    = "#{s.name}/#{s.name}.h"
   s.requires_arc 	  = true
-
-  s.dependency 'Router'
 end
