@@ -11,11 +11,9 @@ import UIKit
 
 public class PresentationPopover : PresentationStrategy {
 
-    public func show(navigationContext: NavigationContext, willShow: PresentationWillShowHandler?) {
+    public func show(navigationContext: NavigationContext) {
         let destinationController = navigationContext.route.destination.init()
         let stackController: UINavigationController = UINavigationController()
-
-        willShow?(destinationController, navigationContext.context)
 
         stackController.modalPresentationStyle = .Popover
         stackController.pushViewController(destinationController, animated: false)

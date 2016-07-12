@@ -23,11 +23,11 @@ public class NavigationContext {
 
     public let route: Route
 
-    public let context: Any?
+    public let context: Any
 
     public let touchedControl: UIControl?
 
-    public convenience init(context: Any?, route: Route, source: UIControl) {
+    public convenience init(context: Any, route: Route, source: UIControl) {
         var controller: UIViewController! = nil
         var responder: UIResponder? = source.nextResponder()
 
@@ -42,11 +42,11 @@ public class NavigationContext {
         self.init(context: context, route: route, source: controller, control: source)
     }
 
-    public convenience init(context: Any?, route: Route, source: UIViewController) {
+    public convenience init(context: Any, route: Route, source: UIViewController) {
         self.init(context: context, route: route, source: source, control: nil)
     }
 
-    public init(context: Any?, route: Route, source: UIViewController, control: UIControl?) {
+    public init(context: Any, route: Route, source: UIViewController, control: UIControl?) {
         self.sourceViewController = source
         self.route = route
         self.context = context

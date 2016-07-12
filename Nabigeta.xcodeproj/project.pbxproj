@@ -12,7 +12,6 @@
 		4902AB051BF62AF8003D6435 /* PresentationPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902AB011BF62AF7003D6435 /* PresentationPush.swift */; };
 		4902AB061BF62AF8003D6435 /* PresentationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902AB021BF62AF7003D6435 /* PresentationSegue.swift */; };
 		490C38391A48219E00EC432E /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38381A48219E00EC432E /* NavigationContext.swift */; };
-		4992F6231AB6154E00E53BE5 /* UIViewController+Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4992F6221AB6154E00E53BE5 /* UIViewController+Segue.swift */; };
 		49B035FA1AACFE9900CB95DD /* PresentationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */; };
 		49C05ABB1BE0DCB10054337C /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C05ABA1BE0DCB10054337C /* Navigation.swift */; };
 		49DE53791A6EBDCF005A67AE /* UIViewController+Nabigeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DE53781A6EBDCF005A67AE /* UIViewController+Nabigeta.swift */; };
@@ -24,16 +23,11 @@
 
 /* Begin PBXFileReference section */
 		09D442A8D3FB6659AE469A38 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		4902AAF61BF62A78003D6435 /* PresentationAdaptive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationAdaptive.swift; sourceTree = "<group>"; };
-		4902AAF71BF62A78003D6435 /* PresentationAdaptiveBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationAdaptiveBuilder.swift; sourceTree = "<group>"; };
-		4902AAF81BF62A78003D6435 /* PresentationAdaptiveCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationAdaptiveCollection.swift; sourceTree = "<group>"; };
-		4902AAF91BF62A78003D6435 /* PresentationAdaptiveContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationAdaptiveContext.swift; sourceTree = "<group>"; };
 		4902AAFF1BF62AF7003D6435 /* PresentationModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationModal.swift; sourceTree = "<group>"; };
 		4902AB001BF62AF7003D6435 /* PresentationPopover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationPopover.swift; sourceTree = "<group>"; };
 		4902AB011BF62AF7003D6435 /* PresentationPush.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationPush.swift; sourceTree = "<group>"; };
 		4902AB021BF62AF7003D6435 /* PresentationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationSegue.swift; sourceTree = "<group>"; };
 		490C38381A48219E00EC432E /* NavigationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
-		4992F6221AB6154E00E53BE5 /* UIViewController+Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Segue.swift"; sourceTree = "<group>"; };
 		49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationStrategy.swift; sourceTree = "<group>"; };
 		49C05ABA1BE0DCB10054337C /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		49DE53781A6EBDCF005A67AE /* UIViewController+Nabigeta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Nabigeta.swift"; sourceTree = "<group>"; };
@@ -91,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				49DE53781A6EBDCF005A67AE /* UIViewController+Nabigeta.swift */,
-				4992F6221AB6154E00E53BE5 /* UIViewController+Segue.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -348,7 +341,6 @@
 			files = (
 				490C38391A48219E00EC432E /* NavigationContext.swift in Sources */,
 				49E5EA871A0BC3A400169136 /* Route.swift in Sources */,
-				4992F6231AB6154E00E53BE5 /* UIViewController+Segue.swift in Sources */,
 				49C05ABB1BE0DCB10054337C /* Navigation.swift in Sources */,
 				4902AB031BF62AF8003D6435 /* PresentationModal.swift in Sources */,
 				49DE53791A6EBDCF005A67AE /* UIViewController+Nabigeta.swift in Sources */,
