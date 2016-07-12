@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public class Navigation {
-    public var willNavigate: PresentationWillShowHandler?
+    public var willNavigate: (Any -> Void)? = nil
 
     private let traitProvider: UITraitEnvironment
     private var router: (Any -> Route)?
@@ -27,6 +27,7 @@ public class Navigation {
         }
     }
 
+    /// This API is in Beta.
     public func navigate(name: String, context: AnyObject, sender: UIControl) {
         if let route = self.router?(context) {
             self.navigate(NavigationContext.init(context: context, route: route, source: sender))
@@ -39,7 +40,8 @@ public class Navigation {
         let presentation = context.route.presentation(forTrait: self.traitProvider.traitCollection)
 
         context.sourceViewController.navigationContext = context
-        presentation.show(context, willShow: self.willNavigate)
+        self.willNavigate?(context.context)
+        presentation.show(context)
     }
 
     public func navigateBack(sender: UIViewController) {

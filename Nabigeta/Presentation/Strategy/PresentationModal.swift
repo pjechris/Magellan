@@ -18,7 +18,7 @@ public class PresentationModal : PresentationStrategy {
         self.transition = transition
     }
 
-    public func show(navigationContext: NavigationContext, willShow: PresentationWillShowHandler?) {
+    public func show(navigationContext: NavigationContext) {
         let destinationController = navigationContext.route.destination.init()
         let stackController: UINavigationController = UINavigationController()
 
@@ -31,7 +31,6 @@ public class PresentationModal : PresentationStrategy {
         }
 
         stackController.pushViewController(destinationController, animated: false)
-        willShow?(destinationController, navigationContext.context)
         navigationContext.sourceViewController.presentViewController(stackController, animated: true, completion: nil)
     }
 

@@ -16,10 +16,9 @@ public class PresentationSegue: PresentationStrategy {
         self.segueIdentifier = segueIdentifier
     }
 
-    public func show(navigationContext: NavigationContext, willShow: PresentationWillShowHandler?) {
+    public func show(navigationContext: NavigationContext) {
         let source = navigationContext.sourceViewController
 
-        source.presentationHandler = PresentationHandler(willShow: willShow)
         source.performSegueWithIdentifier(self.segueIdentifier, sender: source)
     }
 

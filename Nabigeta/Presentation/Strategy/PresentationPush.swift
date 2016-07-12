@@ -21,11 +21,9 @@ public class PresentationPush : PresentationStrategy {
         self.pushMode = pushMode ?? .Master
     }
 
-    public func show(navigationContext: NavigationContext, willShow: PresentationWillShowHandler?) {
+    public func show(navigationContext: NavigationContext) {
         let destinationViewController: UIViewController = navigationContext.route.destination.init()
         let stackController = navigationContext.sourceViewController.navigationController!
-
-        willShow?(destinationViewController, navigationContext.context)
 
         switch self.pushMode {
         case .Master:
