@@ -10,16 +10,17 @@ import Foundation
 import UIKit
 
 public class PresentationSegue: PresentationStrategy {
-    let segueIdentifier: String
+    let segueType: UIStoryboardSegue.Type
 
-    public init(_ segueIdentifier: String) {
-        self.segueIdentifier = segueIdentifier
+    public init(_ segue: UIStoryboardSegue.Type) {
+        self.segueType = segue
     }
 
-    public func show(navigationContext: NavigationContext) {
-        let source = navigationContext.sourceViewController
+    public func show(context: NavigationContext) {
+        let segue = self.segueType
+            .init(identifier: nil, source: context.sourceViewController, destination: context.destinationViewController)
 
-        source.performSegueWithIdentifier(self.segueIdentifier, sender: nil)
+        segue.perform()
     }
 
     public func dismiss(sender: UIViewController) {
