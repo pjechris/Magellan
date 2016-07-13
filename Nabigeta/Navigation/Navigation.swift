@@ -39,15 +39,14 @@ public class Navigation {
     private func navigate(route: Route, context: NavigationContext) {
         let presentation = route.presentation(forTrait: self.traitProvider.traitCollection)
 
-        context.sourceViewController.navigationContext = context
         self.willNavigate?(context.context)
+        context.sourceViewController.presentingContext = PresentingContext(context: context, presentation: presentation)
         presentation.show(context)
     }
 
-    public func navigateBack(sender: UIViewController) {
-        let context = sender.navigationContext
-        let presentation = context?.route.presentation(forTrait: self.traitProvider.traitCollection)
+    public func navigateBack(to sender: UIViewController) {
+        let presentingContext = sender.presentingContext
 
-        presentation?.dismiss(sender)
+        presentingContext?.presentation.dismiss(sender)
     }
 }

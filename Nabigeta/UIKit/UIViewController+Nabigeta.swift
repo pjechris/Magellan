@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-var NabigetaViewControllerNavigationContext = "NabigetaViewControllerNavigationContext"
+var PresentingContextAttr = "PresentingContextAttr"
 
 extension UIViewController {
-    var navigationContext: NavigationContext? {
-        get { return objc_getAssociatedObject(self, &NabigetaViewControllerNavigationContext) as? NavigationContext }
-        set { objc_setAssociatedObject(self, &NabigetaViewControllerNavigationContext, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    var presentingContext: PresentingContext? {
+        get { return objc_getAssociatedObject(self, &PresentingContextAttr) as? PresentingContext }
+        set { objc_setAssociatedObject(self, &PresentingContextAttr, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
 }
