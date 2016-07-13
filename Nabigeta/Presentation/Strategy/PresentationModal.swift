@@ -19,7 +19,7 @@ public class PresentationModal : PresentationStrategy {
     }
 
     public func show(navigationContext: NavigationContext) {
-        let destinationController = navigationContext.route.destination.init()
+        let destinationController = navigationContext.destinationViewController
         let stackController: UINavigationController = UINavigationController()
 
         if (self.presentation != nil) {

@@ -19,7 +19,7 @@ public class PresentationSegue: PresentationStrategy {
     public func show(navigationContext: NavigationContext) {
         let source = navigationContext.sourceViewController
 
-        source.performSegueWithIdentifier(self.segueIdentifier, sender: source)
+        source.performSegueWithIdentifier(self.segueIdentifier, sender: nil)
     }
 
     public func dismiss(sender: UIViewController) {

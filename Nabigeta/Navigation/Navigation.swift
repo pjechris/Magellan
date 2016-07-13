@@ -19,25 +19,25 @@ public class Navigation {
         self.traitProvider = traitProvider
     }
 
-    public func navigate(name: String, context: Any, sender: UIViewController) {
+    public func navigate(context: Any, sender: UIViewController) {
         if let route = self.router?(context) {
-            self.navigate(NavigationContext.init(context: context, route: route, source: sender))
+            self.navigate(route, context: NavigationContext(context: context, route: route, source: sender))
 
             return
         }
     }
 
     /// This API is in Beta.
-    public func navigate(name: String, context: AnyObject, sender: UIControl) {
+    public func navigate(context: AnyObject, sender: UIControl) {
         if let route = self.router?(context) {
-            self.navigate(NavigationContext.init(context: context, route: route, source: sender))
+            self.navigate(route, context: NavigationContext(context: context, route: route, source: sender))
 
             return
         }
     }
 
-    private func navigate(context: NavigationContext) {
-        let presentation = context.route.presentation(forTrait: self.traitProvider.traitCollection)
+    private func navigate(route: Route, context: NavigationContext) {
+        let presentation = route.presentation(forTrait: self.traitProvider.traitCollection)
 
         context.sourceViewController.navigationContext = context
         self.willNavigate?(context.context)

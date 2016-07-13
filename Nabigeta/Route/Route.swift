@@ -10,11 +10,13 @@ import Foundation
 import UIKit
 
 public struct Route {
-    public let destination: UIViewController.Type
+    public let destinationType: UIViewController.Type
+    public let storyboardIdentifier: String?
     public private(set) var presentation: (forTrait: UITraitCollection) -> PresentationStrategy
 
-    public init(_ destination: UIViewController.Type) {
-        self.destination = destination
+    public init(_ destination: UIViewController.Type, storyboardIdentifier: String? = nil) {
+        self.destinationType = destination
+        self.storyboardIdentifier = storyboardIdentifier
         self.presentation = { _ in PresentationPush() }
     }
 
@@ -30,5 +32,13 @@ public struct Route {
         route.presentation = presentation
 
         return route
+    }
+
+    func destination(usingStoryboard storyboard: UIStoryboard?) -> UIViewController {
+        guard let storyboard = storyboard, let storyboardIdentifier = self.storyboardIdentifier else {
+            return self.destinationType.init()
+        }
+
+        return storyboard.instantiateViewControllerWithIdentifier(storyboardIdentifier)
     }
 }

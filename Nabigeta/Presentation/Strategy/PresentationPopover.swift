@@ -12,7 +12,7 @@ import UIKit
 public class PresentationPopover : PresentationStrategy {
 
     public func show(navigationContext: NavigationContext) {
-        let destinationController = navigationContext.route.destination.init()
+        let destinationController = navigationContext.destinationViewController
         let stackController: UINavigationController = UINavigationController()
 
         stackController.modalPresentationStyle = .Popover
