@@ -22,7 +22,7 @@ public class PresentationPush : PresentationStrategy {
     }
 
     public func show(navigationContext: NavigationContext) {
-        let destinationViewController: UIViewController = navigationContext.route.destination.init()
+        let destinationViewController: UIViewController = navigationContext.destinationViewController
         let stackController = navigationContext.sourceViewController.navigationController!
 
         switch self.pushMode {

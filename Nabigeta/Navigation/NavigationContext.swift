@@ -10,45 +10,48 @@ import Foundation
 import UIKit
 
 /**
-* Provide contextual information for a navigation between two view controllers.
+* Provides contextual information about navigation between two view controllers.
 *
-* During navigation this object is automatically created and passed to navigation strategies.
-* You should not create any instance of this object by your own.
+* During navigation this object is automatically created and passed to any `PresentationStrategy`.
 *
-* Think about this object as a equivalent to UIViewControllerContextTransitioning but for navigation
 */
 public class NavigationContext {
     /// the view controller requiring navigation
     unowned public let sourceViewController: UIViewController
 
-    public let route: Route
+    unowned public let destinationViewController: UIViewController
 
     public let context: Any
 
-    public let touchedControl: UIControl?
+    weak public private(set) var touchedControl: UIControl?
 
-    public convenience init(context: Any, route: Route, source: UIControl) {
-        var controller: UIViewController! = nil
-        var responder: UIResponder? = source.nextResponder()
+    convenience init(context: Any, route: Route, source control: UIControl) {
+        var source: UIViewController! = nil
+        var responder: UIResponder? = control.nextResponder()
 
         while responder != nil {
             if ((responder as? UIViewController) != nil) {
-                controller = responder as! UIViewController
+                source = responder as! UIViewController
             }
 
             responder = responder?.nextResponder()
         }
 
-        self.init(context: context, route: route, source: controller, control: source)
+        let destination = route.destination(usingStoryboard: source.storyboard)
+
+
+        self.init(context: context, source: source, destination: destination, control: control)
     }
 
-    public convenience init(context: Any, route: Route, source: UIViewController) {
-        self.init(context: context, route: route, source: source, control: nil)
+    convenience init(context: Any, route: Route, source: UIViewController) {
+        let destination = route.destination(usingStoryboard: source.storyboard)
+
+        self.init(context: context, source: source, destination: destination, control: nil)
     }
 
-    public init(context: Any, route: Route, source: UIViewController, control: UIControl?) {
+    init(context: Any, source: UIViewController, destination: UIViewController, control: UIControl?) {
         self.sourceViewController = source
-        self.route = route
+        self.destinationViewController = destination
         self.context = context
         self.touchedControl = control
     }
