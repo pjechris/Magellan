@@ -9,23 +9,25 @@
 import Foundation
 import UIKit
 
-public enum PresentationPushMode {
-    case Master
-    case Detail
+extension PresentationPush {
+    public enum DisplayMode {
+        case Master
+        case Detail
+    }
 }
 
 public class PresentationPush : PresentationStrategy {
-    let pushMode: PresentationPushMode
+    let displayMode: DisplayMode
 
-    init(pushMode: PresentationPushMode? = nil) {
-        self.pushMode = pushMode ?? .Master
+    init(displayMode: DisplayMode = .Master) {
+        self.displayMode = displayMode
     }
 
     public func show(navigationContext: NavigationContext) {
         let destinationViewController: UIViewController = navigationContext.destinationViewController
         let stackController = navigationContext.sourceViewController.navigationController!
 
-        switch self.pushMode {
+        switch self.displayMode {
         case .Master:
             stackController.showViewController(destinationViewController, sender: navigationContext.sourceViewController)
         case .Detail:
