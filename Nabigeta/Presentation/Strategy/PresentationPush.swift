@@ -36,7 +36,10 @@ public class PresentationPush : PresentationStrategy {
 
     }
 
-    public func dismiss(sender: UIViewController) {
-        sender.navigationController?.popToViewController(sender, animated: true)
+    public func dismiss(context: NavigationContext) {
+        context
+            .sourceViewController
+            .navigationController?
+            .popToViewController(context.sourceViewController, animated: true)
     }
 }

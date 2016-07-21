@@ -45,8 +45,8 @@ public class Navigation {
     }
 
     public func navigateBack(to sender: UIViewController) {
-        let presentingContext = sender.presentingContext
-
-        presentingContext?.presentation.dismiss(sender)
+        if let presentingContext = sender.presentingContext {
+            presentingContext.presentation.dismiss(presentingContext.context)
+        }
     }
 }

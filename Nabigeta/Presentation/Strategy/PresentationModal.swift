@@ -34,7 +34,7 @@ public class PresentationModal : PresentationStrategy {
         navigationContext.sourceViewController.presentViewController(stackController, animated: true, completion: nil)
     }
 
-    public func dismiss(sender: UIViewController) {
-        sender.dismissViewControllerAnimated(true, completion: nil)
+    public func dismiss(context: NavigationContext) {
+        context.sourceViewController.dismissViewControllerAnimated(true, completion: nil)
     }
 }

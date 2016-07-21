@@ -23,6 +23,6 @@ public class PresentationSegue: PresentationStrategy {
         segue.perform()
     }
 
-    public func dismiss(sender: UIViewController) {
+    public func dismiss(context: NavigationContext) {
     }
 }
