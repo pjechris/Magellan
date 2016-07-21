@@ -23,7 +23,7 @@ public class PresentationPopover : PresentationStrategy {
         stackController.popoverPresentationController!.sourceRect = navigationContext.touchedControl!.bounds
     }
 
-    public func dismiss(sender: UIViewController) {
-        sender.dismissViewControllerAnimated(true, completion: nil)
+    public func dismiss(context: NavigationContext) {
+        context.sourceViewController.dismissViewControllerAnimated(true, completion: nil)
     }
 }

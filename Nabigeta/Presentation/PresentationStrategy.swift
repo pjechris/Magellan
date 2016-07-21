@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public protocol PresentationStrategy {
-    func show(navigationContext: NavigationContext)
+    func show(context: NavigationContext)
 
-    func dismiss(sender: UIViewController)
+    func dismiss(context: NavigationContext)
 }
