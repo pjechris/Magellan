@@ -12,26 +12,42 @@ import UIKit
 public class PresentationModal : PresentationStrategy {
     private let presentation: UIModalPresentationStyle?
     private let transition: UIModalTransitionStyle?
+    private let wrapper: () -> UINavigationController?
 
-    public init(presentation: UIModalPresentationStyle? = nil, transition: UIModalTransitionStyle? = nil) {
+    convenience public init(presentation: UIModalPresentationStyle? = nil,
+                            transition: UIModalTransitionStyle? = nil) {
+        self.init(useWrapper: UINavigationController(), presentation: presentation, transition: transition)
+    }
+
+    public init(@autoclosure(escaping) useWrapper wrapper: () -> UINavigationController?,
+                presentation: UIModalPresentationStyle? = nil,
+                transition: UIModalTransitionStyle? = nil) {
         self.presentation = presentation
         self.transition = transition
+        self.wrapper = wrapper
     }
 
     public func show(navigationContext: NavigationContext) {
         let destinationController = navigationContext.destinationViewController
-        let stackController: UINavigationController = UINavigationController()
+        let stackController = self.wrapper()
 
-        if (self.presentation != nil) {
-            stackController.modalPresentationStyle = self.presentation!
+        
+        if let presentation = self.presentation {
+            stackController?.modalPresentationStyle = presentation
         }
 
-        if (self.transition != nil) {
-            stackController.modalTransitionStyle = self.transition!
+        if let transition = self.transition {
+            stackController?.modalTransitionStyle = transition
         }
 
-        stackController.pushViewController(destinationController, animated: false)
-        navigationContext.sourceViewController.presentViewController(stackController, animated: true, completion: nil)
+        stackController?.pushViewController(destinationController, animated: false)
+
+        if let stackController = stackController {
+            navigationContext.sourceViewController.presentViewController(stackController, animated: true, completion: nil)
+        }
+        else {
+            navigationContext.sourceViewController.presentViewController(destinationController, animated: true, completion: nil)
+        }
     }
 
     public func dismiss(context: NavigationContext) {
