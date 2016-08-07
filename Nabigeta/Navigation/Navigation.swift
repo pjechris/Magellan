@@ -19,26 +19,26 @@ public class Navigation {
         self.traitProvider = traitProvider
     }
 
-    public func navigate(to context: Any, sender: UIViewController) {
+    /**
+     Use `context` to navigate to a new `UIViewController`.
+     @param context context to use to navigate. Will be passed to destination `UIViewController`.
+     @param sender `UIViewController` making the request.
+     @param control optional control from which the action was performed, like a `UIButton`.
+    **/
+    public func navigate(to context: Any, sender: UIViewController, control: UIControl? = nil) {
         if let route = self.router?(context) {
-            self.navigate(to: route, context: NavigationContext(context: context, route: route, source: sender))
+
+            let destination = route.destination(usingStoryboard: sender.storyboard)
+            let context = NavigationContext(context: context, source: sender, destination: destination, control: control)
+            let presentation = route.presentation(forTrait: self.traitProvider.traitCollection)
+
+            self.doNavigation(context: context, presentation: presentation)
 
             return
         }
     }
 
-    /// This API is in Beta.
-    public func navigate(to context: AnyObject, sender: UIControl) {
-        if let route = self.router?(context) {
-            self.navigate(to: route, context: NavigationContext(context: context, route: route, source: sender))
-
-            return
-        }
-    }
-
-    private func navigate(to route: Route, context: NavigationContext) {
-        let presentation = route.presentation(forTrait: self.traitProvider.traitCollection)
-
+    private func doNavigation(context context: NavigationContext, presentation: PresentationStrategy) {
         self.willNavigate?(context.context)
         context.sourceViewController.presentingContext = PresentingContext(context: context, presentation: presentation)
         presentation.show(context)
