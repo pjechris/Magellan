@@ -25,27 +25,7 @@ public class NavigationContext {
 
     weak public private(set) var touchedControl: UIControl?
 
-    convenience init(context: Any, route: Route, source control: UIControl) {
-        var source: UIViewController! = nil
-        var responder: UIResponder? = control.nextResponder()
-
-        while responder != nil {
-            if ((responder as? UIViewController) != nil) {
-                source = responder as! UIViewController
-            }
-
-            responder = responder?.nextResponder()
-        }
-
-        let destination = route.destination(usingStoryboard: source.storyboard)
-
-
-        self.init(context: context, source: source, destination: destination, control: control)
-    }
-
-    convenience init(context: Any, route: Route, source: UIViewController) {
-        let destination = route.destination(usingStoryboard: source.storyboard)
-
+    convenience init(context: Any, source: UIViewController, destination: UIViewController) {
         self.init(context: context, source: source, destination: destination, control: nil)
     }
 
