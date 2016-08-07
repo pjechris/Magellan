@@ -19,19 +19,23 @@ public class NavigationContext {
     /// the view controller requiring navigation
     unowned public let sourceViewController: UIViewController
 
-    unowned public let destinationViewController: UIViewController
+    unowned public var destinationViewController: UIViewController {
+        get { return self.anyDestinationViewController.viewController }
+    }
 
     public let context: Any
 
     weak public private(set) var touchedControl: UIControl?
 
-    convenience init(context: Any, source: UIViewController, destination: UIViewController) {
+    unowned let anyDestinationViewController: AnyNavigableViewController
+
+    convenience init(context: Any, source: UIViewController, destination: AnyNavigableViewController) {
         self.init(context: context, source: source, destination: destination, control: nil)
     }
 
-    init(context: Any, source: UIViewController, destination: UIViewController, control: UIControl?) {
+    init(context: Any, source: UIViewController, destination: AnyNavigableViewController, control: UIControl?) {
         self.sourceViewController = source
-        self.destinationViewController = destination
+        self.anyDestinationViewController = destination
         self.context = context
         self.touchedControl = control
     }
