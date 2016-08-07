@@ -28,7 +28,7 @@ public class Navigation {
     public func navigate(to context: Any, sender: UIViewController, control: UIControl? = nil) {
         if let route = self.router?(context) {
 
-            let destination = route.destination(usingStoryboard: sender.storyboard)
+            let destination = route.destination(storyboard: sender.storyboard)
             let context = NavigationContext(context: context, source: sender, destination: destination, control: control)
             let presentation = route.presentation(forTrait: self.traitProvider.traitCollection)
 
@@ -42,6 +42,7 @@ public class Navigation {
         self.willNavigate?(context.context)
         context.sourceViewController.presentingContext = PresentingContext(context: context, presentation: presentation)
         presentation.show(context)
+        context.anyDestinationViewController.didNavigate(to: context.context)
     }
 
     public func navigateBack(to sender: UIViewController) {

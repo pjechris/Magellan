@@ -12,12 +12,23 @@ import UIKit
 public struct Route {
     public let destinationType: UIViewController.Type
     public let storyboardIdentifier: String?
+
     public private(set) var presentation: (forTrait: UITraitCollection) -> PresentationStrategy
 
-    public init(_ destination: UIViewController.Type, storyboardIdentifier: String? = nil) {
+    let destination: (storyboard: UIStoryboard?) -> AnyNavigableViewController
+
+    public init<Destination: UIViewController where Destination: Navigable>(_ destination: Destination.Type, storyboardIdentifier: String? = nil) {
         self.destinationType = destination
         self.storyboardIdentifier = storyboardIdentifier
         self.presentation = { _ in PresentationPush() }
+        self.destination = {
+            guard let storyboard = $0, let storyboardIdentifier = storyboardIdentifier else {
+                return AnyNavigableViewController(destination.init())
+            }
+
+            let viewController = storyboard.instantiateViewControllerWithIdentifier(storyboardIdentifier)
+            return AnyNavigableViewController(viewController as! Destination)
+        }
     }
 
     public func present(presentation: PresentationStrategy) -> Route {
@@ -32,13 +43,5 @@ public struct Route {
         route.presentation = presentation
 
         return route
-    }
-
-    func destination(usingStoryboard storyboard: UIStoryboard?) -> UIViewController {
-        guard let storyboard = storyboard, let storyboardIdentifier = self.storyboardIdentifier else {
-            return self.destinationType.init()
-        }
-
-        return storyboard.instantiateViewControllerWithIdentifier(storyboardIdentifier)
     }
 }
