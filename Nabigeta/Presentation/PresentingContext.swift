@@ -8,6 +8,13 @@
 
 import Foundation
 
+extension PresentingContext {
+    public enum TerminateStatus {
+        case Completed
+        case Aborted
+    }
+}
+
 public class PresentingContext {
     let context: NavigationContext
     let presentation: PresentationStrategy
@@ -15,5 +22,15 @@ public class PresentingContext {
     init(context: NavigationContext, presentation: PresentationStrategy) {
         self.context = context
         self.presentation = presentation
+    }
+
+    public func terminate(status: TerminateStatus = .Completed) {
+        let sourceViewController = self.context.sourceViewController
+
+        guard let navigation = sourceViewController.navigation else {
+            return
+        }
+
+        navigation.navigateBack(to: sourceViewController)
     }
 }

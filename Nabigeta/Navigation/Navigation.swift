@@ -39,15 +39,29 @@ public class Navigation {
     }
 
     private func doNavigation(context context: NavigationContext, presentation: PresentationStrategy) {
+        let presentingContext = PresentingContext(context: context, presentation: presentation)
+
         self.willNavigate?(context.context)
-        context.sourceViewController.presentingContext = PresentingContext(context: context, presentation: presentation)
+
+        context.sourceViewController.shownPresentingContext = presentingContext
+        context.destinationViewController.showingPresentingContext = presentingContext
+        context.destinationViewController.navigation = self
+
         presentation.show(context)
         context.anyDestinationViewController.didNavigate(to: context.context)
     }
 
+    /// Stops any running navigation initiated by `sender` and navigate back to it
     public func navigateBack(to sender: UIViewController) {
-        if let presentingContext = sender.presentingContext {
+        if let presentingContext = sender.shownPresentingContext {
             presentingContext.presentation.dismiss(presentingContext.context)
+        }
+    }
+
+    /// Stops navigation initiated on `destination` and navigate back to its sender
+    public func navigateBack(from destination: UIViewController, status: PresentingContext.TerminateStatus = .Completed) {
+        if  let presentingContext = destination.showingPresentingContext {
+            presentingContext.terminate(status)
         }
     }
 }

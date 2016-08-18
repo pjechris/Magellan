@@ -9,11 +9,28 @@
 import Foundation
 import UIKit
 
-var PresentingContextAttr = "PresentingContextAttr"
-
 extension UIViewController {
-    var presentingContext: PresentingContext? {
-        get { return objc_getAssociatedObject(self, &PresentingContextAttr) as? PresentingContext }
-        set { objc_setAssociatedObject(self, &PresentingContextAttr, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    struct Keys {
+        static var ShownContext = "ShownContextAttr"
+        static var ShowingContext = "ShowingContextAttr"
+        static var Navigation = "NavigationAttr"
+    }
+
+    /// The `PresentingContext` that is shown from this view controller
+    var shownPresentingContext: PresentingContext? {
+        get { return objc_getAssociatedObject(self, &Keys.ShownContext) as? PresentingContext }
+        set { objc_setAssociatedObject(self, &Keys.ShownContext, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    }
+
+    /// The `PresentingContext` that is showing this view controller
+    var showingPresentingContext: PresentingContext? {
+        get { return objc_getAssociatedObject(self, &Keys.ShowingContext) as? PresentingContext }
+        set { objc_setAssociatedObject(self, &Keys.ShowingContext, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    }
+
+    /// navigation used to navigate from/to this viewcontroller
+    internal(set) public weak var navigation: Navigation? {
+        get { return objc_getAssociatedObject(self, &Keys.Navigation) as? Navigation }
+        set { objc_setAssociatedObject(self, &Keys.Navigation, newValue, .OBJC_ASSOCIATION_ASSIGN) }
     }
 }
