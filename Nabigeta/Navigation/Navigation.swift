@@ -11,12 +11,20 @@ import UIKit
 
 public class Navigation {
     public var willNavigate: (Any -> Void)? = nil
-    public var router: (Any -> Route)?
+    public var router: (Any -> Route)? = nil
     
     private let traitProvider: UITraitEnvironment
 
-    public init(traitProvider: UITraitEnvironment) {
+    /**
+     Init with the application root controller and a UITraitEnvironment provider
+     @param root Application root view controller along its context. Will be navigated to (without animation) and initialized properly for further navigations.
+     @param traitProvider Delegate providing `Navigation` with trait information. Usually an instance of `UIWindow`.
+    **/
+    public init<Root: UIViewController where Root: Navigable>(root:(Root, Root.ContextType), traitProvider: UITraitEnvironment) {
         self.traitProvider = traitProvider
+
+        self.doNavigation(context: NavigationContext(context: root.1, source: root.0, destination: AnyNavigableViewController(root.0)),
+                          presentation: PresentationRoot())
     }
 
     /**

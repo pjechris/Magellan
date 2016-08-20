@@ -13,6 +13,7 @@
 		4902AB061BF62AF8003D6435 /* PresentationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902AB021BF62AF7003D6435 /* PresentationSegue.swift */; };
 		490C38391A48219E00EC432E /* NavigationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490C38381A48219E00EC432E /* NavigationContext.swift */; };
 		497760FF1D4189590041C08B /* Navigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497760FE1D4189590041C08B /* Navigable.swift */; };
+		497E25F81D689460005B2FC0 /* PresentationRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497E25F71D689460005B2FC0 /* PresentationRoot.swift */; };
 		49A221141D34054B0045F7E2 /* PresentingContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A221131D34054B0045F7E2 /* PresentingContext.swift */; };
 		49B035FA1AACFE9900CB95DD /* PresentationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */; };
 		49C05ABB1BE0DCB10054337C /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49C05ABA1BE0DCB10054337C /* Navigation.swift */; };
@@ -31,6 +32,7 @@
 		4902AB021BF62AF7003D6435 /* PresentationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationSegue.swift; sourceTree = "<group>"; };
 		490C38381A48219E00EC432E /* NavigationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationContext.swift; sourceTree = "<group>"; };
 		497760FE1D4189590041C08B /* Navigable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigable.swift; sourceTree = "<group>"; };
+		497E25F71D689460005B2FC0 /* PresentationRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationRoot.swift; sourceTree = "<group>"; };
 		49A221131D34054B0045F7E2 /* PresentingContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentingContext.swift; sourceTree = "<group>"; };
 		49B035F91AACFE9900CB95DD /* PresentationStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationStrategy.swift; sourceTree = "<group>"; };
 		49C05ABA1BE0DCB10054337C /* Navigation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				49A221141D34054B0045F7E2 /* PresentingContext.swift in Sources */,
 				49C05ABB1BE0DCB10054337C /* Navigation.swift in Sources */,
 				497760FF1D4189590041C08B /* Navigable.swift in Sources */,
+				497E25F81D689460005B2FC0 /* PresentationRoot.swift in Sources */,
 				4902AB031BF62AF8003D6435 /* PresentationModal.swift in Sources */,
 				49DE53791A6EBDCF005A67AE /* UIViewController+Nabigeta.swift in Sources */,
 				4902AB041BF62AF8003D6435 /* PresentationPopover.swift in Sources */,
