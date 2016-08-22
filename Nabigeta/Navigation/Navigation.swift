@@ -33,20 +33,20 @@ public class Navigation {
      @param sender `UIViewController` making the request.
      @param control optional control from which the action was performed, like a `UIButton`.
     **/
-    public func navigate(to context: Any, sender: UIViewController, control: UIControl? = nil) {
+    public func navigate(to context: Any, sender: UIViewController, control: UIControl? = nil) -> PresentingContext? {
         if let route = self.router?(context) {
 
             let destination = route.destination(storyboard: sender.storyboard)
             let context = NavigationContext(context: context, source: sender, destination: destination, control: control)
             let presentation = route.presentation(forTrait: self.traitProvider.traitCollection)
 
-            self.doNavigation(context: context, presentation: presentation)
-
-            return
+            return self.doNavigation(context: context, presentation: presentation)
         }
+
+        return nil
     }
 
-    private func doNavigation(context context: NavigationContext, presentation: PresentationStrategy) {
+    private func doNavigation(context context: NavigationContext, presentation: PresentationStrategy) -> PresentingContext {
         let presentingContext = PresentingContext(context: context, presentation: presentation)
 
         self.willNavigate?(context.context)
@@ -57,6 +57,8 @@ public class Navigation {
 
         presentation.show(context)
         context.anyDestinationViewController.didNavigate(to: context.context)
+
+        return presentingContext
     }
 
     /// Stops any running navigation initiated by `sender` and navigate back to it
