@@ -1,47 +1,59 @@
 # Nabigeta
 [![Build Status](https://travis-ci.org/akane/Gaikan.svg?branch=travis)](https://travis-ci.org/akane/Nabigeta)
 
-```ruby
-pod install Nabigeta
-```
+Nabigeta provides simple API to declare routes for navigation. Compatible with trait environments.
 
-Nabigeta is a routing solution providing an API to declare routes (logic) to navigate to (UI).
-It is compatible with trait environments.
+## Usage
 
-To use Nabigeta, juste instanciate a ```Navigation```object with some routes:
+Declare your routes into a file, like your `AppDelegate`.
 
 ```swift
+import Nabigeta
 
-let collection = NavigationCollection()
-let navigation = Navigation(collection: collection)
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+  var navigation: Navigation! = nil
 
-collection.routes.add(Route("author", AuthorViewController.self))
+  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    self.navigation = Navigation(traitProvider: self.window!)
+
+    self.navigation.router = { context in
+        switch(context) {
+          case is Author:
+            return Route(AuthorViewController.self)
+
+          case is Book:
+            return Route(BookViewController.self)
+              .present { trait in
+                  switch(trait.horizontalClass, trait.verticalClass) {
+                    case (.Compact, .Compact):
+                      return PresentationPush()
+                    default:
+                      return PresentationModal()
+                  }
+              }
+        }
+    }
+  }
+}
+
+class AuthorViewController : UIViewController, Navigable {
+    func didNavigate(to author: Author) {
+      print("Navigated to /(author.name) controller")
+    }
+}
+
+class BookViewController {
+  func didTapAuthor() {
+    self.navigate(to: self.author) // AuthorViewController is displayed!
+  }
+}
 
 ```
-
-Then just reference it when you want navigate to the route:
-
-```swift
-let author = Author(name: "Nabigeta")
-navigation.navigate("home", context: author, sender: self)
-```
-
-Nabigeta will then automatically present the route associated view controller the right way (by default, as a Pushed view controller).
-
 # Advanced Usage
-## Context
+## Presentation
 
-## Define how to present
-
-By default Nabigeta display view controllers as push. You can however configure this behaviour by passing a ```PresentationStrategy``` to your route:
-
-```swift
-collection.routes.add(Route("author", AuthorViewController.self, presentation: PresentationModal()))
-```
-
-Using the ```presentation``` argument Nabigeta will now display author as a modal.
-
-Nabigeta provides some default Presentation strategies (take a look to the doc and/or the ```init``` to see their respective options):
+Nabigeta provides some default Presentation strategies:
 
 - PresentationPush
 - PresentationModal
@@ -50,27 +62,28 @@ Nabigeta provides some default Presentation strategies (take a look to the doc a
 
 If none of them feed your needs, you can provide your own custom presentation just by creating a class/struct implementing the ```PresentationStrategy``` protocol.
 
-## Adaptive presentation
+## Stopping navigation
+### Navigate back
 
-Sometimes defining one presentation is not enough as your view controller might be displayed on
-multiple orientations (portrait/landscape) on multiple devices (iPhone/iPad). You can add **extra**
-presentation using ```NavigationCollection```
+You can cancel navigation from source controller:
 
 ```swift
-// presentations are defined against view controllers, and not routes
-collection.presentations.when(to: AuthorViewController.self) { pres in
-  pres.addAdaptivePresentation(PresentationPopover(), .Regular, .Regular) // iPad
-  pres.addAdptivePresentation(PresentationPopover(), .Regular, .Compact) // iPhone6+
-}
+  bookViewController.navigateBack() // come back to BookViewController
+```
+You can also stop navigation from destination controller:
+
+```swift
+  authorViewController.navigationTerminated(status: .Canceled) // dismiss AuthorViewController
 ```
 
-You can even define more complex adaptive presentations:
+You can also be notified when navigations are stopped:
 
 ```swift
-
-// We define presentation when coming from specific view controller
-collection.presentations.when(from: LoginViewController, to: AuthorViewController.self) { pres in
-  pres.addAdaptivePresentation(PresentationModal(), .Regular, .Regular) // iPad
-}
-
+  bookViewController
+    .navigate(to: self.author)
+    .onTerminate { status in
+      if status == .Canceled {
+        print("author controller cancelled")
+      }
+    }
 ```
