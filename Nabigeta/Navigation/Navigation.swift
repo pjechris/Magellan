@@ -11,7 +11,7 @@ import UIKit
 
 public class Navigation {
     public var willNavigate: (Any -> Void)? = nil
-    public var router: (Any -> Route)? = nil
+    public var router: (Any -> Route?)? = nil
     
     private let traitProvider: UITraitEnvironment
 
