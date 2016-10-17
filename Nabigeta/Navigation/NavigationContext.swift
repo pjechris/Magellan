@@ -27,7 +27,7 @@ public class NavigationContext {
 
     weak public private(set) var touchedControl: UIControl?
 
-    unowned let anyDestinationViewController: AnyNavigableViewController
+    let anyDestinationViewController: AnyNavigableViewController
 
     convenience init(context: Any, source: UIViewController, destination: AnyNavigableViewController) {
         self.init(context: context, source: source, destination: destination, control: nil)

@@ -18,14 +18,14 @@ public protocol Navigable {
 }
 
 class AnyNavigableViewController {
-    private(set) var viewController: UIViewController
+    unowned private(set) var viewController: UIViewController
 
     private let didNavigate: (Any) -> Void
 
     init<N: UIViewController where N: Navigable>(_ navigable: N) {
         self.viewController = navigable
 
-        self.didNavigate = { context in
+        self.didNavigate = { [unowned navigable] context in
             if let context = context as? N.ContextType {
                 navigable.didNavigate(to: context)
             }
