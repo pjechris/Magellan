@@ -23,7 +23,7 @@ public class Navigation {
     public init<Root: UIViewController where Root: Navigable>(root:(Root, Root.ContextType), traitProvider: UITraitEnvironment) {
         self.traitProvider = traitProvider
 
-        self.doNavigation(context: NavigationContext(context: root.1, source: root.0, destination: AnyNavigableViewController(root.0)),
+        self.doNavigation(context: root.1, navigation: NavigationContext(source: root.0, destination: AnyNavigableViewController(root.0)),
                           presentation: PresentationRoot())
     }
 
@@ -37,26 +37,26 @@ public class Navigation {
         if let route = self.router?(context, from: sender) {
 
             let destination = route.destination(storyboard: sender.storyboard)
-            let context = NavigationContext(context: context, source: sender, destination: destination, control: control)
+            let navigation = NavigationContext(source: sender, destination: destination, control: control)
             let presentation = route.presentation(forTrait: self.traitProvider.traitCollection)
 
-            return self.doNavigation(context: context, presentation: presentation)
+            return self.doNavigation(context: context, navigation: navigation, presentation: presentation)
         }
 
         return nil
     }
 
-    private func doNavigation(context context: NavigationContext, presentation: PresentationStrategy) -> PresentingContext {
-        let presentingContext = PresentingContext(context: context, presentation: presentation)
+    private func doNavigation(context context: Any, navigation: NavigationContext, presentation: PresentationStrategy) -> PresentingContext {
+        let presentingContext = PresentingContext(context: navigation, presentation: presentation)
 
-        self.willNavigate?(context.context)
+        self.willNavigate?(context)
 
-        context.sourceViewController.shownPresentingContext = presentingContext
-        context.destinationViewController.showingPresentingContext = presentingContext
-        context.destinationViewController.navigation = self
+        navigation.sourceViewController.shownPresentingContext = presentingContext
+        navigation.destinationViewController.showingPresentingContext = presentingContext
+        navigation.destinationViewController.navigation = self
 
-        presentation.show(context)
-        context.anyDestinationViewController.didNavigate(to: context.context)
+        presentation.show(navigation)
+        navigation.anyDestinationViewController.didNavigate(to: context)
 
         return presentingContext
     }

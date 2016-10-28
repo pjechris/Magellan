@@ -23,20 +23,17 @@ public class NavigationContext {
         get { return self.anyDestinationViewController.viewController }
     }
 
-    public let context: Any
-
     weak public private(set) var touchedControl: UIControl?
 
     let anyDestinationViewController: AnyNavigableViewController
 
-    convenience init(context: Any, source: UIViewController, destination: AnyNavigableViewController) {
-        self.init(context: context, source: source, destination: destination, control: nil)
+    convenience init(source: UIViewController, destination: AnyNavigableViewController) {
+        self.init(source: source, destination: destination, control: nil)
     }
 
-    init(context: Any, source: UIViewController, destination: AnyNavigableViewController, control: UIControl?) {
+    init(source: UIViewController, destination: AnyNavigableViewController, control: UIControl?) {
         self.sourceViewController = source
         self.anyDestinationViewController = destination
-        self.context = context
         self.touchedControl = control
     }
 }
