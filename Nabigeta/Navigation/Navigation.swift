@@ -11,7 +11,7 @@ import UIKit
 
 public class Navigation {
     public var willNavigate: (Any -> Void)? = nil
-    public var router: (Any -> Route?)? = nil
+    public var router: ((Any, from: UIViewController) -> Route?)? = nil
     
     private let traitProvider: UITraitEnvironment
 
@@ -34,7 +34,7 @@ public class Navigation {
      @param control optional control from which the action was performed, like a `UIButton`.
     **/
     public func navigate(to context: Any, sender: UIViewController, control: UIControl? = nil) -> PresentingContext? {
-        if let route = self.router?(context) {
+        if let route = self.router?(context, from: sender) {
 
             let destination = route.destination(storyboard: sender.storyboard)
             let context = NavigationContext(context: context, source: sender, destination: destination, control: control)
