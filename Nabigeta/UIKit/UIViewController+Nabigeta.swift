@@ -30,7 +30,7 @@ extension UIViewController {
 
     /// navigation used to navigate from/to this viewcontroller
     public internal(set) weak var navigation: Navigation? {
-        get { return objc_getAssociatedObject(self, &Keys.Navigation) as? Navigation }
+        get { return objc_getAssociatedObject(self, &Keys.Navigation) as? Navigation ?? self.parentViewController?.navigation }
         set { objc_setAssociatedObject(self, &Keys.Navigation, newValue, .OBJC_ASSOCIATION_ASSIGN) }
     }
 }
