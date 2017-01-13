@@ -11,14 +11,14 @@ import Foundation
 /// Used internally when presenting a root controller
 class PresentationRoot : PresentationStrategy {
 
-    func show(context: NavigationContext) {
+    func show(_ context: NavigationContext) {
         // no animation done.
     }
 
-    func dismiss(context: NavigationContext) {
-        context
+    func dismiss(_ context: NavigationContext) {
+        _ = context
             .sourceViewController
             .navigationController?
-            .popToRootViewControllerAnimated(true)
+            .popToRootViewController(animated: true)
     }
 }

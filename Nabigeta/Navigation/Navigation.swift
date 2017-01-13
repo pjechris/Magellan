@@ -9,21 +9,21 @@
 import Foundation
 import UIKit
 
-public class Navigation {
-    public var willNavigate: (Any -> Void)? = nil
-    public var router: ((Any, from: UIViewController) -> Route?)? = nil
+open class Navigation {
+    open var willNavigate: ((Any) -> Void)? = nil
+    open var router: ((Any, _ from: UIViewController) -> Route?)? = nil
     
-    private let traitProvider: UITraitEnvironment
+    fileprivate let traitProvider: UITraitEnvironment
 
     /**
      Init with the application root controller and a UITraitEnvironment provider
      @param root Application root view controller along its context. Will be navigated to (without animation) and initialized properly for further navigations.
      @param traitProvider Delegate providing `Navigation` with trait information. Usually an instance of `UIWindow`.
     **/
-    public init<Root: UIViewController where Root: Navigable>(root:(Root, Root.ContextType), traitProvider: UITraitEnvironment) {
+    public init<Root: UIViewController>(root:(Root, Root.ContextType), traitProvider: UITraitEnvironment) where Root: Navigable {
         self.traitProvider = traitProvider
 
-        self.doNavigation(context: root.1, navigation: NavigationContext(source: root.0, destination: AnyNavigableViewController(root.0)),
+        _ = self.doNavigation(context: root.1, navigation: NavigationContext(source: root.0, destination: AnyNavigableViewController(root.0)),
                           presentation: PresentationRoot())
     }
 
@@ -33,12 +33,12 @@ public class Navigation {
      @param sender `UIViewController` making the request.
      @param control optional control from which the action was performed, like a `UIButton`.
     **/
-    public func navigate(to context: Any, sender: UIViewController, control: UIControl? = nil) -> PresentingContext? {
-        if let route = self.router?(context, from: sender) {
+    open func navigate(to context: Any, sender: UIViewController, control: UIControl? = nil) -> PresentingContext? {
+        if let route = self.router?(context, sender) {
 
-            let destination = route.destination(storyboard: sender.storyboard)
+            let destination = route.destination(sender.storyboard)
             let navigation = NavigationContext(source: sender, destination: destination, control: control)
-            let presentation = route.presentation(forTrait: self.traitProvider.traitCollection)
+            let presentation = route.presentation(self.traitProvider.traitCollection)
 
             return self.doNavigation(context: context, navigation: navigation, presentation: presentation)
         }
@@ -46,7 +46,7 @@ public class Navigation {
         return nil
     }
 
-    private func doNavigation(context context: Any, navigation: NavigationContext, presentation: PresentationStrategy) -> PresentingContext {
+    fileprivate func doNavigation(context: Any, navigation: NavigationContext, presentation: PresentationStrategy) -> PresentingContext {
         let presentingContext = PresentingContext(context: navigation, presentation: presentation)
 
         self.willNavigate?(context)
@@ -62,14 +62,14 @@ public class Navigation {
     }
 
     /// Stops any running navigation initiated by `sender` and navigate back to it
-    public func navigateBack(to sender: UIViewController) {
+    open func navigateBack(to sender: UIViewController) {
         if let presentingContext = sender.shownPresentingContext {
             presentingContext.presentation.dismiss(presentingContext.context)
         }
     }
 
     /// Stops navigation initiated on `destination` and navigate back to its sender
-    public func navigateBack(from destination: UIViewController, status: PresentingContext.TerminateStatus = .Completed) {
+    open func navigateBack(from destination: UIViewController, status: PresentingContext.TerminateStatus = .completed) {
         if  let presentingContext = destination.showingPresentingContext {
             presentingContext.terminate(status)
         }

@@ -9,17 +9,17 @@
 import Foundation
 import UIKit
 
-public class PresentationModal : PresentationStrategy {
-    private let presentation: UIModalPresentationStyle?
-    private let transition: UIModalTransitionStyle?
-    private let wrapper: () -> UINavigationController?
+open class PresentationModal : PresentationStrategy {
+    fileprivate let presentation: UIModalPresentationStyle?
+    fileprivate let transition: UIModalTransitionStyle?
+    fileprivate let wrapper: () -> UINavigationController?
 
     convenience public init(presentation: UIModalPresentationStyle? = nil,
                             transition: UIModalTransitionStyle? = nil) {
         self.init(useWrapper: UINavigationController(), presentation: presentation, transition: transition)
     }
 
-    public init(@autoclosure(escaping) useWrapper wrapper: () -> UINavigationController?,
+    public init( useWrapper wrapper: @autoclosure @escaping () -> UINavigationController?,
                 presentation: UIModalPresentationStyle? = nil,
                 transition: UIModalTransitionStyle? = nil) {
         self.presentation = presentation
@@ -27,7 +27,7 @@ public class PresentationModal : PresentationStrategy {
         self.wrapper = wrapper
     }
 
-    public func show(navigationContext: NavigationContext) {
+    open func show(_ navigationContext: NavigationContext) {
         let destinationController = navigationContext.destinationViewController
         let stackController = self.wrapper()
 
@@ -43,14 +43,14 @@ public class PresentationModal : PresentationStrategy {
         stackController?.pushViewController(destinationController, animated: false)
 
         if let stackController = stackController {
-            navigationContext.sourceViewController.presentViewController(stackController, animated: true, completion: nil)
+            navigationContext.sourceViewController.present(stackController, animated: true, completion: nil)
         }
         else {
-            navigationContext.sourceViewController.presentViewController(destinationController, animated: true, completion: nil)
+            navigationContext.sourceViewController.present(destinationController, animated: true, completion: nil)
         }
     }
 
-    public func dismiss(context: NavigationContext) {
-        context.sourceViewController.dismissViewControllerAnimated(true, completion: nil)
+    open func dismiss(_ context: NavigationContext) {
+        context.sourceViewController.dismiss(animated: true, completion: nil)
     }
 }

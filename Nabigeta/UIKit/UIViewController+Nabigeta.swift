@@ -30,7 +30,7 @@ extension UIViewController {
 
     /// navigation used to navigate from/to this viewcontroller
     public internal(set) weak var navigation: Navigation? {
-        get { return objc_getAssociatedObject(self, &Keys.Navigation) as? Navigation ?? self.parentViewController?.navigation }
+        get { return objc_getAssociatedObject(self, &Keys.Navigation) as? Navigation ?? self.parent?.navigation }
         set { objc_setAssociatedObject(self, &Keys.Navigation, newValue, .OBJC_ASSOCIATION_ASSIGN) }
     }
 }
@@ -45,7 +45,7 @@ extension Navigable where Self : UIViewController {
         self.navigation?.navigateBack(to: self)
     }
 
-    public func navigationTerminated(status status: PresentingContext.TerminateStatus = .Completed) {
+    public func navigationTerminated(status: PresentingContext.TerminateStatus = .completed) {
         self.navigation?.navigateBack(from: self, status: status)
     }
 }

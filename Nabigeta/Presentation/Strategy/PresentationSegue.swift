@@ -9,20 +9,20 @@
 import Foundation
 import UIKit
 
-public class PresentationSegue: PresentationStrategy {
+open class PresentationSegue: PresentationStrategy {
     let segueType: UIStoryboardSegue.Type
 
     public init(_ segue: UIStoryboardSegue.Type) {
         self.segueType = segue
     }
 
-    public func show(context: NavigationContext) {
+    open func show(_ context: NavigationContext) {
         let segue = self.segueType
             .init(identifier: nil, source: context.sourceViewController, destination: context.destinationViewController)
 
         segue.perform()
     }
 
-    public func dismiss(context: NavigationContext) {
+    open func dismiss(_ context: NavigationContext) {
     }
 }

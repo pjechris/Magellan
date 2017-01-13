@@ -9,21 +9,21 @@
 import Foundation
 import UIKit
 
-public class PresentationPopover : PresentationStrategy {
+open class PresentationPopover : PresentationStrategy {
 
-    public func show(navigationContext: NavigationContext) {
+    open func show(_ navigationContext: NavigationContext) {
         let destinationController = navigationContext.destinationViewController
         let stackController: UINavigationController = UINavigationController()
 
-        stackController.modalPresentationStyle = .Popover
+        stackController.modalPresentationStyle = .popover
         stackController.pushViewController(destinationController, animated: false)
-        navigationContext.sourceViewController.presentViewController(stackController, animated: true, completion: nil)
+        navigationContext.sourceViewController.present(stackController, animated: true, completion: nil)
 
         stackController.popoverPresentationController!.sourceView = navigationContext.touchedControl
         stackController.popoverPresentationController!.sourceRect = navigationContext.touchedControl!.bounds
     }
 
-    public func dismiss(context: NavigationContext) {
-        context.sourceViewController.dismissViewControllerAnimated(true, completion: nil)
+    open func dismiss(_ context: NavigationContext) {
+        context.sourceViewController.dismiss(animated: true, completion: nil)
     }
 }

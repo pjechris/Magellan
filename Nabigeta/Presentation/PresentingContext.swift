@@ -10,12 +10,12 @@ import Foundation
 
 extension PresentingContext {
     public enum TerminateStatus {
-        case Completed
-        case Aborted
+        case completed
+        case aborted
     }
 }
 
-public class PresentingContext {
+open class PresentingContext {
     let context: NavigationContext
     let presentation: PresentationStrategy
 
@@ -24,7 +24,7 @@ public class PresentingContext {
         self.presentation = presentation
     }
 
-    public func terminate(status: TerminateStatus = .Completed) {
+    open func terminate(_ status: TerminateStatus = .completed) {
         let sourceViewController = self.context.sourceViewController
 
         guard let navigation = sourceViewController.navigation else {

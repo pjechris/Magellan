@@ -15,15 +15,15 @@ import UIKit
 * During navigation this object is automatically created and passed to any `PresentationStrategy`.
 *
 */
-public class NavigationContext {
+open class NavigationContext {
     /// the view controller requiring navigation
-    unowned public let sourceViewController: UIViewController
+    unowned open let sourceViewController: UIViewController
 
-    unowned public var destinationViewController: UIViewController {
+    unowned open var destinationViewController: UIViewController {
         get { return self.anyDestinationViewController.viewController }
     }
 
-    weak public private(set) var touchedControl: UIControl?
+    weak open fileprivate(set) var touchedControl: UIControl?
 
     let anyDestinationViewController: AnyNavigableViewController
 

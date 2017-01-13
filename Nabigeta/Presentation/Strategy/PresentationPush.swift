@@ -11,33 +11,33 @@ import UIKit
 
 extension PresentationPush {
     public enum DisplayMode {
-        case Master
-        case Detail
+        case master
+        case detail
     }
 }
 
-public class PresentationPush : PresentationStrategy {
+open class PresentationPush : PresentationStrategy {
     let displayMode: DisplayMode
 
-    init(displayMode: DisplayMode = .Master) {
+    init(displayMode: DisplayMode = .master) {
         self.displayMode = displayMode
     }
 
-    public func show(navigationContext: NavigationContext) {
+    open func show(_ navigationContext: NavigationContext) {
         let destinationViewController: UIViewController = navigationContext.destinationViewController
         let stackController = navigationContext.sourceViewController.navigationController!
 
         switch self.displayMode {
-        case .Master:
-            stackController.showViewController(destinationViewController, sender: navigationContext.sourceViewController)
-        case .Detail:
+        case .master:
+            stackController.show(destinationViewController, sender: navigationContext.sourceViewController)
+        case .detail:
             stackController.showDetailViewController(destinationViewController, sender: navigationContext.sourceViewController)
         }
 
     }
 
-    public func dismiss(context: NavigationContext) {
-        context
+    open func dismiss(_ context: NavigationContext) {
+        _ = context
             .sourceViewController
             .navigationController?
             .popToViewController(context.sourceViewController, animated: true)
