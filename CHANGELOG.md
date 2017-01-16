@@ -1,12 +1,18 @@
 # CHANGELOG
 
+## 1.0.0
+
+### Changed
+
+- Swift3 support.
+
 # 0.9.0
 
 ## Enhancements
 
 - [navigation] Router block can returns nil (no `Route` found) and receives sender as param.
 - [controller] Search navigation in parent controller if nil.
-- [navigation] We removed context from `NavigationContext` because it could lead to memory leaks if controllers were pop manually. 
+- [navigation] We removed context from `NavigationContext` because it could lead to memory leaks if controllers were pop manually.
 
 ## Bugfixes
 
