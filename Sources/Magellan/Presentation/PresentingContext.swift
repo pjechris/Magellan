@@ -18,10 +18,17 @@ extension PresentingContext {
 open class PresentingContext {
     let context: NavigationContext
     let presentation: PresentationStrategy
+    fileprivate var willDismiss: (TerminateStatus) -> () = { _ in }
 
     init(context: NavigationContext, presentation: PresentationStrategy) {
         self.context = context
         self.presentation = presentation
+    }
+
+    open func onDismiss(_ willDismiss: @escaping (TerminateStatus) -> ()) -> PresentingContext {
+        self.willDismiss = willDismiss
+
+        return self
     }
 
     open func terminate(_ status: TerminateStatus = .completed) {
@@ -31,6 +38,7 @@ open class PresentingContext {
             return
         }
 
+        self.willDismiss(status)
         navigation.navigateBack(to: sourceViewController)
     }
 }
