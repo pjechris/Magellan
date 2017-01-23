@@ -33,6 +33,7 @@ open class Navigation {
      @param sender `UIViewController` making the request.
      @param control optional control from which the action was performed, like a `UIButton`.
     **/
+    @discardableResult
     open func navigate(to context: Any, sender: UIViewController, control: UIControl? = nil) -> PresentingContext? {
         if let route = self.router?(context, sender) {
 
