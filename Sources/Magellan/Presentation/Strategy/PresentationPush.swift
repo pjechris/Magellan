@@ -19,7 +19,7 @@ extension PresentationPush {
 open class PresentationPush : PresentationStrategy {
     let displayMode: DisplayMode
 
-    init(displayMode: DisplayMode = .master) {
+    public init(displayMode: DisplayMode = .master) {
         self.displayMode = displayMode
     }
 
