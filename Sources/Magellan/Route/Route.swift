@@ -34,15 +34,17 @@ public struct Route {
         }
     }
 
-    public mutating func present(_ presentation: PresentationStrategy) -> Route {
+    public func present(_ presentation: PresentationStrategy) -> Route {
         return self.present { _ in
             presentation
         }
     }
 
-    public mutating func present(when presentation: @escaping (UITraitCollection) -> PresentationStrategy) -> Route {
-        self.presentation = presentation
+    public func present(when presentation: @escaping (UITraitCollection) -> PresentationStrategy) -> Route {
+        var route = self
 
-        return self
+        route.presentation = presentation
+
+        return route
     }
 }
