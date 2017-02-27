@@ -11,30 +11,27 @@ import UIKit
 
 public struct Route {
     public let destinationType: UIViewController.Type
-    public let storyboardIdentifier: String?
-
     public fileprivate(set) var presentation: (_ forTrait: UITraitCollection) -> PresentationStrategy
 
-    fileprivate(set) var destination: (_ storyboard: UIStoryboard?) -> AnyNavigableViewController
+    let destination: (_ storyboard: UIStoryboard?) -> AnyNavigableViewController
 
     public init<Destination: UIViewController>(_ destination: Destination.Type, storyboardIdentifier: String? = nil) where Destination: Navigable {
-        self.destinationType = destination
-        self.storyboardIdentifier = storyboardIdentifier
-        self.presentation = { _ in PresentationPush() }
-        self.destination = {
+        self.init(destination) {
             guard let storyboard = $0, let storyboardIdentifier = storyboardIdentifier else {
-                return AnyNavigableViewController(destination.init())
+                return destination.init()
             }
 
             let viewController = storyboard.instantiateViewController(withIdentifier: storyboardIdentifier)
-            return AnyNavigableViewController(viewController as! Destination)
+            return viewController as! Destination
         }
     }
 
-    public mutating func using<Destination: UIViewController>(destination: @escaping () -> Destination) -> Route where Destination: Navigable {
-        self.destination = { _ in AnyNavigableViewController(destination()) }
-
-        return self
+    public init<Destination: UIViewController>(_ destination: Destination.Type, using: @escaping (UIStoryboard?) -> Destination) where Destination: Navigable {
+        self.destinationType = destination
+        self.presentation = { _ in PresentationPush() }
+        self.destination = {
+            AnyNavigableViewController(using($0))
+        }
     }
 
     public mutating func present(_ presentation: PresentationStrategy) -> Route {
