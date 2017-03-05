@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 1.1.0
+
+## Changed
+
+- Added `onDismiss` on `PresentingContext`.
+- Added `Router` protocol.
+- Added method to create custom Route controller.
+
+## Bugfixes
+
+- Fixed Presentation `init` visibility.
+
 ## 1.0.0
 
 ### Changed

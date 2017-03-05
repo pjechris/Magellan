@@ -37,7 +37,13 @@ extension UIViewController {
 
 extension Navigable where Self : UIViewController {
 
-    public func navigate(to context: Any, control: UIControl? = nil) -> PresentingContext? {
+    @discardableResult
+    public func navigate(to context: Any) -> PresentingContext? {
+        return self.navigation?.navigate(to: context, sender: self)
+    }
+
+    @discardableResult
+    public func navigate(to context: Any, control: UIControl) -> PresentingContext? {
         return self.navigation?.navigate(to: context, sender: self, control: control)
     }
 
