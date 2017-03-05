@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                    = "Magellan"
-  s.version                 = "1.0.0"
+  s.version                 = "1.1.0"
   s.source                  = { :git => "https://github.com/akane/Magellan.git",
   		     	                    :tag => s.version.to_s }
 
