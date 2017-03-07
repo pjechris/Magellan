@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Router {
+public protocol Router : class {
     @discardableResult
     func navigate(to context: Any) -> PresentingContext?
 
