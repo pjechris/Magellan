@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.1.2
+
+### Changed
+
+- `Route.init` expects a `UIViewController` instance. Others `init` are deprecated. If you are using Storyboards, use tools like Swiftgen to create `UIViewController` instances.
+
 ## 1.1.1
 
 ### Changed
