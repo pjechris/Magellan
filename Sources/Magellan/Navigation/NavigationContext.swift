@@ -17,7 +17,7 @@ import UIKit
 */
 open class NavigationContext {
     /// the view controller requiring navigation
-    unowned open let sourceViewController: UIViewController
+    unowned public let sourceViewController: UIViewController
 
     unowned open var destinationViewController: UIViewController {
         get { return self.anyDestinationViewController.viewController }

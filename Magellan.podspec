@@ -11,6 +11,7 @@ Pod::Spec.new do |s|
   s.author                  = 'pjechris', 'akane'
 
   s.ios.deployment_target   = "8.0"
+  s.swift_version           = "4.2"
   s.source_files            = "Sources/#{s.name}/**/*.swift"
   s.prefix_header_file      = "Sources/#{s.name}.h"
   s.requires_arc            = true
