@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 
 open class Navigation {
+    public typealias Router<T> = (T, UIViewController) -> Route?
+
     open var willNavigate: ((Any) -> Void)? = nil
-    open var router: ((Any, _ from: UIViewController) -> Route?)? = nil
+    public let router: Router<Any>
     
     fileprivate let traitProvider: UITraitEnvironment
 
@@ -20,11 +22,15 @@ open class Navigation {
      @param root Application root view controller along its context. Will be navigated to (without animation) and initialized properly for further navigations.
      @param traitProvider Delegate providing `Navigation` with trait information. Usually an instance of `UIWindow`.
     **/
-    public init<Root: UIViewController>(root:(Root, Root.ContextType), traitProvider: UITraitEnvironment) where Root: Navigable {
+    public init<Route>(router: @escaping Router<Route>, traitProvider: UITraitEnvironment) {
         self.traitProvider = traitProvider
+        self.router = { context, from in
+            guard let context = context as? Route else {
+                return nil
+            }
 
-        _ = self.doNavigation(context: root.1, navigation: NavigationContext(source: root.0, destination: AnyNavigableViewController(root.0)),
-                          presentation: PresentationRoot())
+            return router(context, from)
+        }
     }
 
     /**
@@ -35,10 +41,9 @@ open class Navigation {
     **/
     @discardableResult
     open func navigate(to context: Any, sender: UIViewController, control: UIControl? = nil) -> PresentingContext? {
-        if let route = self.router?(context, sender) {
+        if let route = self.router(context, sender) {
 
-            let destination = route.destination(sender.storyboard)
-            let navigation = NavigationContext(source: sender, destination: destination, control: control)
+            let navigation = NavigationContext(source: sender, destination: route.destination, control: control)
             let presentation = route.presentation(self.traitProvider.traitCollection)
 
             return self.doNavigation(context: context, navigation: navigation, presentation: presentation)
@@ -57,7 +62,6 @@ open class Navigation {
         navigation.destinationViewController.navigation = self
 
         presentation.show(navigation)
-        navigation.anyDestinationViewController.didNavigate(to: context)
 
         return presentingContext
     }

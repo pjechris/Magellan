@@ -35,7 +35,7 @@ extension UIViewController {
     }
 }
 
-extension Navigable where Self : UIViewController {
+extension UIViewController {
 
     @discardableResult
     public func navigate(to context: Any) -> PresentingContext? {
