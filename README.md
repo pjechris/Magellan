@@ -1,59 +1,68 @@
-# Nabigeta
+# Magellan
 [![Build Status](https://travis-ci.org/akane/Gaikan.svg?branch=travis)](https://travis-ci.org/akane/Nabigeta)
 
 Nabigeta provides simple API to declare routes for navigation. Compatible with trait environments.
 
+## Why
+
+Classic app navigation tights View Controllers together, making hard to change workflow when needed.
+
+Magellan helps you by defining a simple routing system abstracting View Controllers usage, making it easier to introduce changes, deep linking, tagging, and so on...
+
 ## Usage
 
-Declare your routes into a file, like your `AppDelegate`.
+### 1 - Declare an enum with your routes
 
 ```swift
-import Nabigeta
+enum AppRoutes {
+  case book(Book)
+  case cart(Cart)
+}
+```
 
+### 2 - Declare your route handler
+
+```swift
+func route(for context: AppRoutes, _ sender: UIViewController?) -> Route? {
+  switch context {
+  case .book(let book):
+    return Route(BookViewController())
+  case .cart(let cart):
+    return Route(CartViewController()).present(PresentationModal())
+  }
+}
+```
+
+### 3 - Create your navigation
+
+```swift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var navigation: Navigation! = nil
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    self.navigation = Navigation(traitProvider: self.window!)
-
-    self.navigation.router = { context in
-        switch(context) {
-          case is Author:
-            return Route(AuthorViewController.self)
-
-          case is Book:
-            return Route(BookViewController.self)
-              .present { trait in
-                  switch(trait.horizontalClass, trait.verticalClass) {
-                    case (.Compact, .Compact):
-                      return PresentationPush()
-                    default:
-                      return PresentationModal()
-                  }
-              }
-        }
-    }
+    navigation = Navigation(router: route(for::))
   }
 }
-
-class AuthorViewController : UIViewController, Navigable {
-    func didNavigate(to author: Author) {
-      print("Navigated to /(author.name) controller")
-    }
-}
-
-class BookViewController {
-  func didTapAuthor() {
-    self.navigate(to: self.author) // AuthorViewController is displayed!
-  }
-}
-
 ```
+
+### 4 - Use it!
+
+```swift
+
+class ViewController {
+  var cart: Cart!
+
+  func onCartTapped() {
+      navigate(to: .cart(cart))
+  }
+}
+```
+
 # Advanced Usage
 ## Presentation
 
-Nabigeta provides some default Presentation strategies:
+Magellan provides some default Presentation strategies:
 
 - PresentationPush
 - PresentationModal
@@ -73,16 +82,16 @@ You can cancel navigation from source controller:
 You can also stop navigation from destination controller:
 
 ```swift
-  authorViewController.navigationTerminated(status: .Canceled) // dismiss AuthorViewController
+  cartViewController.navigationTerminated(status: .canceled) // dismiss CartViewController
 ```
 
 You can also be notified when navigations are stopped:
 
 ```swift
-  bookViewController
-    .navigate(to: self.author)
+  viewController
+    .navigate(to: .cart(self.cart))
     .onTerminate { status in
-      if status == .Canceled {
+      if status == .canceled {
         print("author controller cancelled")
       }
     }

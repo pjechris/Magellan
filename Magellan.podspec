@@ -4,8 +4,8 @@ Pod::Spec.new do |s|
   s.source                  = { :git => "https://github.com/akane/Magellan.git",
   		     	                    :tag => s.version.to_s }
 
-  s.summary                 = "Define your navigation through routes in one and powerful way"
-  s.description             = "Navigation Service to route your controllers based on parameters. Asbtract everything about NavigationController. No need to care about it!"
+  s.summary                 = "An app routing system to define your app navigation with ease."
+  s.description             = "Simple navigation to abstract UIViewController navigation inside the app. Highly customizable and flexible."
   s.homepage                = "https://github.com/akane/Magellan"
   s.license                 = { :type => "MIT", :file => "LICENSE" }
   s.author                  = 'pjechris', 'akane'

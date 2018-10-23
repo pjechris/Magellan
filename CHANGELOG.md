@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## Master
+
+### Added
+
+- Migrated to recommended settings for Swift 4.2
+
+
+### Breaking Changes
+
+- Changed `Navigation.init(root:traitProvider:)` to `Navigation.init(router:traitProvider:)`
+
+
 ## 1.1.2
 
 ### Changed
