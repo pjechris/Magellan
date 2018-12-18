@@ -22,7 +22,7 @@ open class Navigation {
      @param root Application root view controller along its context. Will be navigated to (without animation) and initialized properly for further navigations.
      @param traitProvider Delegate providing `Navigation` with trait information. Usually an instance of `UIWindow`.
     **/
-    public init<Route>(router: @escaping Router<Route>, traitProvider: UITraitEnvironment) {
+    public init<Route>(root: UIViewController, router: @escaping Router<Route>, traitProvider: UITraitEnvironment) {
         self.traitProvider = traitProvider
         self.router = { context, from in
             guard let context = context as? Route else {
@@ -31,6 +31,8 @@ open class Navigation {
 
             return router(context, from)
         }
+
+        root.navigation = self
     }
 
     /**
